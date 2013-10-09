@@ -1,0 +1,4 @@
+add file to path
+git add 'filename'
+git commit -m 'message/reason for commit'
+git push
