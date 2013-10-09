@@ -9,6 +9,7 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
+@NamedQuery(name = "findAllQuestions", query = "SELECT q FROM Question q")
 public class Question {
     
     // variables

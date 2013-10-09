@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Questions</title>
+    </h:head>
+    <h:body>
+        <h1>List of the Questions</h1>
+        <hr/>
+        <h:form>
+            <h:outputLabel value="Search: "/>
+            <h:inputText value="#{questionController.searchStr}"/>
+            <h:commandButton value="Search" action="#{questionController.search}">
+                <f:ajax execute="@form" render=":questionList"/>
+            </h:commandButton>
+        </h:form>
+        
+        <h:dataTable id="questionList" value="#{questionController.questionList}" var="q" border="1">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Question"/>
+                </f:facet>
+                <h:outputText value="#{q.question}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Answer"/>
+                </f:facet>
+                <h:outputText value="#{q.answer}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Subject"/>
+                </f:facet>
+                <h:outputText value="#{q.subject}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Difficulty"/>
+                </f:facet>
+                <h:outputText value="#{q.difficulty}"/>
+            </h:column>
+
+        </h:dataTable>
+        <h:form>
+            <h:link outcome="newQuestion.xhtml" value="Create a new question"/>
+        </h:form>
+        <hr/>
+    </h:body>
+</html>
+
