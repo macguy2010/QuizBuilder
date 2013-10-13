@@ -3,7 +3,6 @@ package com.nate_tim_dane_company.quizbuilderproject;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "questionController")
@@ -38,21 +37,21 @@ public class QuestionController
         return searchStr;
     }
 
-    public Question getUser() {
+    public Question getQuestion() {
         return question;
     }
 
-    public void UserObj(Question u) {
+    public void setQuestion(Question u) {
         question = u;
     }
 
-    public List<Question> getUserList() {
+    public List<Question> getQuestionList() {
         if(questionList == null)
             questionList = ejb.findQuestions();
         return questionList;
     }
 
-    public void setUserList(List<Question> qList) {
+    public void setQuestionList(List<Question> qList) {
         questionList = qList;
     }
 }

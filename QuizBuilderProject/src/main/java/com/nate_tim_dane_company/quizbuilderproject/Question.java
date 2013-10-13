@@ -23,7 +23,7 @@ public class Question {
     @Enumerated(EnumType.ORDINAL)
     private SubjectType subject;
     
-    private int difficulty;
+    private Integer difficulty;
     
     
     // methods
