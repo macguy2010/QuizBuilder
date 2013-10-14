@@ -14,8 +14,27 @@ public class QuestionController
     private String searchStr = new String();
     private Question question = new Question();
     private List<Question> questionList = null;
+    private Integer subject;
     
     public String doCreateQuestion() {
+        switch(subject){
+            case 1:
+                question.setSubject(SubjectType.MATHEMATICS); break;
+            case 2:
+                question.setSubject(SubjectType.ENGLISH); break;
+            case 3:
+                question.setSubject(SubjectType.SCIENCE); break;
+            case 4:
+                question.setSubject(SubjectType.GEOGRAPHY); break;
+            case 5:
+                question.setSubject(SubjectType.HISTORY); break;
+            case 6:
+                question.setSubject(SubjectType.LITERATURE); break;
+            case 7:
+                question.setSubject(SubjectType.COMPUTER_SCIENCE); break;
+            default:
+                question.setSubject(SubjectType.OTHER); break;
+        }
         question = ejb.createQuestion(question);
         questionList = ejb.findQuestions();
         return "questionsList.xhtml";
@@ -39,6 +58,15 @@ public class QuestionController
 
     public Question getQuestion() {
         return question;
+    }
+    
+    public Integer getSubject()
+    {
+        return subject;
+    }
+
+    public void setSubject(Integer s) {
+        subject = s;
     }
 
     public void setQuestion(Question u) {

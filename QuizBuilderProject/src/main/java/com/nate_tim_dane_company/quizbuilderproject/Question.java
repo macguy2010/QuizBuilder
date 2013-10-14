@@ -52,12 +52,12 @@ public class Question {
        answer = a;
     }
     
-    public int getDifficulty()
+    public Integer getDifficulty()
     {
         return difficulty;
     }
     
-    public void setDifficulty(int d)
+    public void setDifficulty(Integer d)
     {
         difficulty = d;
     }

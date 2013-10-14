@@ -12,12 +12,12 @@
     <h:form>
         <h:panelGrid columns="2" >
             <h:outputLabel value="Question: "/>
-            <h:inputText value="#{questionController.question.question}"/>
+            <h:inputTextarea value="#{questionController.question.question}"/>
             <h:outputLabel value="Answer:"/>
             <h:inputText value="#{questionController.question.answer}"/>
 
             <h:outputLabel value="Subject: "/>
-            <h:selectOneMenu value="#{questionController.question.subject}">
+            <h:selectOneMenu value="#{questionController.subject}">
                 <f:selectItem id="mathematics" itemLabel="Mathematics" itemValue="1" />
                 <f:selectItem id="english" itemLabel="English" itemValue="2" />
                 <f:selectItem id="science" itemLabel="Science" itemValue="3" />
@@ -25,25 +25,26 @@
                 <f:selectItem id="history" itemLabel="History" itemValue="5" />
                 <f:selectItem id="literature" itemLabel="Literature" itemValue="6" />
                 <f:selectItem id="computer_science" itemLabel="Computer Science" itemValue="7" />
+                <f:selectItem id="other" itemLabel="Other" itemValue="8" />
             </h:selectOneMenu>
 
             <h:outputLabel value="Difficulty "/>
             <h:selectOneMenu value="#{questionController.question.difficulty}">
-                <f:selectItem id="1" itemLabel="1" itemValue="1" />
-                <f:selectItem id="2" itemLabel="2" itemValue="2" />
-                <f:selectItem id="3" itemLabel="3" itemValue="3" />
-                <f:selectItem id="4" itemLabel="4" itemValue="4" />
-                <f:selectItem id="5" itemLabel="5" itemValue="5" />
-                <f:selectItem id="6" itemLabel="6" itemValue="6" />
-                <f:selectItem id="7" itemLabel="7" itemValue="7" />
-                <f:selectItem id="8" itemLabel="8" itemValue="8" />
-                <f:selectItem id="9" itemLabel="9" itemValue="9" />
-                <f:selectItem id="10" itemLabel="10" itemValue="10" />
+                <f:selectItem id="d1" itemLabel="1" itemValue="1" />
+                <f:selectItem id="d2" itemLabel="2" itemValue="2" />
+                <f:selectItem id="d3" itemLabel="3" itemValue="3" />
+                <f:selectItem id="d4" itemLabel="4" itemValue="4" />
+                <f:selectItem id="d5" itemLabel="5" itemValue="5" />
+                <f:selectItem id="d6" itemLabel="6" itemValue="6" />
+                <f:selectItem id="d7" itemLabel="7" itemValue="7" />
+                <f:selectItem id="d8" itemLabel="8" itemValue="8" />
+                <f:selectItem id="d9" itemLabel="9" itemValue="9" />
+                <f:selectItem id="d10" itemLabel="10" itemValue="10" />
             </h:selectOneMenu>
 
         </h:panelGrid>
         <h:commandButton value="Create Question" action="#{questionController.doCreateQuestion}"/>
-
+        
     </h:form>
     <hr/>
 

@@ -13,5 +13,6 @@ public enum SubjectType {
     GEOGRAPHY,
     HISTORY,
     LITERATURE,
-    COMPUTER_SCIENCE
+    COMPUTER_SCIENCE,
+    OTHER
 }
