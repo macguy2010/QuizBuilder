@@ -1,4 +1,2 @@
-com\nate_tim_dane_company\quizbuilderproject\Question.class
-com\nate_tim_dane_company\quizbuilderproject\QuestionController.class
-com\nate_tim_dane_company\quizbuilderproject\QuestionEJB.class
-com\nate_tim_dane_company\quizbuilderproject\SubjectType.class
+com/nate_tim_dane_company/quizbuilderproject/SubjectType.class
+com/nate_tim_dane_company/quizbuilderproject/Question.class

@@ -1,0 +1,2 @@
+insert into Question (Question, Answer, Subject, Difficulty) values("Solve for x:\n4x + 3 = 23","5",2,0);
+insert into Question (Question, Answer, Subject, Difficulty) values("How many bytes are in a kilobyte","1024",3,6);

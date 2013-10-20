@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Create Quiz</title>
+    </h:head>
+    <h:body>
+        <h1>Create a new Question</h1>
+        <hr/>
+    <h:form>
+        <h:panelGrid columns="2" >
+            <h:selectManyCheckbox value="#{quizController.questionsSelectionList}">
+   		<f:selectItems value="#{quizController.questionsCheckList}" var="q"
+   		itemLabel="#{q.question}" itemValue="#{q}" />
+            </h:selectManyCheckbox>
+
+        </h:panelGrid>
+        <h:commandButton value="Create Quiz" action="#{quizController.doCreateQuiz}"/>
+        
+    </h:form>
+    <hr/>
+    </h:body>
+</html>
+
