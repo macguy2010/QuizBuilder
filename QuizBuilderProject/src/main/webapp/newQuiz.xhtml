@@ -11,6 +11,9 @@
         <hr/>
     <h:form>
         <h:panelGrid columns="2" >
+            <h:outputLabel value="Title: "/>
+            <h:inputTextarea value="#{quizController.quiz.title}"/>
+            
             <h:selectManyCheckbox value="#{quizController.questionsSelectionList}">
    		<f:selectItems value="#{quizController.questionsCheckList}" var="q"
    		itemLabel="#{q.question}" itemValue="#{q}" />

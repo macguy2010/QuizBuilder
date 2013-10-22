@@ -10,10 +10,10 @@ import javax.persistence.*;
 
 @Entity
 @NamedQuery(name = "findAllQuestions", query = "SELECT q FROM Question q")
-public class Question {
+public class Question implements Serializable{
     
     // variables
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String question;

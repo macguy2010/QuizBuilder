@@ -1,2 +1,4 @@
-insert into Question (Question, Answer, Subject, Difficulty) values("Solve for x:\n4x + 3 = 23","5",2,0);
-insert into Question (Question, Answer, Subject, Difficulty) values("How many bytes are in a kilobyte","1024",3,6);
+insert into Question (Question, Answer, Subject, Difficulty) values('Solve for x: 4x + 3 = 23','5',0,2);
+insert into Question (Question, Answer, Subject, Difficulty) values('How many bytes are in a kilobyte','1024',6,3);
+insert into Question (Question, Answer, Subject, Difficulty) values('How many seconds in an hour','3600',7,1);
+insert into Question (Question, Answer, Subject, Difficulty) values('Who was the second president of the United States','John Adams',4,5);

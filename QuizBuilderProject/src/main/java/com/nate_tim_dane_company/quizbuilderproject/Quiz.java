@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class Quiz {
     
     // variables
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     private String title;
@@ -36,5 +36,15 @@ public class Quiz {
     public void addQuestion(Question q)
     {
         questions.add(q);
+    }
+    
+    public void setTitle(String t)
+    {
+        title = t;
+    }
+    
+    public String getTitle()
+    {
+        return title;
     }
 }
