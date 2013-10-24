@@ -72,7 +72,7 @@ public class QuizController
         if (questionsSelectionList == null)
         {
             Object[] q = questionejb.findQuestions().toArray();
-            questionsSelectionList = Arrays.copyOf(q, q.length, Question[].class);
+            questionsCheckList = Arrays.copyOf(q, q.length, Question[].class);
         }
         return questionsCheckList;
     }
