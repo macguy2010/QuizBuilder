@@ -10,7 +10,7 @@ import java.util.List;
 public class QuestionController 
 {
     @EJB
-    private QuestionEJB ejb;
+    private QuizBuilderEJB ejb;
     private String searchStr = new String();
     private Question question = new Question();
     private List<Question> questionList = null;

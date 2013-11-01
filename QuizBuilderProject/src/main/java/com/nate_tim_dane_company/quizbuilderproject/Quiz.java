@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @NamedQuery(name = "findAllQuizzes", query = "SELECT q FROM Quiz q")
-public class Quiz {
+public class Quiz implements Serializable {
     
     // variables
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,9 +18,13 @@ public class Quiz {
     
     private String title;
     
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "Quiz_Questions")
+    @OneToMany
+    @JoinTable(name="User_Questions", joinColumns={@JoinColumn(name="User_ID")}, inverseJoinColumns={@JoinColumn(name="Question_ID")})
     private List<Question> questions = new ArrayList<Question>();
+    
+    @OneToMany
+    @JoinTable(name="User_Quizzes", joinColumns={@JoinColumn(name="User_ID")}, inverseJoinColumns={@JoinColumn(name="Quiz_ID")})
+    private List<Quiz> quizzes = new ArrayList<Quiz>();
     
     // methods
     public List<Question> getQuestions()
@@ -46,5 +50,15 @@ public class Quiz {
     public String getTitle()
     {
         return title;
+    }
+    
+    public Long getId() 
+    {
+        return id;
+    }
+
+    public void setId(Long id) 
+    {
+        this.id = id;
     }
 }

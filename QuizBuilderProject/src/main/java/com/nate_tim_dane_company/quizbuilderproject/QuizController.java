@@ -10,9 +10,7 @@ import java.util.*;
 public class QuizController 
 {
     @EJB
-    private QuizEJB ejb;
-    @EJB
-    private QuestionEJB questionejb;
+    private QuizBuilderEJB ejb;
     private Question[] questionsCheckList;
     private Question[] questionsSelectionList = null;
     private String searchStr = new String();
@@ -29,7 +27,7 @@ public class QuizController
     
     public String search()
     {
-        quizList = ejb.searchQuestions(searchStr);
+        quizList = ejb.searchQuizzes(searchStr);
         return "quizList.xhtml";
     }
     
@@ -71,7 +69,7 @@ public class QuizController
         
         if (questionsSelectionList == null)
         {
-            Object[] q = questionejb.findQuestions().toArray();
+            Object[] q = ejb.findQuestions().toArray();
             questionsCheckList = Arrays.copyOf(q, q.length, Question[].class);
         }
         return questionsCheckList;

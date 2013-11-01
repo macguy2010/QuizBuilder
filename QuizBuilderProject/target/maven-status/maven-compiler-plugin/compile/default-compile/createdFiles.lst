@@ -1,7 +1,7 @@
-com\nate_tim_dane_company\quizbuilderproject\QuizController.class
-com\nate_tim_dane_company\quizbuilderproject\Question.class
-com\nate_tim_dane_company\quizbuilderproject\QuizEJB.class
-com\nate_tim_dane_company\quizbuilderproject\QuestionEJB.class
-com\nate_tim_dane_company\quizbuilderproject\SubjectType.class
-com\nate_tim_dane_company\quizbuilderproject\Quiz.class
-com\nate_tim_dane_company\quizbuilderproject\QuestionController.class
+com/nate_tim_dane_company/quizbuilderproject/QuestionEJB.class
+com/nate_tim_dane_company/quizbuilderproject/QuestionController.class
+com/nate_tim_dane_company/quizbuilderproject/Quiz.class
+com/nate_tim_dane_company/quizbuilderproject/QuizController.class
+com/nate_tim_dane_company/quizbuilderproject/SubjectType.class
+com/nate_tim_dane_company/quizbuilderproject/QuizEJB.class
+com/nate_tim_dane_company/quizbuilderproject/Question.class

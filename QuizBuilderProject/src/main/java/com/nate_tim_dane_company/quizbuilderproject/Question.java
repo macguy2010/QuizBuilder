@@ -5,7 +5,6 @@
 package com.nate_tim_dane_company.quizbuilderproject;
 
 import java.io.Serializable;
-import java.util.*;
 import javax.persistence.*;
 
 @Entity
@@ -30,6 +29,11 @@ public class Question implements Serializable{
     public Long getId()
     {
         return id;
+    }
+    
+    public void setId(Long id) 
+    {
+        this.id = id;
     }
     
     public String getQuestion()
