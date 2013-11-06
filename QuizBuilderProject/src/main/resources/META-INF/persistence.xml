@@ -5,6 +5,7 @@
     <jta-data-source>QuizBuilderDBProject</jta-data-source>
     <class>com.nate_tim_dane_company.quizbuilderproject.Question</class>
     <class>com.nate_tim_dane_company.quizbuilderproject.Quiz</class>
+    <class>com.nate_tim_dane_company.quizbuilderproject.User_Obj</class>
     <properties>
       <property name="eclipselink.target-database" value="DERBY"/>
       <property name="eclipselink.logging.level" value="INFO"/>

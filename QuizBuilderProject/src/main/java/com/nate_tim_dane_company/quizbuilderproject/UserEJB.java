@@ -12,7 +12,7 @@ public class UserEJB {
     @PersistenceContext(unitName = "QuizBuilderDB")
     private EntityManager em;
 
-     public User createUser(User u)
+     public User_Obj createUser(User_Obj u)
     {
         em.persist(u);
         return u;
@@ -20,19 +20,29 @@ public class UserEJB {
      
      public void deleteUser(Long id)
      {
-        Query q = em.createQuery("delete from User_Obj u where u.id = "+id);
-        q.getResultList();
+        User_Obj user = em.find(User_Obj.class, id);
+        em.remove(user);
+     }
+     
+     public void editUser(Long id, User_Obj u)
+     {
+         User_Obj user = em.find(User_Obj.class, id);
+         user.setFirstName(u.getFirstName());
+         user.setLastName(u.getLastName());
+         user.setUsername(u.getUsername());
+         user.setPassword(u.getPassword());
+         user.setEmail(u.getEmail());
      }
     
-    public List<User> findUsers() {
+    public List<User_Obj> findUsers() {
         // TODO not implemented with eclipselink 2.0 TypedQuery query = em.createNamedQuery("findAllBooks", Book.class);
-        TypedQuery<User> query = em.createNamedQuery("findAllUsers", User.class);
+        TypedQuery<User_Obj> query = em.createNamedQuery("findAllUsers", User_Obj.class);
         return query.getResultList();
     }
     
-    public List<User> searchUsers(String str)
+    public List<User_Obj> searchUsers(String str)
     {
-        Query q = em.createQuery("SELECT u FROM User u where u.firstName like '%"+str+"%' or u.lastName like '%"+str+"%'");
+        Query q = em.createQuery("SELECT u FROM User_Obj u where u.firstName like '%"+str+"%' or u.lastName like '%"+str+"%'");
         return q.getResultList();
     }
 }

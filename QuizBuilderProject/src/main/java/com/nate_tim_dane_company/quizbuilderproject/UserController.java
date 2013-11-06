@@ -12,8 +12,8 @@ public class UserController
     @EJB
     private UserEJB ejb;
     private String searchStr = new String();
-    private List<User> usersList = null;
-    private User user = new User();
+    private List<User_Obj> usersList = null;
+    private User_Obj user = new User_Obj();
     private Long currentUserId;
     
     public String doCreateUser() {
@@ -23,6 +23,13 @@ public class UserController
     
     public String doDeleteUser() {
         ejb.deleteUser(currentUserId);
+        usersList = ejb.findUsers();
+        return "userPage.xhtml";
+    }
+    
+    public String doEditUser()
+    {
+        ejb.editUser(currentUserId, user);
         usersList = ejb.findUsers();
         return "userPage.xhtml";
     }
@@ -43,17 +50,17 @@ public class UserController
         return searchStr;
     }
 
-    public List<User> getUsersList() {
+    public List<User_Obj> getUsersList() {
         if(usersList == null)
             usersList = ejb.findUsers();
         return usersList;
     }
 
-    public void setUsersList(List<User> uList) {
+    public void setUsersList(List<User_Obj> uList) {
         usersList = uList;
     }
     
-    public User getUser()
+    public User_Obj getUser()
     {
         return user;
     }

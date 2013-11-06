@@ -21,7 +21,7 @@ public class LoginEJB {
     @PersistenceContext(unitName = "QuizBuilderDB")
     private EntityManager em;
 
-    public List<User> verifyUser(String username, String password){
+    public List<User_Obj> verifyUser(String username, String password){
         Query query = em.createQuery("SELECT u FROM [User] u WHERE u.username = '"+username+"' AND u.password = '"+password+"'");
 
         return query.getResultList();

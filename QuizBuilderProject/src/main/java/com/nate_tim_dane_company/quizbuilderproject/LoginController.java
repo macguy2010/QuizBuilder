@@ -17,9 +17,9 @@ import java.util.List;
 @ManagedBean(name="loginController")
 public class LoginController {
 
-    private List<User> userList = null;
+    private List<User_Obj> userList = null;
     private LoginEJB ejb = new LoginEJB();
-    private User user = new User();
+    private User_Obj user = new User_Obj();
     public String inputUsername = new String();
     public String inputPassword = new String();
 
@@ -39,11 +39,11 @@ public class LoginController {
         return null;
     }
 
-    public void setInputUsername(String inputUsername){
-        this.inputUsername = inputUsername;
+    public void setInputUser_Objname(String inputUser_Objname){
+        this.inputUsername = inputUser_Objname;
     }
 
-    public String getInputUsername(){
+    public String getInputUser_Objname(){
         return inputUsername;
     }
 
