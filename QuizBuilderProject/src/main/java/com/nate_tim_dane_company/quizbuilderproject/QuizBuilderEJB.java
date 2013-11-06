@@ -17,6 +17,11 @@ public class QuizBuilderEJB {
         em.persist(q);
         return q;
     }
+    
+    public Question getQuestion(Long id)
+    {
+        return em.find(Question.class, id);
+    }
 
     public List<Question> findQuestions() {
         // TODO not implemented with eclipselink 2.0 TypedQuery query = em.createNamedQuery("findAllBooks", Book.class);

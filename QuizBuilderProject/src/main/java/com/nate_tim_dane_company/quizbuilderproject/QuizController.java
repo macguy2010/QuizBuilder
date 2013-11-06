@@ -11,15 +11,18 @@ public class QuizController
 {
     @EJB
     private QuizBuilderEJB ejb;
-    private Question[] questionsCheckList;
-    private Question[] questionsSelectionList = null;
+    private Question[] questionsCheckList = null;
+    private Long[] questionsSelectionList;
     private String searchStr = new String();
     private Quiz quiz = new Quiz();
     private List<Quiz> quizList = null;
     
     public String doCreateQuiz() {
         for(int i = 0; i < questionsSelectionList.length; i++)
-            quiz.addQuestion(questionsSelectionList[i]);
+        {
+            Question q = ejb.getQuestion(questionsSelectionList[i]);
+            quiz.addQuestion(q);
+        }
         quiz = ejb.createQuiz(quiz);
         quizList = ejb.findQuizzes();
         return "quizList.xhtml";
@@ -67,7 +70,7 @@ public class QuizController
     public Question[] getQuestionsCheckList()
     {
         
-        if (questionsSelectionList == null)
+        if (questionsCheckList == null)
         {
             Object[] q = ejb.findQuestions().toArray();
             questionsCheckList = Arrays.copyOf(q, q.length, Question[].class);
@@ -75,12 +78,12 @@ public class QuizController
         return questionsCheckList;
     }
     
-    public void setQuestionsSelectionList(Question[] q)
+    public void setQuestionsSelectionList(Long[] q)
     {
         questionsSelectionList = q;
     }
     
-    public Question[] getQuestionsSelectionList()
+    public Long[] getQuestionsSelectionList()
     {
         return questionsSelectionList;
     }
