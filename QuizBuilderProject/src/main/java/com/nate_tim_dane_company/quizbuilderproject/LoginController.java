@@ -56,4 +56,12 @@ public class LoginController {
     public String getInputPassword(){
         return inputPassword;
     }
+
+   public String getUser(){
+	return user;
+   }
+
+   public void setUser(String user){
+	this.user = user;
+   }
 }
