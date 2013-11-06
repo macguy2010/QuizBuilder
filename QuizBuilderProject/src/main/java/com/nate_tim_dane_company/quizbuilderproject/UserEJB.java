@@ -18,6 +18,11 @@ public class UserEJB {
         return u;
     }
      
+     public User_Obj findUser(Long id)
+     {
+         return em.find(User_Obj.class, id);
+     }
+     
      public void deleteUser(Long id)
      {
         User_Obj user = em.find(User_Obj.class, id);

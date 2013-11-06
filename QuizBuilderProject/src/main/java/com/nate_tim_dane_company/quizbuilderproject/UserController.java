@@ -4,6 +4,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.util.List;
+import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "userController")
 @RequestScoped
@@ -14,22 +15,27 @@ public class UserController
     private String searchStr = new String();
     private List<User_Obj> usersList = null;
     private User_Obj user = new User_Obj();
-    private Long currentUserId;
     
     public String doCreateUser() {
         user = ejb.createUser(user);
         return "userPage.xhtml";
     }
     
-    public String doDeleteUser() {
-        ejb.deleteUser(currentUserId);
+    public String doDeleteUser(Long id) {
+        ejb.deleteUser(id);
         usersList = ejb.findUsers();
         return "userPage.xhtml";
     }
     
-    public String doEditUser()
+    public String toEditUser(Long id)
     {
-        ejb.editUser(currentUserId, user);
+        user = ejb.findUser(id);
+        return "editUser.xhtml";
+    }
+    
+    public String doEditUser(Long id)
+    {
+        ejb.editUser(id, user);
         usersList = ejb.findUsers();
         return "userPage.xhtml";
     }
@@ -63,15 +69,5 @@ public class UserController
     public User_Obj getUser()
     {
         return user;
-    }
-    
-    public Long getCurrentUserId()
-    {
-        return currentUserId;
-    }
-    
-    public void setCurrentUserId(Long id)
-    {
-        currentUserId = id;
     }
 }

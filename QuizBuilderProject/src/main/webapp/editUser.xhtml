@@ -27,7 +27,7 @@
             <h:inputText value="#{userController.user.email}"/>
 
         </h:panelGrid>
-        <h:commandButton value="Create Question" action="#{userController.doEditUser}"/>
+        <h:commandButton value="Submit Edit" action="#{userController.doEditUser(userController.user.id)}"/>
         
     </h:form>
     <hr/>

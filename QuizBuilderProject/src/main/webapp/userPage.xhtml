@@ -48,16 +48,23 @@
                 </f:facet>
                 <h:outputText value="#{u.email}"/>
             </h:column>
-            <h:form>
             <h:column>
+                <h:form>
                 <f:facet name="header">
                     <h:outputText value="Delete"/>
                 </f:facet>
-                <h:inputHidden value="#{userController.currentUserId = u.id}"/>
-                <h:commandButton value="Delete" action="#{userController.doDeleteUser}"/>
+                <h:commandButton value="Delete" action="#{userController.doDeleteUser(u.id)}"/>
+                </h:form>
             </h:column>
-            </h:form>
-
+            <h:column>
+                <h:form>
+                <f:facet name="header">
+                    <h:outputText value="Edit"/>
+                </f:facet>
+                <h:commandButton value="Edit" action="#{userController.toEditUser(u.id)}"/>
+                </h:form>
+            </h:column>
+            
         </h:dataTable>
         <h:form>
             <h:link outcome="newUser.xhtml" value="Create a new User"/>
