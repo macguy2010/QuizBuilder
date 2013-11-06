@@ -33,7 +33,7 @@ public class LoginController {
             //fill in from page 361.  Create Faces Context, insert cookie.
         }
         else{
-            HttpCookie loginCookie = new HttpCookie("loginCookie", "verified");
+            HttpCookie loginCookie = new HttpCookie("loginCookie", inputUsername);
 		//for any other page using this cookie we can say
 		//if(loginCookie.getValue().equals("verified")) then we are good to go.
         }
