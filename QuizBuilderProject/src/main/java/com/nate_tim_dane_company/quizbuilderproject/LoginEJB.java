@@ -1,4 +1,12 @@
-import javax.persistence.*;
+package com.nate_tim_dane_company.quizbuilderproject;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import java.util.*;
+import javax.ejb.Stateful;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,13 +18,11 @@ import javax.persistence.*;
 
 @Stateful
 public class LoginEJB {
-    @PersistenceContext(unitName=/*whatever the name is*/)
-
-    private EntityManagerFactory emf = new EntityManagerFactory();
-    private EntityManager em = emf.EntityManager();
+    @PersistenceContext(unitName = "QuizBuilderDB")
+    private EntityManager em;
 
     public List<User> verifyUser(String username, String password){
-        Query query = em.createQuery("SELECT u FROM [User] u WHERE u.username = '%"+username+"%' AND u.password = '%"+password"%'");
+        Query query = em.createQuery("SELECT u FROM [User] u WHERE u.username = '"+username+"' AND u.password = '"+password+"'");
 
         return query.getResultList();
     }

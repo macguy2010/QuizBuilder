@@ -1,7 +1,10 @@
+package com.nate_tim_dane_company.quizbuilderproject;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.servlet.http.Cookie;
 import java.net.HttpCookie;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,7 +25,7 @@ public class LoginController {
 
     //check against the database to make sure username exists, then that inputPassword == password
 
-    public boolean verifyUser(){
+    public String verifyUser(){
         userList =  ejb.verifyUser(inputUsername, inputPassword);
 
         if(userList.isEmpty()){
