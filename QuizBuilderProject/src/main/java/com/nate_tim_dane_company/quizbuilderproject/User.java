@@ -14,6 +14,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "User_Obj")
+@NamedQuery(name = "findAllUsers", query = "SELECT u FROM User_Obj u")
 public class User implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,14 +62,24 @@ public class User implements Serializable {
         return lastName;
     }
     
-    public void setUserName(String name)
+    public void setUsername(String name)
     {
         userName = name;
     }
     
-    public String getUserName()
+    public String getUsername()
     {
         return userName;
+    }
+    
+    public void setPassword(String pass)
+    {
+        password = pass;
+    }
+    
+    public String getPassword()
+    {
+        return password;
     }
     
     public void setEmail(String e)

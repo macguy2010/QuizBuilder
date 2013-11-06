@@ -26,7 +26,7 @@ public class QuizBuilderEJB {
     
     public List<Question> searchQuestions(String str)
     {
-        Query q = em.createQuery("SELECT u FROM Question q where q.question like '%"+str+"%' or q.answer like '%"+str+"%'");
+        Query q = em.createQuery("SELECT q FROM Question q where q.question like '%"+str+"%' or q.answer like '%"+str+"%'");
         return q.getResultList();
     }
     

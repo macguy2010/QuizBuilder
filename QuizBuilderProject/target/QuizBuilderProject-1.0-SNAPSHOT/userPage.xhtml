@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Users</title>
+    </h:head>
+    <h:body>
+        <h1>List of the Users</h1>
+        <hr/>
+        <h:form>
+            <h:outputLabel value="Search: "/>
+            <h:inputText value="#{userController.searchStr}"/>
+            <h:commandButton value="Search" action="#{userController.search}">
+                <f:ajax execute="@form" render=":usersList"/>
+            </h:commandButton>
+        </h:form>
+        
+        <h:dataTable id="usersList" value="#{userController.usersList}" var="u" border="1">
+            <h:form>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="First Name"/>
+                </f:facet>
+                <h:outputText value="#{u.firstName}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Last Name"/>
+                </f:facet>
+                <h:outputText value="#{u.lastName}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="UserName"/>
+                </f:facet>
+                <h:outputText value="#{u.username}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Password"/>
+                </f:facet>
+                <h:outputText value="#{u.password}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Email"/>
+                </f:facet>
+                <h:outputText value="#{u.email}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Delete"/>
+                </f:facet>
+                <userid>
+                <h:commandButton value="Create Question" action="#{userController.doDeleteUser}"/>
+            </h:column>
+            </h:form>
+
+        </h:dataTable>
+        <h:form>
+            <h:link outcome="newUser.xhtml" value="Create a new User"/>
+        </h:form>
+        <hr/>
+    </h:body>
+</html>
+
