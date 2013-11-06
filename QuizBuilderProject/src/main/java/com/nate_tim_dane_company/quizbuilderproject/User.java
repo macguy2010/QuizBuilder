@@ -25,9 +25,13 @@ public class User implements Serializable {
     private String password;
     private String email;
     
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany
+    @JoinTable(name="User_Questions", joinColumns={@JoinColumn(name="User_ID")}, inverseJoinColumns={@JoinColumn(name="Question_ID")})
+    private List<Question> questions = new ArrayList<Question>();
     
-    private List<Question> userAddresses;
+    @OneToMany
+    @JoinTable(name="User_Quizzes", joinColumns={@JoinColumn(name="User_ID")}, inverseJoinColumns={@JoinColumn(name="Quiz_ID")})
+    private List<Quiz> quizzes = new ArrayList<Quiz>();
 
     public Long getId() {
         return id;
@@ -76,6 +80,24 @@ public class User implements Serializable {
     {
         return email;
     }
-
     
+    public void setQuestions(ArrayList<Question> q)
+    {
+        questions = q;
+    }
+    
+    public List<Question> getQuestions()
+    {
+        return questions;
+    }
+    
+    public void setQuizzes(ArrayList<Quiz> q)
+    {
+        quizzes = q;
+    }
+    
+    public List<Quiz> getQuizzes()
+    {
+        return quizzes;
+    }
 }
