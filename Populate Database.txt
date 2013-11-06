@@ -2,3 +2,6 @@ insert into Question (Question, Answer, Subject, Difficulty) values('Solve for x
 insert into Question (Question, Answer, Subject, Difficulty) values('How many bytes are in a kilobyte','1024',6,3);
 insert into Question (Question, Answer, Subject, Difficulty) values('How many seconds in an hour','3600',7,1);
 insert into Question (Question, Answer, Subject, Difficulty) values('Who was the second president of the United States','John Adams',4,5);
+
+insert into User_Obj (firstname, lastname, username, password, email) values ("Bob", "Smith", "bsmith", "mypass", "bob@gmail.com");
+insert into User_Obj (firstname, lastname, username, password, email) values ("John", "Johnson", "jjson", "johnsPass", "jonny@gmail.com");
