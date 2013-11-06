@@ -9,10 +9,10 @@
     <h:form>
        <h:panelGrid columns="2">
         <h:outputLabel value="Username"/>
-        <h:inputTextarea value="#{LoginController.user.username}" />
+        <h:inputTextarea value="#{loginController.user.username}" />
 
         <h:outputLabel value="Password"/>
-        <h:inputTextarea value="#{LoginController.user.password}" />
+        <h:inputTextarea value="#{loginController.user.password}" />
        </h:panelGrid>
 	<h:commandButton value="Login" action="#{loginController.verifyUser}" />
     </h:form>
