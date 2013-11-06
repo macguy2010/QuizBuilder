@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "User_Obj")
 @NamedQuery(name = "findAllUsers", query = "SELECT u FROM User_Obj u")
-public class User implements Serializable {
+public class User_Obj implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
