@@ -13,7 +13,6 @@ import javax.persistence.*;
  * @author nathanaston
  */
 @Entity
-@Table(name = "User_Obj")
 @NamedQuery(name = "findAllUsers", query = "SELECT u FROM User_Obj u")
 public class User_Obj implements Serializable {
 

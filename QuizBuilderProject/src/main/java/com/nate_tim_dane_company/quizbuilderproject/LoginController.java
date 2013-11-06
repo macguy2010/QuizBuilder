@@ -18,42 +18,33 @@ import java.util.List;
 public class LoginController {
 
     private List<User_Obj> userList = null;
+    @EJB
     private LoginEJB ejb = new LoginEJB();
     private User_Obj user = new User_Obj();
-    public String inputUsername = new String();
-    public String inputPassword = new String();
 
     //check against the database to make sure username exists, then that inputPassword == password
 
     public String verifyUser(){
-        userList =  ejb.verifyUser(inputUsername, inputPassword);
+        userList =  ejb.verifyUser(user.getUsername(), user.getPassword());
 
         if(userList.isEmpty()){
-            return null;
+            return "questionsList.xhtml";
             //fill in from page 361.  Create Faces Context, insert cookie.
         }
         else{
-            HttpCookie loginCookie = new HttpCookie("loginCookie", inputUsername);
+            HttpCookie loginCookie = new HttpCookie("loginCookie", user.getUsername());
 		//for any other page using this cookie we can say
 		//if(loginCookie.getValue().equals("verified")) then we are good to go.
         }
 
-        return null;
+        return "questionsList.xhtml";
     }
 
-    public void setInputUser_Objname(String inputUser_Objname){
-        this.inputUsername = inputUser_Objname;
-    }
+   public User_Obj getUser(){
+	return user;
+   }
 
-    public String getInputUser_Objname(){
-        return inputUsername;
-    }
-
-    public void setInputPassword(String inputPassword){
-        this.inputPassword = inputPassword;
-    }
-
-    public String getInputPassword(){
-        return inputPassword;
-    }
+   public void setUser(User_Obj user){
+	this.user = user;
+   }
 }

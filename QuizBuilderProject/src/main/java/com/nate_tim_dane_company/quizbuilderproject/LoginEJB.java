@@ -6,7 +6,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.*;
-import javax.ejb.Stateful;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,13 +15,13 @@ import javax.ejb.Stateful;
  * To change this template use File | Settings | File Templates.
  */
 
-@Stateful
+@Stateless
 public class LoginEJB {
     @PersistenceContext(unitName = "QuizBuilderDB")
     private EntityManager em;
 
     public List<User_Obj> verifyUser(String username, String password){
-        Query query = em.createQuery("SELECT u FROM [User] u WHERE u.username = '"+username+"' AND u.password = '"+password+"'");
+        Query query = em.createQuery("SELECT * FROM User_Obj WHERE username = '"+username+"' AND password = '"+password+"'");
 
         return query.getResultList();
     }
