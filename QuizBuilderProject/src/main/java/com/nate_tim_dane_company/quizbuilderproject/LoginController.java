@@ -37,8 +37,8 @@ public class LoginController {
 		//if(loginCookie.getValue().equals("verified")) then we are good to go.
             loginCookie.setSecure(true);
             
-            //I don't know if we need to set the domain the cookie is on.
-            loginCookie.setDomain();
+            //Directory path the cookie is visible on.  All child directories have access.
+            loginCookie.setPath("/QuizBuilderProject/src/main"); 
         }
 
         return "questionsList.xhtml";
