@@ -35,6 +35,10 @@ public class LoginController {
             HttpCookie loginCookie = new HttpCookie("loginCookie", user.getUsername());
 		//for any other page using this cookie we can say
 		//if(loginCookie.getValue().equals("verified")) then we are good to go.
+            loginCookie.setSecure(true);
+            
+            //I don't know if we need to set the domain the cookie is on.
+            loginCookie.setDomain();
         }
 
         return "questionsList.xhtml";
