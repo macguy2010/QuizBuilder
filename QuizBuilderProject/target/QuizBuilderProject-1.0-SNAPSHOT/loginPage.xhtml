@@ -9,14 +9,14 @@
     <h1>Quiz Builder</h1>
     <h2>Login</h2>
     <h:form id="box">
-       <h:panelGrid columns="2">
-        <h:outputLabel value="Username"/>
+       <h:panelGrid  columns="2">
+        <h:outputLabel  value="Username"/>
         <h:inputText value="#{loginController.user.username}" />
 
         <h:outputLabel value="Password"/>
         <h:inputText value="#{loginController.user.password}" />
        </h:panelGrid>
-	<h:commandButton id="boxLink" value="Login" action="#{loginController.verifyUser}" />
+	<h:commandButton value="Login" action="#{loginController.verifyUser}" />
     </h:form>
 </h:body>
 </html>
