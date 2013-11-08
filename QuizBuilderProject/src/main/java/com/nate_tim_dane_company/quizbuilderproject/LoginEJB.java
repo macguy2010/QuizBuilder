@@ -21,7 +21,7 @@ public class LoginEJB {
     private EntityManager em;
 
     public List<User_Obj> verifyUser(String username, String password){
-        Query query = em.createQuery("SELECT s FROM User_Obj s WHERE username = '"+username+"' AND password = '"+password+"'");
+        Query query = em.createQuery("SELECT s FROM User_Obj s WHERE username='"+username+"' AND password='"+password+"'");
 
         return query.getResultList();
     }
