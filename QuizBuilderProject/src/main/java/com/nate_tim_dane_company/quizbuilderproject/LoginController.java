@@ -26,7 +26,8 @@ public class LoginController {
 
     public String verifyUser(){
         userList =  ejb.verifyUser(user.getUsername(), user.getPassword());
-
+        //FacesContext ctx = FacesContext.getCurrentInstance();
+        //need to add faces context dependency
         if(userList.isEmpty()){
             
             //if wrong username/password return to login page.  Display error
