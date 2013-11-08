@@ -15,6 +15,7 @@ public class UserController
     private String searchStr = new String();
     private List<User_Obj> usersList = null;
     private User_Obj user = new User_Obj();
+    private Long currentUserId;
     
     public String doCreateUser() {
         user = ejb.createUser(user);
@@ -30,12 +31,13 @@ public class UserController
     public String toEditUser(Long id)
     {
         user = ejb.findUser(id);
+        currentUserId = id;
         return "editUser.xhtml";
     }
     
-    public String doEditUser(Long id)
+    public String doEditUser()
     {
-        ejb.editUser(id, user);
+        ejb.editUser(user);
         usersList = ejb.findUsers();
         return "userPage.xhtml";
     }
@@ -69,5 +71,15 @@ public class UserController
     public User_Obj getUser()
     {
         return user;
+    }
+    
+    public Long getCurrentUserId()
+    {
+        return currentUserId;
+    }
+    
+    public void setCurrentUserId(Long id)
+    {
+        currentUserId = id;
     }
 }
