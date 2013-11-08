@@ -21,7 +21,7 @@ public class User_Obj implements Serializable {
     
     private String firstName;
     private String lastName;
-    private String userName;
+    private String username;
     private String password;
     private String email;
     
@@ -63,12 +63,12 @@ public class User_Obj implements Serializable {
     
     public void setUsername(String name)
     {
-        userName = name;
+        username = name;
     }
     
     public String getUsername()
     {
-        return userName;
+        return username;
     }
     
     public void setPassword(String pass)
