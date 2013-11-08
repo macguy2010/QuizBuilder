@@ -29,9 +29,9 @@ public class UserEJB {
         em.remove(user);
      }
      
-     public void editUser(Long id, User_Obj u)
+     public void editUser(User_Obj u)
      {
-         User_Obj user = em.find(User_Obj.class, id);
+         User_Obj user = em.find(User_Obj.class, u.getId());
          user.setFirstName(u.getFirstName());
          user.setLastName(u.getLastName());
          user.setUsername(u.getUsername());
