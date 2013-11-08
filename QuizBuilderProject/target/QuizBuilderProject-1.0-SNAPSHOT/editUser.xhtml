@@ -12,10 +12,10 @@
     <h:form>
         <h:panelGrid columns="2" >
             <h:outputLabel value="First Name: "/>
-            <h:inputText value="#{userController.user.lastName}"/>
+            <h:inputText value="#{userController.user.firstName}"/>
             
             <h:outputLabel value="Last Name: "/>
-            <h:inputText value="#{userController.user.firstName}"/>
+            <h:inputText value="#{userController.user.lastName}"/>
             
             <h:outputLabel value="UserName: "/>
             <h:inputText value="#{userController.user.username}"/>
@@ -25,9 +25,11 @@
             
             <h:outputLabel value="Email: "/>
             <h:inputText value="#{userController.user.email}"/>
-
+            
+            <h:inputHidden value="#{userController.user.id}"/>
+            
         </h:panelGrid>
-        <h:commandButton value="Submit Edit" action="#{userController.doEditUser(userController.user.id)}"/>
+        <h:commandButton value="Submit Edit" action="#{userController.doEditUser}"/>
         
     </h:form>
     <hr/>
