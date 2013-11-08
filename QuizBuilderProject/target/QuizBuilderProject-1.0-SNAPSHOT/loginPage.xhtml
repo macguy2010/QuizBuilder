@@ -14,7 +14,8 @@
         <h:outputLabel value="Password"/>
         <h:inputText value="#{loginController.user.password}" />
        </h:panelGrid>
-	<h:commandButton value="Login" action="#{loginController.verifyUser}" />
+        <h:commandButton value="Login" action="#{loginController.verifyUser}" />
+        <h:message for="incorrect" style="color:red;margin:8px;"/>
     </h:form>
 </h:body>
 </html>

@@ -21,12 +21,16 @@
             <h:inputText value="#{userController.user.username}"/>
             
             <h:outputLabel value="Password: "/>
-            <h:inputText value="#{userController.user.password}"/>
+            <h:inputSecret value="#{userController.user.password}"/>
+            
+            <h:outputLabel value="Password: "/>
+            <h:inputSecret value="#{userController.passwordVerify}"/>
             
             <h:outputLabel value="Email "/>
             <h:inputText value="#{userController.user.email}"/>
 
         </h:panelGrid>
+        <h:message for="incorrect" style="color:red;margin:8px;"/>
         <h:commandButton value="Create User" action="#{userController.doCreateUser}"/>
         
     </h:form>

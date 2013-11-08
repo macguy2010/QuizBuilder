@@ -4,6 +4,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "userController")
@@ -16,10 +17,19 @@ public class UserController
     private List<User_Obj> usersList = null;
     private User_Obj user = new User_Obj();
     private Long currentUserId;
+    private String passwordVerify;
     
     public String doCreateUser() {
-        user = ejb.createUser(user);
-        return "userPage.xhtml";
+        if(passwordVerify.equals(user.getPassword()))
+        {
+            user = ejb.createUser(user);
+            return "userPage.xhtml";
+        }
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage("incorrect", new FacesMessage(FacesMessage.SEVERITY_WARN, "Passwords don't match", "Passwords don't match"));
+        
+        return null;
     }
     
     public String doDeleteUser(Long id) {
@@ -81,5 +91,15 @@ public class UserController
     public void setCurrentUserId(Long id)
     {
         currentUserId = id;
+    }
+    
+    public String getPasswordVerify()
+    {
+        return passwordVerify;
+    }
+    
+    public void setPasswordVerify(String p)
+    {
+        passwordVerify = p;
     }
 }

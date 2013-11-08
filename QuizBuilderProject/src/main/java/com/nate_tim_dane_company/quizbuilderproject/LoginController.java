@@ -5,6 +5,8 @@ import javax.faces.bean.ManagedBean;
 import javax.servlet.http.Cookie;
 import java.net.HttpCookie;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,12 +28,13 @@ public class LoginController {
 
     public String verifyUser(){
         userList =  ejb.verifyUser(user.getUsername(), user.getPassword());
-        //FacesContext ctx = FacesContext.getCurrentInstance();
+        FacesContext cxt = FacesContext.getCurrentInstance();
         //need to add faces context dependency
         if(userList.isEmpty()){
             
             //if wrong username/password return to login page.  Display error
-            return "loginPage.xhtml";
+            cxt.addMessage("incorrect", new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username or Password", "Incorrect Username or Password"));
+            return null;
             //fill in from page 361.  Create Faces Context, insert cookie.  I'll look at this tonight
         }
         else{
