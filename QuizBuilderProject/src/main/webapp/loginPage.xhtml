@@ -3,19 +3,20 @@
       xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
     <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
 </h:head>
 <h:body>
-    <h1>Login</h1>
-    <h:form>
-       <h:panelGrid columns="2">
-        <h:outputLabel value="Username"/>
+    <h1>Quiz Builder</h1>
+    <h2>Login</h2>
+    <h:form id="box">
+       <h:panelGrid  columns="2">
+        <h:outputLabel  value="Username"/>
         <h:inputText value="#{loginController.user.username}" />
 
         <h:outputLabel value="Password"/>
         <h:inputText value="#{loginController.user.password}" />
        </h:panelGrid>
-        <h:commandButton value="Login" action="#{loginController.verifyUser}" />
-        <h:message for="incorrect" style="color:red;margin:8px;"/>
+	<h:commandButton value="Login" action="#{loginController.verifyUser}" />
     </h:form>
 </h:body>
 </html>
