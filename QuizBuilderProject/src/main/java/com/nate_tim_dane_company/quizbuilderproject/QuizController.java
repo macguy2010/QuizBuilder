@@ -4,6 +4,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.util.*;
+import javax.faces.model.SelectItem;
 
 @ManagedBean(name = "quizController")
 @RequestScoped
@@ -87,4 +88,5 @@ public class QuizController
     {
         return questionsSelectionList;
     }
+    
 }

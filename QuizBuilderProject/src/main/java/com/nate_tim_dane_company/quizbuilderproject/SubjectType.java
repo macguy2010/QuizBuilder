@@ -14,5 +14,16 @@ public enum SubjectType {
     HISTORY,
     LITERATURE,
     COMPUTER_SCIENCE,
-    OTHER
+    OTHER;
+   
+    private String label;
+    
+    private SubjectType() {
+        this.label = name();
+    }
+    
+    public String getLabel()
+    {
+        return label;
+    }
 }

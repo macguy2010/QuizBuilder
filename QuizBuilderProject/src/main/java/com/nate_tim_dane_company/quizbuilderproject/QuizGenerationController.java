@@ -3,22 +3,27 @@ package com.nate_tim_dane_company.quizbuilderproject;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import java.util.List;
+import java.util.*;
+import javax.faces.model.SelectItem;
 
 @ManagedBean(name = "quizGenerationController")
 @RequestScoped
 public class QuizGenerationController 
 {
+    @EJB
+    private QuizBuilderEJB ejb;
     private Integer numberOfQuestions;
     private int[] numberRange = null;
     private int maxNumber = 50;
     private Quiz quiz = new Quiz();
+    private SubjectType subject;
     
     public String doGenerateQuiz()
     {
         // logic to generate quiz
-        
-        return "";
+        TreeMap<SubjectType, Integer> map = new TreeMap<SubjectType, Integer>();
+        ejb.buildQuiz(quiz, map);
+        return "quizPage.xhtml";
     }
     
     public Integer getNumberOfQuestions()
@@ -45,5 +50,25 @@ public class QuizGenerationController
     public void setNumberRange(int[] r)
     {
         numberRange = r;
+    }
+    
+    public SubjectType getSubject()
+    {
+        return subject;
+    }
+    
+    public void setSubject(SubjectType s)
+    {
+        subject = s;
+    }
+    
+    public SelectItem[] getSubjectTypeValues() 
+    {
+        SelectItem[] items = new SelectItem[SubjectType.values().length];
+        int i = 0;
+        for(SubjectType g: SubjectType.values()) {
+          items[i++] = new SelectItem(g, g.getLabel());
+        }
+        return items;
     }
 }

@@ -7,15 +7,20 @@
         <title>Quiz Generation</title>
     </h:head>
     <h:body>
-        <form>
+        <h:form>
             <h:outputLabel value="Number of Questions"/>
             <h:selectOneMenu value="#{quizGenerationController.numberOfQuestions}"> 
                 <f:selectItems value="#{quizGenerationController.numberRange}" var="n"
                                itemLabel="#{n}" itemValue="#{n}" />
             </h:selectOneMenu>
             
+            <h:outputLabel value="Subject: "/>
+            <h:selectOneMenu value="#{quizGenerationController.subject}">
+                <f:selectItems value="#{quizGenerationController.subjectTypeValues}" />
+            </h:selectOneMenu>
+            
             <h:commandButton value="Generate Quiz" action="#{quizGenerationController.doGenerateQuiz}"/>
-        </form>
+        </h:form>
     </h:body>
 </html>
 

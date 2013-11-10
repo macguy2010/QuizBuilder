@@ -23,6 +23,14 @@ public class UserEJB {
          return em.find(User_Obj.class, id);
      }
      
+     public boolean exists(User_Obj u)
+     {
+         Query q = em.createQuery("SELECT u FROM User_Obj u where u.username = '"+u.getUsername()+"'");
+         if(q.getResultList().isEmpty())
+             return false;
+         return true;
+     }
+     
      public void deleteUser(Long id)
      {
         User_Obj user = em.find(User_Obj.class, id);

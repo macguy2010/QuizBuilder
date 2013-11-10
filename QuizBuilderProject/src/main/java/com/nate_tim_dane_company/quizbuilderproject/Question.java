@@ -5,6 +5,7 @@
 package com.nate_tim_dane_company.quizbuilderproject;
 
 import java.io.Serializable;
+import java.util.*;
 import javax.persistence.*;
 
 @Entity
@@ -24,6 +25,10 @@ public class Question implements Serializable{
     
     private Integer difficulty;
     
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "Tag")
+    @Column(name = "Value")
+    private List<String> tags = new ArrayList<String>();
     
     // methods
     public Long getId()

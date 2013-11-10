@@ -18,6 +18,41 @@ public class QuizBuilderEJB {
         return q;
     }
     
+    public Quiz buildQuiz(Quiz q, TreeMap<SubjectType, Integer> subjects)
+    {
+        Random random = new Random();
+        for(SubjectType s : subjects.keySet())
+        {
+            int[] selections = new int[subjects.get(s)];
+            Query query = em.createQuery("SELECT q from Question where q.subject = "+s+"");
+            List<Question> results = query.getResultList();
+            for(int i = 0; i < selections.length; i++)
+            {
+                int n = 0;
+                boolean contains = false;
+                do
+                {
+                    contains = false;
+                    n = random.nextInt(results.size());
+                    for(int j = 0; j < selections.length; j++)
+                        if(selections[j] == n)
+                        {
+                            contains = true;
+                            break;
+                        }
+                }while(contains);
+
+                selections[i] = n;
+            }
+            
+            for(int i : selections)
+            {
+                q.addQuestion(results.get(i));
+            }
+        }
+        return q;
+    }
+    
     public Question getQuestion(Long id)
     {
         return em.find(Question.class, id);

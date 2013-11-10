@@ -17,15 +17,8 @@
             <h:inputText value="#{questionController.question.answer}"/>
 
             <h:outputLabel value="Subject: "/>
-            <h:selectOneMenu value="#{questionController.subject}">
-                <f:selectItem id="mathematics" itemLabel="Mathematics" itemValue="1" />
-                <f:selectItem id="english" itemLabel="English" itemValue="2" />
-                <f:selectItem id="science" itemLabel="Science" itemValue="3" />
-                <f:selectItem id="geography" itemLabel="Geography" itemValue="4" />
-                <f:selectItem id="history" itemLabel="History" itemValue="5" />
-                <f:selectItem id="literature" itemLabel="Literature" itemValue="6" />
-                <f:selectItem id="computer_science" itemLabel="Computer Science" itemValue="7" />
-                <f:selectItem id="other" itemLabel="Other" itemValue="8" />
+            <h:selectOneMenu value="#{questionController.question.subject}">
+                <f:selectItems value="#{questionController.subjectTypeValues}" />
             </h:selectOneMenu>
 
             <h:outputLabel value="Difficulty "/>
