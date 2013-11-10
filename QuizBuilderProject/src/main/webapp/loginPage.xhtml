@@ -16,7 +16,9 @@
         <h:outputLabel value="Password"/>
         <h:inputText value="#{loginController.user.password}" />
        </h:panelGrid>
+        <div id="formButton">
 	<h:commandButton value="Login" action="#{loginController.verifyUser}" />
+        </div>
     </h:form>
 </h:body>
 </html>
