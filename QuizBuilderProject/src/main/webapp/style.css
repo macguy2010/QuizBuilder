@@ -9,14 +9,15 @@ body{
 }
 
 h1{
-    font: 100px Tahoma, Helvetica, Arial, Sans-serif;    
+    font: 75px Tahoma, Helvetica, Arial, Sans-serif; 
+    text-spacing: no-compress;
     text-align: center;
     color: #bcbdbd;
     text-shadow: 0px 2px 3px #000000;
 }
 
 h2{
-    font: 55px Tahoma, Helvetica, Arial, Sans-Serif;
+    font: 45px Tahoma, Helvetica, Arial, Sans-Serif;
     text-align: center;
     color: #222222;
     text-shadow: 0px 2px 3px #555555; 
@@ -73,7 +74,11 @@ label{
     text-shadow: 0px 2px 3px #000000;
     margin-left: 3em;
     margin-right: 2em;
-    //text-align: center;
+}
+
+#grid input{
+    text-align: center;
+    color: yellow;
 }
 
 #formButton{   
@@ -85,9 +90,10 @@ label{
     padding-top: 2px;
     padding-bottom: 2px;
     border-radius: 5px;
-    margin-left: 11em;
-    margin-right: 11em;
+    margin-left: 30%;
+    margin-right: 30%;
     margin-top: 2em;
+    text-align: center;
    // margin-bottom: auto;
         
     background-color: #12171c;
