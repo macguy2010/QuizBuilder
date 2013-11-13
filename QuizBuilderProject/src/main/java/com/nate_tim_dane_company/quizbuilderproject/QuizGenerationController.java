@@ -4,13 +4,13 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import java.util.*;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
-import javax.faces.event.AjaxBehaviorEvent;
+import javax.ejb.Stateful;
+import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
+@Stateful
 @ManagedBean(name = "quizGenerationController")
-@RequestScoped
+@SessionScoped
 public class QuizGenerationController implements Serializable
 {
     @EJB
@@ -19,8 +19,8 @@ public class QuizGenerationController implements Serializable
     private int[] numberRange = null;
     private int maxNumber = 50;
     private Quiz quiz = new Quiz();
-    private SubjectType subject;
-    private List<Integer[]> subjectsList = new ArrayList<Integer[]>();
+    private SubjectType newSubject;
+    private List<FieldElement> subjectsList = new ArrayList<FieldElement>();
     
     public String doGenerateQuiz()
     {
@@ -56,50 +56,58 @@ public class QuizGenerationController implements Serializable
         numberRange = r;
     }
     
-    public SubjectType getSubject()
+    public SubjectType getNewSubject()
     {
-        return subject;
+        return newSubject;
     }
     
-    public void setSubject(SubjectType s)
+    public void setNewSubject(SubjectType s)
     {
-        subject = s;
+        newSubject = s;
     }
     
     public SelectItem[] getSubjectTypeValues() 
-    {
-        SelectItem[] items = new SelectItem[SubjectType.values().length];
+    {        
         int i = 0;
-        for(SubjectType g: SubjectType.values()) {
-          items[i++] = new SelectItem(g, g.getLabel());
+        SelectItem[] itemsNew = new SelectItem[SubjectType.values().length - getSubjectsList().size()];
+        for(SubjectType g: SubjectType.values())
+        {
+            boolean exists = false;
+            for(int j = 0; j < getSubjectsList().size(); j++)
+                if(getSubjectsList().get(j).type == g)
+                {
+                    exists = true;
+                    break;
+                }
+            if(!exists)
+                itemsNew[i++] = new SelectItem(g, g.getLabel());
         }
-        return items;
+        
+        return itemsNew;
     }
     
-    public List<Integer[]> getSubjectsList()
+    public List<FieldElement> getSubjectsList()
     {
         if(subjectsList.isEmpty())
         {
-            subjectsList.add(new Integer[10]);
-            populateValues(subjectsList.get(0));
+            subjectsList.add(new FieldElement(SubjectType.MATHEMATICS, 10));
         }
         return subjectsList;
     }
-    
-    private void populateValues(Integer[] range)
+        
+    public String doButtonRemoveFieldClick(SubjectType type)
     {
-        for(int i = 0; i < range.length; i++)
-            range[i] = i+1;
-    }
-    
-    public void onButtonRemoveFieldClick(final Integer[] range)
-    {
-        subjectsList.remove(range);
+        for(int i = 0; i < subjectsList.size(); i++)
+        {
+            if(subjectsList.get(i).type == type)
+                subjectsList.remove(i);
+        }
+        return "quizGenerationPage.xhtml";
     }
 
-    public String onButtonAddFieldClick()
+    public String doButtonAddFieldClick()
     {
-        subjectsList.add(new Integer[10]);
-        return null;
+        subjectsList.add(new FieldElement(newSubject, 10));
+        return "quizGenerationPage.xhtml";
     }
 }
