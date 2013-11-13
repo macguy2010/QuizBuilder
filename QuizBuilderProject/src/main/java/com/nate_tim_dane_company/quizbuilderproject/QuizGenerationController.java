@@ -1,22 +1,26 @@
 package com.nate_tim_dane_company.quizbuilderproject;
 
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import java.util.*;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
 
 @ManagedBean(name = "quizGenerationController")
 @RequestScoped
-public class QuizGenerationController 
+public class QuizGenerationController implements Serializable
 {
     @EJB
     private QuizBuilderEJB ejb;
-    private Integer numberOfQuestions;
+    private Integer numberOfQuestions = 10;
     private int[] numberRange = null;
     private int maxNumber = 50;
     private Quiz quiz = new Quiz();
     private SubjectType subject;
+    private List<Integer[]> subjectsList = new ArrayList<Integer[]>();
     
     public String doGenerateQuiz()
     {
@@ -70,5 +74,32 @@ public class QuizGenerationController
           items[i++] = new SelectItem(g, g.getLabel());
         }
         return items;
+    }
+    
+    public List<Integer[]> getSubjectsList()
+    {
+        if(subjectsList.isEmpty())
+        {
+            subjectsList.add(new Integer[10]);
+            populateValues(subjectsList.get(0));
+        }
+        return subjectsList;
+    }
+    
+    private void populateValues(Integer[] range)
+    {
+        for(int i = 0; i < range.length; i++)
+            range[i] = i+1;
+    }
+    
+    public void onButtonRemoveFieldClick(final Integer[] range)
+    {
+        subjectsList.remove(range);
+    }
+
+    public String onButtonAddFieldClick()
+    {
+        subjectsList.add(new Integer[10]);
+        return null;
     }
 }

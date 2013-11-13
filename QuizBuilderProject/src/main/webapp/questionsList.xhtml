@@ -42,6 +42,22 @@
                 </f:facet>
                 <h:outputText value="#{q.difficulty}"/>
             </h:column>
+            <h:column>
+                <h:form>
+                <f:facet name="header">
+                    <h:outputText value="Delete"/>
+                </f:facet>
+                <h:commandButton value="Delete" action="#{questionController.doDeleteQuestion(q.id)}"/>
+                </h:form>
+            </h:column>
+            <h:column>
+                <h:form>
+                <f:facet name="header">
+                    <h:outputText value="Edit"/>
+                </f:facet>
+                <h:commandButton value="Edit" action="#{questionController.toEditQuestion(q.id)}"/>
+                </h:form>
+            </h:column>
 
         </h:dataTable>
         <h:form>

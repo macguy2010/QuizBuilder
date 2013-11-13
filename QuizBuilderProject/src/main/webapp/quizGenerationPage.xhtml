@@ -14,10 +14,27 @@
                                itemLabel="#{n}" itemValue="#{n}" />
             </h:selectOneMenu>
             
-            <h:outputLabel value="Subject: "/>
-            <h:selectOneMenu value="#{quizGenerationController.subject}">
-                <f:selectItems value="#{quizGenerationController.subjectTypeValues}" />
-            </h:selectOneMenu>
+            <h:form>
+                <h:dataTable id="subjectFields" value="#{quizGenerationController.subjectsList}" var="subject">
+                    <h:column>
+                        <h:selectOneMenu value="#{quizGenerationController.subject}">
+                        <f:selectItems value="#{subject}" var="s" 
+                                       itemLabel="#{s}" itemValue="#{s}"/>
+                        </h:selectOneMenu>
+                    </h:column>
+
+                    <h:column>
+                        <h:commandButton value="Remove">
+                            <f:ajax listener="#{quizGenerationController.onButtonRemoveFieldClick(subject)}" immediate="true" render="@form" /> 
+                        </h:commandButton>
+                    </h:column>
+                </h:dataTable>
+    
+                <h:commandButton value="Add" action="#{quizGenerationController.onButtonAddFieldClick}">
+                    <f:ajax execute="@form" render="subjectFields"/>
+                </h:commandButton>
+                
+            </h:form>
             
             <h:commandButton value="Generate Quiz" action="#{quizGenerationController.doGenerateQuiz}"/>
         </h:form>

@@ -57,6 +57,21 @@ public class QuizBuilderEJB {
     {
         return em.find(Question.class, id);
     }
+     
+     public void deleteQuestion(Long id)
+     {
+        Question question = em.find(Question.class, id);
+        em.remove(question);
+     }
+     
+     public void editQuestion(Question q)
+     {
+         Question question = em.find(Question.class, q.getId());
+         question.setQuestion(q.getQuestion());
+         question.setAnswer(q.getAnswer());
+         question.setSubject(q.getSubject());
+         question.setDifficulty(q.getDifficulty());
+     }
 
     public List<Question> findQuestions() {
         // TODO not implemented with eclipselink 2.0 TypedQuery query = em.createNamedQuery("findAllBooks", Book.class);

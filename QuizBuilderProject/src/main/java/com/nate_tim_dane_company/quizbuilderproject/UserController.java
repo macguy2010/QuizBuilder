@@ -16,7 +16,6 @@ public class UserController
     private String searchStr = new String();
     private List<User_Obj> usersList = null;
     private User_Obj user = new User_Obj();
-    private Long currentUserId;
     private String passwordVerify;
     
     public String doCreateUser() {
@@ -49,7 +48,6 @@ public class UserController
     public String toEditUser(Long id)
     {
         user = ejb.findUser(id);
-        currentUserId = id;
         return "editUser.xhtml";
     }
     
@@ -89,16 +87,6 @@ public class UserController
     public User_Obj getUser()
     {
         return user;
-    }
-    
-    public Long getCurrentUserId()
-    {
-        return currentUserId;
-    }
-    
-    public void setCurrentUserId(Long id)
-    {
-        currentUserId = id;
     }
     
     public String getPasswordVerify()

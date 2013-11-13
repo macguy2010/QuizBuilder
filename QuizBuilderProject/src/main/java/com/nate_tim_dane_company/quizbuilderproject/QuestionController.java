@@ -22,6 +22,25 @@ public class QuestionController
         return "questionsList.xhtml";
     }
     
+    public String doDeleteQuestion(Long id) {
+        ejb.deleteQuestion(id);
+        questionList = ejb.findQuestions();
+        return "questionsList.xhtml";
+    }
+    
+    public String toEditQuestion(Long id)
+    {
+        question = ejb.getQuestion(id);
+        return "editQuestion.xhtml";
+    }
+    
+    public String doEditQuestion()
+    {
+        ejb.editQuestion(question);
+        questionList = ejb.findQuestions();
+        return "questionsList.xhtml";
+    }
+    
     public String search()
     {
         questionList = ejb.searchQuestions(searchStr);

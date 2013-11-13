@@ -31,13 +31,11 @@ public class Question implements Serializable{
     private List<String> tags = new ArrayList<String>();
     
     // methods
-    public Long getId()
-    {
+    public Long getId() {
         return id;
     }
-    
-    public void setId(Long id) 
-    {
+
+    public void setId(Long id) {
         this.id = id;
     }
     
