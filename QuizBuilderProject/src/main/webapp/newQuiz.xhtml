@@ -8,14 +8,13 @@
     <h:body>
         <h1>Quiz Builder</h1>
         <h2>Create a New Quiz</h2>
-        
-    <h:form id="box">
+    <div id="box">    
+    <h:form>
         <h:panelGrid columns="2">
             <h:outputLabel value="Title: "/>
             <h:inputText value="#{quizController.quiz.title}"/>
         </h:panelGrid>
         <br></br>
-        <div id="grid">
         <h:panelGrid columns="1" border="1">
             <h:outputLabel value="Select Questions: "/>
             <h:selectManyCheckbox value="#{quizController.questionsSelectionList}" layout="pageDirection">
@@ -23,13 +22,11 @@
                                itemLabel="#{q.question}" itemValue="#{q.id}" />
             </h:selectManyCheckbox>
         </h:panelGrid>
-        </div>
         <div id="formButton">
         <h:commandButton value="Create Quiz" action="#{quizController.doCreateQuiz}"/>
         </div>
-        
     </h:form>
-        
+    </div>
     </h:body>
 </html>
 

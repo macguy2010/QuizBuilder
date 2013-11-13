@@ -8,7 +8,8 @@
 <h:body>
     <h1>Quiz Builder</h1>
     <h2>Login</h2>
-    <h:form id="box">
+    <div id="box">
+    <h:form>
        <h:panelGrid  columns="2">
         <h:outputLabel  value="Username"/>
         <h:inputText value="#{loginController.user.username}" />
@@ -20,5 +21,6 @@
 	<h:commandButton value="Login" action="#{loginController.verifyUser}" />
         </div>
     </h:form>
+    </div>
 </h:body>
 </html>
