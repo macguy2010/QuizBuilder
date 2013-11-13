@@ -26,8 +26,15 @@ public class QuizGenerationController implements Serializable
     {
         // logic to generate quiz
         TreeMap<SubjectType, Integer> map = new TreeMap<SubjectType, Integer>();
-        ejb.buildQuiz(quiz, map);
+        for(int i = 0; i < subjectsList.size(); i++)
+            map.put(subjectsList.get(i).type, subjectsList.get(i).number);
+        quiz = ejb.buildQuiz(map);
         return "quizPage.xhtml";
+    }
+    
+    public Quiz getQuiz()
+    {
+        return quiz;
     }
     
     public Integer getNumberOfQuestions()

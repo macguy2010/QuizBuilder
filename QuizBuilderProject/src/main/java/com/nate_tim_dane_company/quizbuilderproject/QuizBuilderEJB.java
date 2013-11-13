@@ -18,8 +18,9 @@ public class QuizBuilderEJB {
         return q;
     }
     
-    public Quiz buildQuiz(Quiz q, TreeMap<SubjectType, Integer> subjects)
+    public Quiz buildQuiz(TreeMap<SubjectType, Integer> subjects)
     {
+        Quiz q = new Quiz();
         Random random = new Random();
         for(SubjectType s : subjects.keySet())
         {
