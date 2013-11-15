@@ -8,10 +8,18 @@ body{
         background: #474747 url(bg1.png);
 }
 
-h1{
+#logout{
+    float: right;
+    display: inline;
+    width: 5em;
+}
+
+#titleBar{
+    text-align: center;
+    margin-left: 5em;
+    margin-right: 5em;
     font: 75px Tahoma, Helvetica, Arial, Sans-serif; 
     text-spacing: no-compress;
-    text-align: center;
     color: #bcbdbd;
     text-shadow: 0px 2px 3px #000000;
 }
