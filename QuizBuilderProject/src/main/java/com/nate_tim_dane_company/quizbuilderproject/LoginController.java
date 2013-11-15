@@ -2,8 +2,7 @@ package com.nate_tim_dane_company.quizbuilderproject;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.servlet.http.Cookie;
-import java.net.HttpCookie;
+import javax.servlet.http.*;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -29,6 +28,7 @@ public class LoginController {
     public String verifyUser(){
         userList =  ejb.verifyUser(user.getUsername(), user.getPassword());
         FacesContext cxt = FacesContext.getCurrentInstance();
+        HttpServletResponse response = new HttpServletResponse();
         //need to add faces context dependency
         if(userList.isEmpty()){
             
@@ -38,15 +38,19 @@ public class LoginController {
             //fill in from page 361.  Create Faces Context, insert cookie.  I'll look at this tonight
         }
         else{
-            HttpCookie loginCookie = new HttpCookie("loginCookie", user.getUsername());
-		//use cookie.getValue to return user.getUsername().  Use for loading user specific database entries.
+            Cookie loginCookie = new Cookie("loginCookie", user.getUsername());
+	    //use cookie.getValue to return user.getUsername().  Use for loading user specific database entries.
+            
             loginCookie.setSecure(true);
+            loginCookie.setMaxAge(-1);
             
             //Directory path the cookie is visible on.  All child directories have access.
-            loginCookie.setPath("/QuizBuilderProject/src/main"); 
-            
+            loginCookie.setPath("/"); 
+            response.setCookie(loginCookie);
+          
             //return them home with login cookie in place.
-            return "home.xhtml";
+            return "Home.xhtml";
+            //response.sendRedirect("Home.xhtml");
         }
 
         //return "home.xhtml";
