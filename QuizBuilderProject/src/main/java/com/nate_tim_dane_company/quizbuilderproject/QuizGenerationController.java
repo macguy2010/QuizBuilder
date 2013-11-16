@@ -20,7 +20,9 @@ public class QuizGenerationController implements Serializable
     private int maxNumber = 50;
     private Quiz quiz = new Quiz();
     private SubjectType newSubject;
+    private String[] userAnswers = null;
     private List<FieldElement> subjectsList = new ArrayList<FieldElement>();
+    private int numberCorrect = 0;
     
     public String doGenerateQuiz()
     {
@@ -30,6 +32,17 @@ public class QuizGenerationController implements Serializable
             map.put(subjectsList.get(i).type, subjectsList.get(i).number);
         quiz = ejb.buildQuiz(map);
         return "quizPage.xhtml";
+    }
+    
+    public String doSubmitAnswers()
+    {
+        for(int i = 0; i < quiz.getQuestions().size(); i++)
+        {
+            String userAnswer = userAnswers[i].trim();
+            if(userAnswer.equals(quiz.getQuestions().get(i).getAnswer()))
+                numberCorrect++;
+        }
+        return "resultsPage.xhtml";
     }
     
     public Quiz getQuiz()
@@ -58,9 +71,21 @@ public class QuizGenerationController implements Serializable
         return numberRange;
     }
     
+    public int getNumberCorrect()
+    {
+        return numberCorrect;
+    }
+    
     public void setNumberRange(int[] r)
     {
         numberRange = r;
+    }
+    
+    public String[] getUserAnswers()
+    {
+        if(userAnswers == null || userAnswers.length != numberOfQuestions)
+            userAnswers = new String[numberOfQuestions];
+        return userAnswers;
     }
     
     public SubjectType getNewSubject()

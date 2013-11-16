@@ -14,12 +14,12 @@
                 <f:facet name="header">
                     <h:outputText value="#{q.question}"/>
                 </f:facet>
-                <h:inputText value="#{q.answer}"/>
+                <h:inputText value="#{quizGenerationController.userAnswers[quizGenerationController.quiz.questions.indexOf(q)]}"/>
                 <hr/>
             </h:column>
-            
 
         </h:dataTable>
+        <h:commandButton value="Submit" action="#{quizGenerationController.doSubmitAnswers}"/>
     </h:body>
 </html>
 
