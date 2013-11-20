@@ -28,7 +28,7 @@ public class LoginController {
     public String verifyUser(){
         userList =  ejb.verifyUser(user.getUsername(), user.getPassword());
         FacesContext cxt = FacesContext.getCurrentInstance();
-        HttpServletResponse response = new HttpServletResponse();
+  //      HttpServletResponse response = new HttpServletResponse() {};
         //need to add faces context dependency
         if(userList.isEmpty()){
             
@@ -46,7 +46,7 @@ public class LoginController {
             
             //Directory path the cookie is visible on.  All child directories have access.
             loginCookie.setPath("/"); 
-            response.setCookie(loginCookie);
+     //       response.setCookie(loginCookie);
           
             //return them home with login cookie in place.
             return "Home.xhtml";

@@ -20,7 +20,7 @@ public class Question implements Serializable{
     
     private String answer;
     
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private SubjectType subject;
     
     private Integer difficulty;

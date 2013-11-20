@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import java.util.*;
 import javax.ejb.Stateful;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 
 @Stateful
@@ -15,7 +16,6 @@ public class QuizGenerationController implements Serializable
 {
     @EJB
     private QuizBuilderEJB ejb;
-    private Integer numberOfQuestions = 10;
     private int[] numberRange = null;
     private int maxNumber = 50;
     private Quiz quiz = new Quiz();
@@ -29,7 +29,8 @@ public class QuizGenerationController implements Serializable
         // logic to generate quiz
         TreeMap<SubjectType, Integer> map = new TreeMap<SubjectType, Integer>();
         for(int i = 0; i < subjectsList.size(); i++)
-            map.put(subjectsList.get(i).type, subjectsList.get(i).number);
+            if(subjectsList.get(i).number > 0)
+                map.put(subjectsList.get(i).type, subjectsList.get(i).number);
         quiz = ejb.buildQuiz(map);
         return "quizPage.xhtml";
     }
@@ -48,16 +49,6 @@ public class QuizGenerationController implements Serializable
     public Quiz getQuiz()
     {
         return quiz;
-    }
-    
-    public Integer getNumberOfQuestions()
-    {
-        return numberOfQuestions;
-    }
-    
-    public void setNumberOfQuestions(Integer n)
-    {
-        numberOfQuestions = n;
     }
     
     public int[] getNumberRange()
@@ -83,8 +74,13 @@ public class QuizGenerationController implements Serializable
     
     public String[] getUserAnswers()
     {
-        if(userAnswers == null || userAnswers.length != numberOfQuestions)
-            userAnswers = new String[numberOfQuestions];
+        int sum = 0;
+        for(int i = 0; i < subjectsList.size(); i++)
+        {
+            sum += subjectsList.get(i).number;
+        }
+        if(userAnswers == null || userAnswers.length != sum)
+            userAnswers = new String[sum];
         return userAnswers;
     }
     
@@ -139,7 +135,7 @@ public class QuizGenerationController implements Serializable
 
     public String doButtonAddFieldClick()
     {
-        subjectsList.add(new FieldElement(newSubject, 10));
+        subjectsList.add(new FieldElement(newSubject, 1));
         return "quizGenerationPage.xhtml";
     }
 }

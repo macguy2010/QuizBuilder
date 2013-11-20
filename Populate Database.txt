@@ -1,7 +1,19 @@
-insert into Question (Question, Answer, Subject, Difficulty) values('Solve for x: 4x + 3 = 23','5',0,2);
-insert into Question (Question, Answer, Subject, Difficulty) values('How many bytes are in a kilobyte','1024',6,3);
-insert into Question (Question, Answer, Subject, Difficulty) values('How many seconds in an hour','3600',7,1);
-insert into Question (Question, Answer, Subject, Difficulty) values('Who was the second president of the United States','John Adams',4,5);
+delete from Quiz_Questions;
+delete from User_Questions;
+delete from User_Quizzes;
+delete from User_Obj;
+delete from Question;
+delete from Quiz;
+delete from Tag;
+
+insert into Question (Question, Answer, Subject, Difficulty) values('Solve for x: 4x + 3 = 23','5','MATHEMATICS',2);
+insert into Question (Question, Answer, Subject, Difficulty) values('How many bytes are in a kilobyte','1024','COMPUTER_SCIENCE',3);
+insert into Question (Question, Answer, Subject, Difficulty) values('How many bits are in a nibble','4','COMPUTER_SCIENCE',4);
+insert into Question (Question, Answer, Subject, Difficulty) values('How many seconds in an hour','3600','OTHER',1);
+insert into Question (Question, Answer, Subject, Difficulty) values('Who was the second president of the United States','John Adams','HISTORY',5);
+insert into Question (Question, Answer, Subject, Difficulty) values('What year did Columbus sail?','1492','HISTORY',3);
+insert into Question (Question, Answer, Subject, Difficulty) values('Solve for x: x/3 - 4 = -1','9','MATHEMATICS',1);
+insert into Question (Question, Answer, Subject, Difficulty) values('3 * 4 + 24 / 8','15','MATHEMATICS',3);
 
 insert into User_Obj (firstname, lastname, username, password, email) values ('Administrator', 'Administrator', 'admin', 'natetimdane', 'admin@gmail.com');
 insert into User_Obj (firstname, lastname, username, password, email) values ('Bob', 'Smith', 'bsmith', 'mypass', 'bob@gmail.com');

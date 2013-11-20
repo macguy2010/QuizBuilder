@@ -25,7 +25,7 @@ public class QuizBuilderEJB {
         for(SubjectType s : subjects.keySet())
         {
             int[] selections = new int[subjects.get(s)];
-            Query query = em.createQuery("SELECT q from Question where q.subject = "+s+"");
+            Query query = em.createQuery("SELECT q FROM Question q where q.subject like '"+s.getLabel()+"'");
             List<Question> results = query.getResultList();
             for(int i = 0; i < selections.length; i++)
             {

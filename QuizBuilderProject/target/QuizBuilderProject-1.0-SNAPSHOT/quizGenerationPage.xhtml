@@ -8,38 +8,30 @@
     </h:head>
     <h:body>
         
-            <h:outputLabel value="Number of Questions"/>
-            <h:selectOneMenu value="#{quizGenerationController.numberOfQuestions}"> 
-                <f:selectItems value="#{quizGenerationController.numberRange}" var="n"
-                               itemLabel="#{n}" itemValue="#{n}" />
-            </h:selectOneMenu>
-            
+            <h:form>
             <h:dataTable id="subjectFields" value="#{quizGenerationController.subjectsList}" var="element">
                 <h:column>
                     <h:outputLabel value="#{element.type}"/>
                 </h:column>
                 <h:column>
-                        <h:selectOneMenu value="#{element.number}">
-                        <f:selectItems value="#{element.range}" var="e" 
-                                       itemLabel="#{e}" itemValue="#{e}"/>
-                        </h:selectOneMenu>
+                    <h:inputText value="#{element.number}"/>
                 </h:column>
 
                 <h:column>
-                    <h:form>
+                    
                         <h:commandLink value="Remove" action="#{quizGenerationController.doButtonRemoveFieldClick(element.type)}">
-                            <f:ajax execute="@form" render=":subjectFields"/>
+                            <f:ajax execute="@form" render="subjectFields"/>
                         </h:commandLink>
-                    </h:form>
+                    
                 </h:column>
             </h:dataTable>
-          
-            <h:form>
+            
+            
                 <h:selectOneMenu id="addField" value="#{quizGenerationController.newSubject}">
                     <f:selectItems value="#{quizGenerationController.subjectTypeValues}" />
                 </h:selectOneMenu>
                 <h:commandButton value="Add" action="#{quizGenerationController.doButtonAddFieldClick}">
-                    <f:ajax execute="@form" render=":subjectFields addField"/>
+                    <f:ajax execute="@form" render="subjectFields addField"/>
                 </h:commandButton>
             </h:form>
             
