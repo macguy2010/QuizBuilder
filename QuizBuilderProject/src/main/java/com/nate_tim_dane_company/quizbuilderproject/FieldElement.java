@@ -12,7 +12,7 @@ public class FieldElement {
     public SubjectType type;
     public Integer number;
     
-    public FieldElement(SubjectType t, int n)
+    public FieldElement(SubjectType t)
     {
         type = t;
         number = 1;
@@ -28,5 +28,10 @@ public class FieldElement {
     public void setNumber(Integer n)
     {
         number = n;
+    }
+    
+    public void setType(SubjectType t)
+    {
+        type = t;
     }
 }

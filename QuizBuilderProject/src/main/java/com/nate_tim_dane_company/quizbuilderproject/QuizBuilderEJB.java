@@ -27,30 +27,41 @@ public class QuizBuilderEJB {
             int[] selections = new int[subjects.get(s)];
             Query query = em.createQuery("SELECT q FROM Question q where q.subject like '"+s.getLabel()+"'");
             List<Question> results = query.getResultList();
-            for(int i = 0; i < selections.length; i++)
+            if(results.size() > selections.length)
             {
-                int n = 0;
-                boolean contains = false;
-                do
+                for(int i = 0; i < selections.length; i++)
                 {
-                    contains = false;
-                    n = random.nextInt(results.size());
-                    for(int j = 0; j < selections.length; j++)
-                        if(selections[j] == n)
-                        {
-                            contains = true;
-                            break;
-                        }
-                }while(contains);
+                    int n = 0;
+                    boolean contains = false;
+                    do
+                    {
+                        contains = false;
+                        n = random.nextInt(results.size());
+                        for(int j = 0; j < selections.length; j++)
+                            if(selections[j] == n)
+                            {
+                                contains = true;
+                                break;
+                            }
+                    }while(contains);
 
-                selections[i] = n;
+                    selections[i] = n;
+                }
+                for(int i : selections)
+                {
+                    q.addQuestion(results.get(i));
+                }
             }
-            
-            for(int i : selections)
+            else
             {
-                q.addQuestion(results.get(i));
+                for(int i = 0; i < results.size(); i++)
+                {
+                    q.addQuestion(results.get(i));
+                }
             }
         }
+        q.setTitle("TemporaryQuiz"+(int)(Math.random() * 1000));
+       // em.persist(q);
         return q;
     }
     

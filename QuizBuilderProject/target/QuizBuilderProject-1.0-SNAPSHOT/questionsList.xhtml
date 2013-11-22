@@ -63,6 +63,23 @@
         <h:form>
             <h:link outcome="newQuestion.xhtml" value="Create a new question"/>
         </h:form>
+<script> 
+    function showhide() { 
+        if(document.getElementById('uploadQuestions').style.display=='none') { 
+            document.getElementById('uploadQuestions').style.display='block'; 
+        } 
+        else if(document.getElementById('uploadQuestions').style.display=='block') { 
+            document.getElementById('uploadQuestions').style.display='none'; 
+        } 
+        return false;
+    }   
+</script> 
+
+
+ <div id="opener"><a href="#1" name="1" onclick="return showhide();">Upload Questions File</a></div> 
+    <div id="uploadQuestions" style="display:none;">
+       Something
+    </div>
         <hr/>
     </h:body>
 </html>

@@ -18,8 +18,6 @@ public class Quiz implements Serializable {
     
     private String title;
     
-    private int numberOfQuestions;
-    
     @OneToMany
     @JoinTable(name="Quiz_Questions", joinColumns={@JoinColumn(name="Quiz_ID")}, inverseJoinColumns={@JoinColumn(name="Question_ID")})
     private List<Question> questions = new ArrayList<Question>();
@@ -33,7 +31,6 @@ public class Quiz implements Serializable {
     public void setQuestions(ArrayList<Question> q)
     {
         questions = q;
-        numberOfQuestions = questions.size();
     }
     
     public void addQuestion(Question q)
@@ -63,6 +60,6 @@ public class Quiz implements Serializable {
     
     public int getNumberOfQuestions()
     {
-        return numberOfQuestions;
+        return questions.size();
     }
 }

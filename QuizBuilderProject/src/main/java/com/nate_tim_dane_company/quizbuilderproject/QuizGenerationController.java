@@ -21,7 +21,7 @@ public class QuizGenerationController implements Serializable
     private Quiz quiz = new Quiz();
     private SubjectType newSubject;
     private String[] userAnswers = null;
-    private List<FieldElement> subjectsList = new ArrayList<FieldElement>();
+    private List<FieldElement> subjectsList = null;
     private int numberCorrect = 0;
     
     public String doGenerateQuiz()
@@ -116,9 +116,10 @@ public class QuizGenerationController implements Serializable
     
     public List<FieldElement> getSubjectsList()
     {
-        if(subjectsList.isEmpty())
+        if(subjectsList == null || subjectsList.isEmpty())
         {
-            subjectsList.add(new FieldElement(SubjectType.MATHEMATICS, 10));
+            subjectsList = new ArrayList<FieldElement>();
+            subjectsList.add(new FieldElement(SubjectType.MATHEMATICS));
         }
         return subjectsList;
     }
@@ -128,14 +129,17 @@ public class QuizGenerationController implements Serializable
         for(int i = 0; i < subjectsList.size(); i++)
         {
             if(subjectsList.get(i).type == type)
+            {
                 subjectsList.remove(i);
+                break;
+            }
         }
         return "quizGenerationPage.xhtml";
     }
 
     public String doButtonAddFieldClick()
     {
-        subjectsList.add(new FieldElement(newSubject, 1));
+        subjectsList.add(new FieldElement(newSubject));
         return "quizGenerationPage.xhtml";
     }
 }

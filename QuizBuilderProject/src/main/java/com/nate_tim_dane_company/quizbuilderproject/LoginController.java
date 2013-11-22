@@ -49,7 +49,7 @@ public class LoginController {
      //       response.setCookie(loginCookie);
           
             //return them home with login cookie in place.
-            return "Home.xhtml";
+            return "home.xhtml";
             //response.sendRedirect("Home.xhtml");
         }
 
