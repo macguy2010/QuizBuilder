@@ -128,7 +128,10 @@ public class QuizGenerationController implements Serializable
         for(int i = 0; i < subjectsList.size(); i++)
         {
             if(subjectsList.get(i).type == type)
+            {
                 subjectsList.remove(i);
+                break;
+            }
         }
         return "quizGenerationPage.xhtml";
     }
