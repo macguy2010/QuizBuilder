@@ -14,13 +14,13 @@
 <h:body>    
     <h2>Login</h2>
     <div id="box">
-    <h:form name="loginform" action="login" method="post">
+    <h:form>
        <h:panelGrid  columns="2">
         <h:outputLabel  value="Username"/>
         <h:inputText value="#{loginController.user.username}" />
 
         <h:outputLabel value="Password"/>
-        <h:inputText value="#{loginController.user.password}" type="password"/>
+        <h:inputSecret value="#{loginController.user.password}"/>
        </h:panelGrid>
         <div id="formButton">
 	<h:commandButton value="Login" action="#{loginController.verifyUser}" />
