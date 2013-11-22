@@ -2,10 +2,13 @@ package com.nate_tim_dane_company.quizbuilderproject;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import java.io.IOException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,8 +17,8 @@ import javax.faces.context.FacesContext;
  * Time: 7:23 PM
  * To change this template use File | Settings | File Templates.
  */
-
-@ManagedBean(name="loginController")
+@WebServlet(name="loginController")
+//@ManagedBean(name="loginController")
 public class LoginController {
 
     private List<User_Obj> userList = null;
@@ -25,16 +28,16 @@ public class LoginController {
 
     //check against the database to make sure username exists, then that inputPassword == password
 
-    public String verifyUser(){
+    public String verifyUser(HttpServletResponse response) throws IOException{
         userList =  ejb.verifyUser(user.getUsername(), user.getPassword());
         FacesContext cxt = FacesContext.getCurrentInstance();
-  //      HttpServletResponse response = new HttpServletResponse() {};
+        //HttpServletResponse response = new HttpServletResponse() {};
         //need to add faces context dependency
         if(userList.isEmpty()){
             
             //if wrong username/password return to login page.  Display error
             cxt.addMessage("incorrect", new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username or Password", "Incorrect Username or Password"));
-            return null;
+            //return null;
             //fill in from page 361.  Create Faces Context, insert cookie.  I'll look at this tonight
         }
         else{
@@ -46,14 +49,14 @@ public class LoginController {
             
             //Directory path the cookie is visible on.  All child directories have access.
             loginCookie.setPath("/"); 
-     //       response.setCookie(loginCookie);
+            response.addCookie(loginCookie);
           
             //return them home with login cookie in place.
-            return "Home.xhtml";
-            //response.sendRedirect("Home.xhtml");
+            //return "Home.xhtml";
+            response.sendRedirect("home.xhtml");
         }
 
-        //return "home.xhtml";
+        return null;
     }
 
    public User_Obj getUser(){
