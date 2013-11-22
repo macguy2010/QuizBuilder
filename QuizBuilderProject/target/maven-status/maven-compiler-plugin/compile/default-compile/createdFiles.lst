@@ -8,4 +8,5 @@ com\nate_tim_dane_company\quizbuilderproject\LoginEJB.class
 com\nate_tim_dane_company\quizbuilderproject\User_Obj.class
 com\nate_tim_dane_company\quizbuilderproject\Quiz.class
 com\nate_tim_dane_company\quizbuilderproject\SubjectType.class
+com\nate_tim_dane_company\quizbuilderproject\QuizGenerationController.class
 com\nate_tim_dane_company\quizbuilderproject\QuizBuilderEJB.class
