@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com/nate_tim_dane_company/quizbuilderproject/QuestionController.class
 com/nate_tim_dane_company/quizbuilderproject/QuizController.class
 com/nate_tim_dane_company/quizbuilderproject/User_Obj.class
@@ -6,3 +7,17 @@ com/nate_tim_dane_company/quizbuilderproject/SubjectType.class
 com/nate_tim_dane_company/quizbuilderproject/UserEJB.class
 com/nate_tim_dane_company/quizbuilderproject/LoginEJB.class
 com/nate_tim_dane_company/quizbuilderproject/Quiz.class
+=======
+com\nate_tim_dane_company\quizbuilderproject\QuizController.class
+com\nate_tim_dane_company\quizbuilderproject\Question.class
+com\nate_tim_dane_company\quizbuilderproject\FieldElement.class
+com\nate_tim_dane_company\quizbuilderproject\UserEJB.class
+com\nate_tim_dane_company\quizbuilderproject\QuestionController.class
+com\nate_tim_dane_company\quizbuilderproject\UserController.class
+com\nate_tim_dane_company\quizbuilderproject\LoginEJB.class
+com\nate_tim_dane_company\quizbuilderproject\User_Obj.class
+com\nate_tim_dane_company\quizbuilderproject\Quiz.class
+com\nate_tim_dane_company\quizbuilderproject\SubjectType.class
+com\nate_tim_dane_company\quizbuilderproject\QuizGenerationController.class
+com\nate_tim_dane_company\quizbuilderproject\QuizBuilderEJB.class
+>>>>>>> 63885f9b1a2803bc7bfee0f1fc17019f2b9116e4

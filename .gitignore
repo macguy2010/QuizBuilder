@@ -1,2 +1,10 @@
 
 *.war
+
+*.class
+
+QuizBuilderProject/src/main/java/com/nate_tim_dane_company/quizbuilderproject/LoginController.java
+
+QuizBuilderProject/src/main/webapp/loginPage.xhtml
+
+*.war
