@@ -78,4 +78,14 @@ public class Question implements Serializable{
     {
         subject = st;
     }
+    
+    public List<String> getTags()
+    {
+        return tags;
+    }
+    
+    public void setTags(List<String>t)
+    {
+        tags = t;
+    }
 }
