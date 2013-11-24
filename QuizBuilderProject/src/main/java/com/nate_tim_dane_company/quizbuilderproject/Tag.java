@@ -11,6 +11,11 @@ package com.nate_tim_dane_company.quizbuilderproject;
 public class Tag {
     private String value = "";
     
+    public Tag(String t)
+    {
+        value = t;
+    }
+    
     public String getValue()
     {
         return value;

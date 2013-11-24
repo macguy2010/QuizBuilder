@@ -5,10 +5,11 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.util.List;
+import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
 @ManagedBean(name = "questionController")
-@RequestScoped
+@SessionScoped
 public class QuestionController 
 {
     @EJB
@@ -17,14 +18,18 @@ public class QuestionController
     private Question question = new Question();
     private List<Question> questionList = null;
     private List<Tag> tagFields = null;
+    private String currentPage;
     
     public String doCreateQuestion() {
         List<String> tags = new ArrayList<String>();
         for(int i = 0; i < tagFields.size(); i++)
-            tags.add(tagFields.get(i).getValue());
+            if(!tags.contains(tagFields.get(i).getValue()) && !tagFields.get(i).getValue().equals(""))
+                tags.add(tagFields.get(i).getValue());
         question.setTags(tags);
         question = ejb.createQuestion(question);
         questionList = ejb.findQuestions();
+        question = new Question();
+        tagFields = null;
         return "questionsList.xhtml";
     }
     
@@ -37,13 +42,23 @@ public class QuestionController
     public String toEditQuestion(Long id)
     {
         question = ejb.getQuestion(id);
+        tagFields = new ArrayList<Tag>();
+        for(int i = 0; i < question.getTags().size(); i++)
+            tagFields.add(new Tag(question.getTags().get(i)));
         return "editQuestion.xhtml";
     }
     
     public String doEditQuestion()
     {
+        List<String> tags = new ArrayList<String>();
+        for(int i = 0; i < tagFields.size(); i++)
+            if(!tags.contains(tagFields.get(i).getValue()) && !tagFields.get(i).getValue().equals(""))
+                tags.add(tagFields.get(i).getValue());
+        question.setTags(tags);
         ejb.editQuestion(question);
         questionList = ejb.findQuestions();
+        question = new Question();
+        tagFields = null;
         return "questionsList.xhtml";
     }
     
@@ -96,35 +111,29 @@ public class QuestionController
         if(tagFields == null || tagFields.isEmpty())
         {
             tagFields = new ArrayList<Tag>();
-            tagFields.add(new Tag());
+            tagFields.add(new Tag(""));
         }
         return tagFields;
     }
     
     public String doAddTagField()
     {
-        List<Tag> newTags = new ArrayList<Tag>();
-        for(int i = 0; i < getTagFields().size(); i++)
+        if(tagFields.get(tagFields.size()-1).getValue() != null && !tagFields.get(tagFields.size()-1).getValue().equals(""))
         {
-            newTags.add(getTagFields().get(i));
+            List<Tag> newTags = new ArrayList<Tag>();
+            for(int i = 0; i < getTagFields().size(); i++)
+            {
+                newTags.add(getTagFields().get(i));
+            }
+            newTags.add(new Tag(""));
+            tagFields = newTags;
         }
-        newTags.add(new Tag());
-        tagFields = newTags;
-        return "newQuestion.xhtml";
+        return null;
     }
     
     public String doRemoveTag(String t)
     {
-        List<Tag> newTags = new ArrayList<Tag>();
-        boolean found = false;
-        for(int i = 0; i < getTagFields().size(); i++)
-        {
-            if(found || !getTagFields().get(i).getValue().equals(t))
-                newTags.add(getTagFields().get(i));
-            else
-                found = true;
-        }
-        tagFields = newTags;
-        return "newQuestion.xhtml";
+        tagFields.remove(t);
+        return null;
     }
 }

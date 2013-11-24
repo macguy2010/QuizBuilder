@@ -88,4 +88,16 @@ public class Question implements Serializable{
     {
         tags = t;
     }
+    
+    public String getTagsString()
+    {
+        String s = "";
+        for(int i = 0; i < tags.size(); i++)
+        {
+            s += tags.get(i);
+            if(i != tags.size()-1)
+                s += ", ";
+        }
+        return s;
+    }
 }

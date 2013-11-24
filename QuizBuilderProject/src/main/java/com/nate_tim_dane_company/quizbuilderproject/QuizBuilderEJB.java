@@ -83,6 +83,7 @@ public class QuizBuilderEJB {
          question.setAnswer(q.getAnswer());
          question.setSubject(q.getSubject());
          question.setDifficulty(q.getDifficulty());
+         question.setTags(q.getTags());
      }
 
     public List<Question> findQuestions() {

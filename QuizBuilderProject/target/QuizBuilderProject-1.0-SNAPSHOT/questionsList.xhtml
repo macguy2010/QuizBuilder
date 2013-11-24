@@ -43,6 +43,12 @@
                 <h:outputText value="#{q.difficulty}"/>
             </h:column>
             <h:column>
+                <div id="openerTags"><a href="#1" name="1" onclick="return showhideTags(#{q.id});">Tags</a></div> 
+                <div id="#{q.id}" style="display:none;">
+                    <h:outputText value="#{q.tagsString}"/>
+                </div>
+            </h:column>
+            <h:column>
                 <h:form>
                 <f:facet name="header">
                     <h:outputText value="Delete"/>
@@ -58,13 +64,15 @@
                 <h:commandButton value="Edit" action="#{questionController.toEditQuestion(q.id)}"/>
                 </h:form>
             </h:column>
+            
 
         </h:dataTable>
         <h:form>
             <h:link outcome="newQuestion.xhtml" value="Create a new question"/>
         </h:form>
+        
 <script> 
-    function showhide() { 
+    function showhideUpload() { 
         if(document.getElementById('uploadQuestions').style.display=='none') { 
             document.getElementById('uploadQuestions').style.display='block'; 
         } 
@@ -72,11 +80,20 @@
             document.getElementById('uploadQuestions').style.display='none'; 
         } 
         return false;
-    }   
+    }
+    function showhideTags(id) { 
+        if(document.getElementById(''+id).style.display=='none') { 
+            document.getElementById(''+id).style.display='block'; 
+        } 
+        else if(document.getElementById(''+id).style.display=='block') { 
+            document.getElementById(''+id).style.display='none'; 
+        } 
+        return false;
+    }
 </script> 
 
 
- <div id="opener"><a href="#1" name="1" onclick="return showhide();">Upload Questions File</a></div> 
+ <div id="openerUpload"><a href="#1" name="1" onclick="return showhideUpload();">Upload Questions File</a></div> 
     <div id="uploadQuestions" style="display:none;">
        Something
     </div>
