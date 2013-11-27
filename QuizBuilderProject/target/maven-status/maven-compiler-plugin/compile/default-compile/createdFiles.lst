@@ -6,8 +6,8 @@ com/nate_tim_dane_company/quizbuilderproject/Tag.class
 com/nate_tim_dane_company/quizbuilderproject/UserController.class
 com/nate_tim_dane_company/quizbuilderproject/FieldElement.class
 com/nate_tim_dane_company/quizbuilderproject/SubjectType.class
-com/nate_tim_dane_company/quizbuilderproject/Question.class
 com/nate_tim_dane_company/quizbuilderproject/QuizBuilderEJB.class
+com/nate_tim_dane_company/quizbuilderproject/Question.class
 com/nate_tim_dane_company/quizbuilderproject/UserEJB.class
 com/nate_tim_dane_company/quizbuilderproject/LoginEJB.class
 com/nate_tim_dane_company/quizbuilderproject/Quiz.class

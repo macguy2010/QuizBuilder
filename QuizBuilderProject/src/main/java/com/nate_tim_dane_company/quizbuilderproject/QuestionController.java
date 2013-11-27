@@ -1,16 +1,19 @@
 package com.nate_tim_dane_company.quizbuilderproject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.util.List;
+import javax.ejb.Stateful;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
+@Stateful
 @ManagedBean(name = "questionController")
 @SessionScoped
-public class QuestionController 
+public class QuestionController implements Serializable
 {
     @EJB
     private QuizBuilderEJB ejb;
@@ -131,9 +134,9 @@ public class QuestionController
         return null;
     }
     
-    public String doRemoveTag(String t)
+    public String doRemoveTag(Tag t)
     {
-        tagFields.remove(t);
+       tagFields.remove(t);
         return null;
     }
 }

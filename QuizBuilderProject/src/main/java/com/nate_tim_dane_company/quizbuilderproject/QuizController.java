@@ -29,6 +29,34 @@ public class QuizController
         return "quizList.xhtml";
     }
     
+    public String doDeleteQuiz(Long id) {
+        ejb.deleteQuiz(id);
+        quizList = ejb.findQuizzes();
+        return "quizList.xhtml";
+    }
+    
+    public String toEditQuiz(Long id)
+    {
+        quiz = ejb.getQuiz(id);
+        questionsSelectionList = new Long[quiz.getQuestions().size()];
+        for(int i = 0; i < quiz.getQuestions().size(); i++)
+            questionsSelectionList[i] = quiz.getQuestions().get(i).getId();
+        return "editQuiz.xhtml";
+    }
+    
+    public String doEditQuiz()
+    {
+        for(int i = 0; i < questionsSelectionList.length; i++)
+        {
+            Question q = ejb.getQuestion(questionsSelectionList[i]);
+            quiz.addQuestion(q);
+        }
+        ejb.editQuiz(quiz);
+        quizList = ejb.findQuizzes();
+        quiz = new Quiz();
+        return "quizList.xhtml";
+    }
+    
     public String search()
     {
         quizList = ejb.searchQuizzes(searchStr);

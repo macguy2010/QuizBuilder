@@ -69,6 +69,11 @@ public class QuizBuilderEJB {
     {
         return em.find(Question.class, id);
     }
+    
+    public Quiz getQuiz(Long id)
+    {
+        return em.find(Quiz.class, id);
+    }
      
      public void deleteQuestion(Long id)
      {
@@ -84,6 +89,21 @@ public class QuizBuilderEJB {
          question.setSubject(q.getSubject());
          question.setDifficulty(q.getDifficulty());
          question.setTags(q.getTags());
+     }
+     
+     public void deleteQuiz(Long id)
+     {
+        Quiz quiz = em.find(Quiz.class, id);
+        em.remove(quiz);
+     }
+     
+     public void editQuiz(Quiz q)
+     {
+         Quiz quiz = em.find(Quiz.class, q.getId());
+         quiz.setTitle(q.getTitle());
+         quiz.getQuestions().clear();
+         for(int i = 0; i < q.getQuestions().size(); i++)
+             quiz.addQuestion(q.getQuestions().get(i));
      }
 
     public List<Question> findQuestions() {
