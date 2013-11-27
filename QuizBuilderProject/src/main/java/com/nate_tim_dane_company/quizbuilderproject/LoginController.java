@@ -46,7 +46,6 @@ public class LoginController {
             
             loginCookie.setSecure(true);
             loginCookie.setMaxAge(-1);
-            
             //Directory path the cookie is visible on.  All child directories have access.
             loginCookie.setPath("/"); 
             response.addCookie(loginCookie);
