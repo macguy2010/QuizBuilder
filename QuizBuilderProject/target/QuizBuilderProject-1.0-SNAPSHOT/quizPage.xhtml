@@ -9,12 +9,12 @@
     <h:body>
         <h1>Questions</h1>
         <hr/>
-        <h:dataTable id="questionList" value="#{quizGenerationController.quiz.questions}" var="q" border="1">
+        <h:dataTable id="questionList" value="#{quizGenerationController.generatedQuiz.questions}" var="q" border="1">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="#{q.question}"/>
                 </f:facet>
-                <h:inputText value="#{quizGenerationController.userAnswers[quizGenerationController.quiz.questions.indexOf(q)]}"/>
+                <h:inputText value="#{quizGenerationController.userAnswers[quizGenerationController.generatedQuiz.questions.indexOf(q)]}"/>
                 <hr/>
             </h:column>
 

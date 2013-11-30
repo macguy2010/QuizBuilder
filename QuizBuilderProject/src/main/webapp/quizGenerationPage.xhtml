@@ -31,10 +31,8 @@
                 <h:commandButton value="Add" action="#{quizGenerationController.doButtonAddFieldClick}">
                     <f:ajax execute="@form" render="subjectFields addField"/>
                 </h:commandButton>
-            </h:form>
-            
-        <h:form>
-            <h:commandButton value="Generate Quiz" action="#{quizGenerationController.doGenerateQuiz}"/>
+                <br/>
+            <h:commandButton value="Generate Quiz" action="#{quizGenerationController.toQuizPage}"/>
         </h:form>
     </h:body>
 </html>

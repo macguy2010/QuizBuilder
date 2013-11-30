@@ -9,8 +9,8 @@ package com.nate_tim_dane_company.quizbuilderproject;
  * @author nathanaston
  */
 public class FieldElement {
-    public SubjectType type;
-    public Integer number;
+    private SubjectType type;
+    private Integer number;
     
     public FieldElement(SubjectType t)
     {

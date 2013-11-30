@@ -24,15 +24,25 @@ public class QuizGenerationController implements Serializable
     private List<FieldElement> subjectsList = null;
     private int numberCorrect = 0;
     
-    public String doGenerateQuiz()
+    public String toQuizPage()
     {
         // logic to generate quiz
-        TreeMap<SubjectType, Integer> map = new TreeMap<SubjectType, Integer>();
-        for(int i = 0; i < subjectsList.size(); i++)
-            if(subjectsList.get(i).number > 0)
-                map.put(subjectsList.get(i).type, subjectsList.get(i).number);
-        quiz = ejb.buildQuiz(map);
+        quiz = null;
         return "quizPage.xhtml";
+    }
+    
+    public Quiz getGeneratedQuiz()
+    {
+        if(quiz == null)
+        {
+            quiz = new Quiz();
+            TreeMap<SubjectType, Integer> map = new TreeMap<SubjectType, Integer>();
+            for(int i = 0; i < subjectsList.size(); i++)
+                if(subjectsList.get(i).getNumber() > 0)
+                    map.put(subjectsList.get(i).getType(), subjectsList.get(i).getNumber());
+            quiz = ejb.buildQuiz(quiz, map);
+        }
+        return quiz;
     }
     
     public String doSubmitAnswers()
@@ -43,6 +53,7 @@ public class QuizGenerationController implements Serializable
             if(userAnswer.equals(quiz.getQuestions().get(i).getAnswer()))
                 numberCorrect++;
         }
+        quiz.getGrades().add((double)numberCorrect / quiz.getQuestions().size());
         return "resultsPage.xhtml";
     }
     
@@ -74,13 +85,9 @@ public class QuizGenerationController implements Serializable
     
     public String[] getUserAnswers()
     {
-        int sum = 0;
-        for(int i = 0; i < subjectsList.size(); i++)
-        {
-            sum += subjectsList.get(i).number;
-        }
-        if(userAnswers == null || userAnswers.length != sum)
-            userAnswers = new String[sum];
+        int num = getGeneratedQuiz().getNumberOfQuestions();
+        if(userAnswers == null || userAnswers.length != num)
+            userAnswers = new String[num];
         return userAnswers;
     }
     
@@ -102,7 +109,7 @@ public class QuizGenerationController implements Serializable
         {
             boolean exists = false;
             for(int j = 0; j < getSubjectsList().size(); j++)
-                if(getSubjectsList().get(j).type == g)
+                if(getSubjectsList().get(j).getType() == g)
                 {
                     exists = true;
                     break;
@@ -128,7 +135,7 @@ public class QuizGenerationController implements Serializable
     {
         for(int i = 0; i < subjectsList.size(); i++)
         {
-            if(subjectsList.get(i).type == type)
+            if(subjectsList.get(i).getType() == type)
             {
                 subjectsList.remove(i);
                 break;

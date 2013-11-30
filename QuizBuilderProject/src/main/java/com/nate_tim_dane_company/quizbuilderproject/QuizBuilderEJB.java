@@ -18,9 +18,8 @@ public class QuizBuilderEJB {
         return q;
     }
     
-    public Quiz buildQuiz(TreeMap<SubjectType, Integer> subjects)
+    public Quiz buildQuiz(Quiz q, TreeMap<SubjectType, Integer> subjects)
     {
-        Quiz q = new Quiz();
         Random random = new Random();
         for(SubjectType s : subjects.keySet())
         {
@@ -61,7 +60,7 @@ public class QuizBuilderEJB {
             }
         }
         q.setTitle("TemporaryQuiz"+(int)(Math.random() * 1000));
-       // em.persist(q);
+        em.persist(q);
         return q;
     }
     
