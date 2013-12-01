@@ -89,6 +89,11 @@ public class Question implements Serializable{
         tags = t;
     }
     
+    public void addTag(String t)
+    {
+        tags.add(t);
+    }
+    
     public String getTagsString()
     {
         String s = "";
