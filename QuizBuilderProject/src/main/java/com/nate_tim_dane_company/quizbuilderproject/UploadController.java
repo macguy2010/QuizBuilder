@@ -9,10 +9,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
 
-
+@ManagedBean(name = "uploadController")
 public class UploadController {
     
     @EJB
@@ -53,7 +54,7 @@ public class UploadController {
           else if (element.trim().toLowerCase().equals("difficulty"))
               order.add("difficulty");
           else if (element.trim().toLowerCase().equals("tags") || element.trim().toLowerCase().equals("tag"))
-              order.add("tags");
+              break;
           else
               throw new Exception("File is not in the correct format");
       }
@@ -65,12 +66,14 @@ public class UploadController {
           for(int j = 0; j < elements.length; j++)
           {
               if(j >= order.size())
-                  q.addTag(elements[j]);
-              
+              {
+                  q.addTag(elements[j].trim());
+                  continue;
+              }
               if(order.get(j).equals("question"))
-                  q.setQuestion(elements[j]);
+                  q.setQuestion(elements[j].trim());
               else if(order.get(j).equals("answer"))
-                  q.setAnswer(elements[j]);
+                  q.setAnswer(elements[j].trim());
               else if(order.get(j).equals("subject"))
               {
                   if(elements[j].toUpperCase().contains("MATH"))
@@ -91,7 +94,7 @@ public class UploadController {
                       q.setSubject(SubjectType.OTHER);
               }
               else if(order.get(j).equals("difficulty"))
-                  q.setDifficulty(Integer.parseInt(elements[j]));
+                  q.setDifficulty(Integer.parseInt(elements[j].trim()));
           }
           q = ejb.createQuestion(q);
       }
