@@ -1,2 +1,3 @@
 Question, Answer, Subject, Difficulty, Tags
 What is your Name?, Nathan, Other, 3, Nate, Name
+What is your favorite color?, Blue, Math, 2, color, fav color

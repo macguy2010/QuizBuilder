@@ -4,45 +4,18 @@
  */
 package com.nate_tim_dane_company.quizbuilderproject;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
-import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.Part;
 
 @ManagedBean(name = "uploadController")
 public class UploadController {
-    
-    @EJB
-    private QuizBuilderEJB ejb;
-    
-  private Part file;
-  private String fileContent;
  
-  public String upload() {
-    try {
-      fileContent = new Scanner(file.getInputStream())
-          .useDelimiter("\\A").next();
-    } catch (IOException e) {
-
-    }
-    try{
-        parseFile(fileContent);
-    } catch (Exception e) {
-        FacesContext cxt = FacesContext.getCurrentInstance();
-        cxt.addMessage("Format_Error", new FacesMessage(FacesMessage.SEVERITY_WARN, "File not formatted correctly", "File not formatted correctly"));
-    }
-    return null;
-  }
-  
-  private void parseFile(String str) throws Exception
+  public static ArrayList<Question> parseFile(String str) throws Exception
   {
       String[] lines = str.split("\n|\r");
       String[] first = lines[0].split(",");
       ArrayList<String> order = new ArrayList<String>();
+      ArrayList<Question> qs = new ArrayList<Question>();
       for(String element : first)
       {
           if(element.trim().toLowerCase().equals("question"))
@@ -96,15 +69,8 @@ public class UploadController {
               else if(order.get(j).equals("difficulty"))
                   q.setDifficulty(Integer.parseInt(elements[j].trim()));
           }
-          q = ejb.createQuestion(q);
+          qs.add(q);
       }
-  }
- 
-  public Part getFile() {
-    return file;
-  }
- 
-  public void setFile(Part file) {
-    this.file = file;
+      return qs;
   }
 }

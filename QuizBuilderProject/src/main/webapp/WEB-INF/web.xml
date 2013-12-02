@@ -22,11 +22,6 @@
         <welcome-file>faces/home.xhtml</welcome-file>
     </welcome-file-list>
     
-    <context-param>
-    <param-name>UPLOAD_FOLDER</param-name>
-    <param-value>E:/temp</param-value>
-   </context-param>
-    
     <servlet>  
     <description>  
     </description>  

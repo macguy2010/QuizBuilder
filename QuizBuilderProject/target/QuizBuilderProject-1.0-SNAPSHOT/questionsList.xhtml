@@ -49,16 +49,16 @@
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Delete"/>
+                    <h:outputText value=""/>
                 </f:facet>
                 <h:commandButton value="Delete" action="#{questionController.doDeleteQuestion(q.id)}">
-                    <f:ajax execute="@form" render="@form"/>
+                    <f:ajax execute="@form" render="@all"/>
                 </h:commandButton>
             </h:column>
             <h:column>
                 <h:form>
                 <f:facet name="header">
-                    <h:outputText value="Edit"/>
+                    <h:outputText value=""/>
                 </f:facet>
                 <h:commandButton value="Edit" action="#{questionController.toEditQuestion(q.id)}"/>
                 </h:form>
@@ -95,8 +95,8 @@
  <div id="openerUpload"><a href="#1" name="1" onclick="return showhideUpload();">Upload Questions File</a></div> 
     <div id="uploadQuestions" style="display:none;">
        <h:form id="form" enctype="multipart/form-data">
-            <h:inputFile id="file" value="#{uploadController.file}"/>
-            <h:commandButton value="Upload" action="#{uploadController.upload}">
+            <h:inputFile id="file" value="#{questionController.file}"/>
+            <h:commandButton value="Upload" action="#{questionController.upload}">
                 <f:ajax execute="file" render="@all"/>
             </h:commandButton>
             <h:message for="Format_Error" style="color:red;margin:8px;"/>
