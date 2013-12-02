@@ -18,45 +18,60 @@ public class QuizBuilderEJB {
         return q;
     }
     
-    public Quiz buildQuiz(TreeMap<SubjectType, Integer> subjects)
+    public Quiz buildQuiz(Quiz q, TreeMap<SubjectType, Integer> subjects)
     {
-        Quiz q = new Quiz();
         Random random = new Random();
         for(SubjectType s : subjects.keySet())
         {
             int[] selections = new int[subjects.get(s)];
             Query query = em.createQuery("SELECT q FROM Question q where q.subject like '"+s.getLabel()+"'");
             List<Question> results = query.getResultList();
-            for(int i = 0; i < selections.length; i++)
+            if(results.size() > selections.length)
             {
-                int n = 0;
-                boolean contains = false;
-                do
+                for(int i = 0; i < selections.length; i++)
                 {
-                    contains = false;
-                    n = random.nextInt(results.size());
-                    for(int j = 0; j < selections.length; j++)
-                        if(selections[j] == n)
-                        {
-                            contains = true;
-                            break;
-                        }
-                }while(contains);
+                    int n = 0;
+                    boolean contains = false;
+                    do
+                    {
+                        contains = false;
+                        n = random.nextInt(results.size());
+                        for(int j = 0; j < selections.length; j++)
+                            if(selections[j] == n)
+                            {
+                                contains = true;
+                                break;
+                            }
+                    }while(contains);
 
-                selections[i] = n;
+                    selections[i] = n;
+                }
+                for(int i : selections)
+                {
+                    q.addQuestion(results.get(i));
+                }
             }
-            
-            for(int i : selections)
+            else
             {
-                q.addQuestion(results.get(i));
+                for(int i = 0; i < results.size(); i++)
+                {
+                    q.addQuestion(results.get(i));
+                }
             }
         }
+        q.setTitle("TemporaryQuiz"+(int)(Math.random() * 1000));
+        em.persist(q);
         return q;
     }
     
     public Question getQuestion(Long id)
     {
         return em.find(Question.class, id);
+    }
+    
+    public Quiz getQuiz(Long id)
+    {
+        return em.find(Quiz.class, id);
     }
      
      public void deleteQuestion(Long id)
@@ -72,6 +87,22 @@ public class QuizBuilderEJB {
          question.setAnswer(q.getAnswer());
          question.setSubject(q.getSubject());
          question.setDifficulty(q.getDifficulty());
+         question.setTags(q.getTags());
+     }
+     
+     public void deleteQuiz(Long id)
+     {
+        Quiz quiz = em.find(Quiz.class, id);
+        em.remove(quiz);
+     }
+     
+     public void editQuiz(Quiz q)
+     {
+         Quiz quiz = em.find(Quiz.class, q.getId());
+         quiz.setTitle(q.getTitle());
+         quiz.getQuestions().clear();
+         for(int i = 0; i < q.getQuestions().size(); i++)
+             quiz.addQuestion(q.getQuestions().get(i));
      }
 
     public List<Question> findQuestions() {

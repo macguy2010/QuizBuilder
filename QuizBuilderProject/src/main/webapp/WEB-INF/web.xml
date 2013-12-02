@@ -21,4 +21,23 @@
     <welcome-file-list>
         <welcome-file>faces/home.xhtml</welcome-file>
     </welcome-file-list>
+    
+    <context-param>
+    <param-name>UPLOAD_FOLDER</param-name>
+    <param-value>E:/temp</param-value>
+   </context-param>
+    
+    <servlet>  
+    <description>  
+    </description>  
+    <display-name>UploadController</display-name>  
+    <servlet-name>UploadController</servlet-name>  
+    <servlet-class>  
+    com.nate_tim_dane_company.quizbuilderproject.UploadController
+    </servlet-class>  
+   </servlet>  
+   <servlet-mapping>  
+    <servlet-name>UploadController</servlet-name>  
+    <url-pattern>/upload.do</url-pattern>  
+   </servlet-mapping>
 </web-app>

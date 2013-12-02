@@ -21,7 +21,7 @@
                 <f:selectItems value="#{questionController.subjectTypeValues}" />
             </h:selectOneMenu>
 
-            <h:outputLabel value="Difficulty "/>
+            <h:outputLabel value="Difficulty: "/>
             <h:selectOneMenu value="#{questionController.question.difficulty}">
                 <f:selectItem id="d1" itemLabel="1" itemValue="1" />
                 <f:selectItem id="d2" itemLabel="2" itemValue="2" />
@@ -34,8 +34,27 @@
                 <f:selectItem id="d9" itemLabel="9" itemValue="9" />
                 <f:selectItem id="d10" itemLabel="10" itemValue="10" />
             </h:selectOneMenu>
+            
+            <h:outputLabel value="Tags: "/>
+            <h:dataTable id="tagFields" value="#{questionController.tagFields}" var="tag">
+                <h:column>
+                    <h:inputText value="#{tag.value}"/>
+                </h:column>
 
+                <h:column>
+                    <h:commandLink value="Remove" action="#{questionController.doRemoveTag(tag)}">
+                        <f:ajax execute="@form" render="@form"/>
+                    </h:commandLink>
+                </h:column>
+                
+            </h:dataTable>
+            
+                <h:commandButton value="Add Tag" action="#{questionController.doAddTagField}">
+                        <f:ajax execute="@form" render="tagFields"/>
+                </h:commandButton>
+            
         </h:panelGrid>
+    
         <h:commandButton value="Create Question" action="#{questionController.doCreateQuestion}"/>
         
     </h:form>
