@@ -41,6 +41,9 @@ public class LoginController {
             //fill in from page 361.  Create Faces Context, insert cookie.  I'll look at this tonight
         }
         else{
+
+            String userId = user.getId().toString();
+
             Cookie loginCookie = new Cookie("loginCookie", user.getUsername());
 	    //use cookie.getValue to return user.getUsername().  Use for loading user specific database entries.
             
