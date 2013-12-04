@@ -59,7 +59,7 @@ public class QuizBuilderEJB {
                 }
             }
         }
-        q.setTitle("TemporaryQuiz"+(int)(Math.random() * 1000));
+        q.setTitle("TemporaryQuiz"+(int)(Math.random() * 10000000));
         em.persist(q);
         return q;
     }

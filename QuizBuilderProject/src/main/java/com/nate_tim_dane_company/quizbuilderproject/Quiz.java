@@ -16,6 +16,8 @@ public class Quiz implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    private Boolean isTemporary = false;
+    
     private String title;
     
     @OneToMany
@@ -79,5 +81,15 @@ public class Quiz implements Serializable {
         for(int i = 0; i < grades.size(); i++)
             average += grades.get(i) / grades.size();
         return average;
+    }
+    
+    public void setIsTemporary(boolean b)
+    {
+        isTemporary = b;
+    }
+    
+    public Boolean getIsTemporary()
+    {
+        return isTemporary;
     }
 }
