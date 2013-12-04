@@ -1,14 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
     <title>Creates a new User</title>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
+    <div id="logout">  
+            <input id="btnLogOut" type="button" value="Log Out" />
+        </div>
+        <div id="titleBar">
+            Quiz Builder
+        </div>
 </h:head>
 <h:body>
     <h1>Create a new User</h1>
-    <hr/>
+    <div id="box">
     <h:form>
         <h:panelGrid columns="2" >
             <h:outputLabel value="First Name: "/>
@@ -29,10 +34,12 @@
             <h:inputHidden value="#{userController.user.id}"/>
             
         </h:panelGrid>
+        <div id="formButton">
         <h:commandButton value="Submit Edit" action="#{userController.doEditUser}"/>
+        </div>
         
     </h:form>
-    <hr/>
+    </div>
 
 </h:body>
 </html>

@@ -1,14 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
     <title>Creates a new Question</title>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
+    <div id="logout">  
+            <input id="btnLogOut" type="button" value="Log Out" />
+        </div>
+        <div id="titleBar">
+            Quiz Builder
+        </div>
 </h:head>
 <h:body>
     <h1>Create a new Question</h1>
-    <hr/>
+    <div id="box">
     <h:form>
         <h:panelGrid columns="2" >
             <h:outputLabel value="Question: "/>
@@ -48,17 +53,17 @@
                 </h:column>
                 
             </h:dataTable>
-            
                 <h:commandButton value="Add Tag" action="#{questionController.doAddTagField}">
                         <f:ajax execute="@form" render="tagFields"/>
                 </h:commandButton>
             
         </h:panelGrid>
-    
+        <div id="formButton">
         <h:commandButton value="Create Question" action="#{questionController.doCreateQuestion}"/>
+        </div>
         
     </h:form>
-    <hr/>
+    </div>>
 
 </h:body>
 </html>
