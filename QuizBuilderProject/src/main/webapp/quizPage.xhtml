@@ -14,7 +14,7 @@
     <h:body>
         <h1>Questions</h1>
         <div id="box">
-        <h:dataTable id="questionList" value="#{quizGenerationController.generatedQuiz.questions}" var="q" border="1">
+        <h:dataTable id="questionList" value="#{quizGenerationController.generatedQuizQuestions}" var="q" border="1">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="#{q.question}"/>

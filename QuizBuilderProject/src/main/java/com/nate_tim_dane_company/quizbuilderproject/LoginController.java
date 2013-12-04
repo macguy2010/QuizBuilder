@@ -9,6 +9,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
+import javax.faces.bean.SessionScoped;
 
 /**
  * Created with IntelliJ IDEA.
@@ -40,7 +41,7 @@ public class LoginController {
             
             //if wrong username/password return to login page.  Display error
             cxt.addMessage("incorrect", new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username or Password", "Incorrect Username or Password"));
-            return loginPage.xhtml;
+            return "loginPage.xhtml";
         }
         else{
 
@@ -51,10 +52,10 @@ public class LoginController {
             return "Home.xhtml";
         }
 
-        return null;
+       // return null;
     }
 
-    public static boolean getVerified(){
+    public  boolean getVerified(){
         return authenticated;
     }
 

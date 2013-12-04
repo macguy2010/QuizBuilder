@@ -24,9 +24,11 @@ public class QuizBuilderEJB {
         for(SubjectType s : subjects.keySet())
         {
             int[] selections = new int[subjects.get(s)];
+            for(int i = 0; i < selections.length; i++)
+                selections[i] = -1;
             Query query = em.createQuery("SELECT q FROM Question q where q.subject like '"+s.getLabel()+"'");
             List<Question> results = query.getResultList();
-            if(results.size() > selections.length)
+            if(results.size() >= selections.length)
             {
                 for(int i = 0; i < selections.length; i++)
                 {
@@ -59,7 +61,7 @@ public class QuizBuilderEJB {
                 }
             }
         }
-        q.setTitle("TemporaryQuiz"+(int)(Math.random() * 10000000));
+        q.setTitle("TemporaryQuiz"+(int)(Math.random() * 1000));
         em.persist(q);
         return q;
     }

@@ -31,6 +31,11 @@ public class QuizGenerationController implements Serializable
         return "quizPage.xhtml";
     }
     
+    public List<Question> getGeneratedQuizQuestions()
+    {
+        return getGeneratedQuiz().getQuestions();
+    }
+    
     public Quiz getGeneratedQuiz()
     {
         if(quiz == null)
