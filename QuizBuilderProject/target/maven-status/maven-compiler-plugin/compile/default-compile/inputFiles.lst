@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Dane\Documents\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\Question.java
 C:\Users\Dane\Documents\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\QuestionController.java
 C:\Users\Dane\Documents\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\FieldElement.java
@@ -13,3 +14,20 @@ C:\Users\Dane\Documents\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\
 C:\Users\Dane\Documents\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\QuizBuilderEJB.java
 C:\Users\Dane\Documents\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\LoginController.java
 C:\Users\Dane\Documents\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\Quiz.java
+=======
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\Quiz.java
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\QuizController.java
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\QuizBuilderEJB.java
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\QuestionController.java
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\LoginEJB.java
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\UserEJB.java
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\User_Obj.java
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\FieldElement.java
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\UploadController.java
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\Question.java
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\SubjectType.java
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\Tag.java
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\QuizGenerationController.java
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\UserController.java
+C:\Users\nathanaston\Dropbox\Houghton\GitHub\QuizBuilder\QuizBuilderProject\src\main\java\com\nate_tim_dane_company\quizbuilderproject\LoginController.java
+>>>>>>> aae5ee45ee9bfed48057dbd2e5504c240c2d8b3a
