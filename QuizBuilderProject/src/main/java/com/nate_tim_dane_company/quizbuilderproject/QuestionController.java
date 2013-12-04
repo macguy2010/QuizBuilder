@@ -96,6 +96,12 @@ public class QuestionController implements Serializable
     public void setQuestion(Question u) {
         question = u;
     }
+    
+    public List<Question> getQuestionList(Long id) {
+        if(questionList == null)
+            questionList = ejb.findQuestions(id);
+        return questionList;
+    }
 
     public List<Question> getQuestionList() {
         if(questionList == null)

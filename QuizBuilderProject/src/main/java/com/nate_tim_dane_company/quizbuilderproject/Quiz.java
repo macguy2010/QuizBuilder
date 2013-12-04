@@ -9,7 +9,11 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
-@NamedQuery(name = "findAllQuizzes", query = "SELECT q FROM Quiz q")
+@NamedQueries({
+@NamedQuery(name = "findAllQuizzes", query = "SELECT q FROM Quiz q"),
+@NamedQuery(name = "findAllQuizzesById", query = "SELECT q FROM Quiz q where q.id = :ID"),
+})
+
 public class Quiz implements Serializable {
     
     // variables

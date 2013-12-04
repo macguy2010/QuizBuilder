@@ -25,7 +25,7 @@ public class UserEJB {
      
      public boolean exists(User_Obj u)
      {
-         Query q = em.createQuery("SELECT u FROM User_Obj u where u.username = '"+u.getUsername()+"'");
+         Query q = em.createQuery("SELECT u FROM User_Obj u where u.username = '"+u.getUsername()+"' or u.email = '"+u.getEmail()+"'");
          if(q.getResultList().isEmpty())
              return false;
          return true;
@@ -46,6 +46,17 @@ public class UserEJB {
          user.setPassword(u.getPassword());
          user.setEmail(u.getEmail());
      }
+     
+     public List<User_Obj> findUsers(Long id) {
+        // TODO not implemented with eclipselink 2.0 TypedQuery query = em.createNamedQuery("findAllBooks", Book.class);
+         if(findUser(id).getAdmin())
+         {
+            TypedQuery<User_Obj> query = em.createNamedQuery("findAllUsers", User_Obj.class);
+            return query.getResultList();
+         }
+         else
+             return null;
+    }
     
     public List<User_Obj> findUsers() {
         // TODO not implemented with eclipselink 2.0 TypedQuery query = em.createNamedQuery("findAllBooks", Book.class);

@@ -80,6 +80,12 @@ public class QuizController
     public void setQuiz(Quiz u) {
         quiz = u;
     }
+    
+    public List<Quiz> getQuizList(Long id) {
+        if(quizList == null)
+            quizList = ejb.findQuizzes(id);
+        return quizList;
+    }
 
     public List<Quiz> getQuizList() {
         if(quizList == null)

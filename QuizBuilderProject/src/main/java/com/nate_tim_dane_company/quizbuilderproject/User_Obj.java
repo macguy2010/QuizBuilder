@@ -25,6 +25,8 @@ public class User_Obj implements Serializable {
     private String password;
     private String email;
     
+    private boolean admin = false;
+    
     @OneToMany
     @JoinTable(name="User_Questions", joinColumns={@JoinColumn(name="User_ID")}, inverseJoinColumns={@JoinColumn(name="Question_ID")})
     private List<Question> questions = new ArrayList<Question>();
@@ -109,5 +111,15 @@ public class User_Obj implements Serializable {
     public List<Quiz> getQuizzes()
     {
         return quizzes;
+    }
+    
+    public void setAdmin(boolean a)
+    {
+        admin = a;
+    }
+    
+    public boolean getAdmin()
+    {
+        return admin;
     }
 }

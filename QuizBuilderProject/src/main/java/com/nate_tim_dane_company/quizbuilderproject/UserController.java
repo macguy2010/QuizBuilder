@@ -73,6 +73,12 @@ public class UserController
     {
         return searchStr;
     }
+    
+    public List<User_Obj> getUsersList(Long id) {
+        if(usersList == null)
+            usersList = ejb.findUsers(id);
+        return usersList;
+    }
 
     public List<User_Obj> getUsersList() {
         if(usersList == null)

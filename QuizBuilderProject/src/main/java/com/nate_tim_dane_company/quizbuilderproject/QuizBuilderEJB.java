@@ -107,6 +107,12 @@ public class QuizBuilderEJB {
              quiz.addQuestion(q.getQuestions().get(i));
      }
 
+     public List<Question> findQuestions(Long id) {
+        // TODO not implemented with eclipselink 2.0 TypedQuery query = em.createNamedQuery("findAllBooks", Book.class);
+        TypedQuery<Question> query = em.createNamedQuery("findAllQuestionsById", Question.class).setParameter("ID", id);
+        return query.getResultList();
+    }
+     
     public List<Question> findQuestions() {
         // TODO not implemented with eclipselink 2.0 TypedQuery query = em.createNamedQuery("findAllBooks", Book.class);
         TypedQuery<Question> query = em.createNamedQuery("findAllQuestions", Question.class);
@@ -123,6 +129,12 @@ public class QuizBuilderEJB {
     {
         em.persist(q);
         return q;
+    }
+    
+    public List<Quiz> findQuizzes(Long id) {
+        // TODO not implemented with eclipselink 2.0 TypedQuery query = em.createNamedQuery("findAllBooks", Book.class);
+        TypedQuery<Quiz> query = em.createNamedQuery("findAllQuizzesById", Quiz.class).setParameter("ID", id);
+        return query.getResultList();
     }
 
     public List<Quiz> findQuizzes() {
