@@ -42,13 +42,13 @@ h1{
     border-radius: 15px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 80px;
-    width: 30em;
+    margin-top: 60px;
+    width: 40%;
     
     background-color: #22262a;
     box-shadow: 0px 2px 3px #5e5e5e;
     
-    //text-align: center;
+    text-align: center;
     font: 14px Tahoma, Helvetica, Arial, Sans-serif;    
     color: #bcbdbd;
     text-shadow: 0px 1px 2px #000000;
@@ -58,17 +58,17 @@ h1{
     font: 14px Tahoma, Helvetica, Arial, Sans-serif;
     color: #bcbdbd;
     text-shadow: 0px 2px 3px #000000;
-        
+            
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -moz-border-radius: 5px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 5px;
-    margin-left: 20%;
-    margin-right: auto;
+    margin-left: 10px;
+    margin-right: 10px;
     margin-top: auto;
     margin-bottom: auto;
         
@@ -82,11 +82,6 @@ label{
     text-shadow: 0px 2px 3px #000000;
     margin-left: 3em;
     margin-right: 2em;
-}
-
-selectManyCheckbox{
-    text-align: center;
-    color: yellow;
 }
 
 #formButton{   
