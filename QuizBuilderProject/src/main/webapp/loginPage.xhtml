@@ -18,11 +18,19 @@
     <h1>Login</h1>
     <h:form>
        <h:panelGrid  columns="2">
+<<<<<<< HEAD
         <h:outputLabel  value="Username: "/>
         <h:inputText value="#{loginController.user.username}" />
 
         <h:outputLabel value="Password: "/>
         <h:inputSecret value="#{loginController.user.password}" />
+=======
+        <h:outputLabel  value="Username"/>
+        <h:inputText value="#{loginController.inputUsername}" />
+
+        <h:outputLabel value="Password"/>
+        <h:inputSecret value="#{loginController.inputPassword}" />
+>>>>>>> d4c57134a4863236ac2e5d2d7907eb38a30fd26c
        </h:panelGrid>
         <div id="formButton">
 	<h:commandButton value="Login" action="#{loginController.verifyUser}" />

@@ -15,14 +15,14 @@ import java.util.*;
  * To change this template use File | Settings | File Templates.
  */
 
-@Stateless
+@Stateful
 public class LoginEJB {
     @PersistenceContext(unitName = "QuizBuilderDB")
     private EntityManager em;
 
-    public List<User_Obj> verifyUser(String username, String password){
-        Query query = em.createQuery("SELECT s FROM User_Obj s WHERE s.username='"+username+"' AND s.password='"+password+"'");
+    public List<User_Obj> verifyUser(String username){
+        Query query = em.createQuery("SELECT s FROM User_Obj s WHERE s.username='"+username+"'");
 
-        return query.getResultList();
+        return query.getSingleResult();
     }
 }
