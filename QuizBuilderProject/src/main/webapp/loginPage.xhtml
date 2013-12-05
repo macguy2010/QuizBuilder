@@ -16,10 +16,10 @@
     <h:form>
        <h:panelGrid  columns="2">
         <h:outputLabel  value="Username"/>
-        <h:inputText value="#{loginController.user.username}" />
+        <h:inputText value="#{loginController.inputUsername}" />
 
         <h:outputLabel value="Password"/>
-        <h:inputSecret value="#{loginController.user.password}" />
+        <h:inputSecret value="#{loginController.inputPassword}" />
        </h:panelGrid>
         <div id="formButton">
 	<h:commandButton value="Login" action="#{loginController.verifyUser}" />
