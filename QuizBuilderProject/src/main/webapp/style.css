@@ -8,16 +8,10 @@ body{
         background: #474747 url(bg1.png);
 }
 
-#logout{
-    float: right;
-    display: inline;
-    width: 5em;
-}
-
 #titleBar{
     text-align: center;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 13%;
+    margin-right: auto;
     font: 75px Tahoma, Helvetica, Arial, Sans-serif; 
     //text-spacing: no-compress;
     color: #bcbdbd;
@@ -77,6 +71,7 @@ h1{
 }
 
 form{
+    position: relative;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -moz-border-radius: 25px;
@@ -98,20 +93,15 @@ form{
     color: #bcbdbd;
     text-shadow: 0px 1px 2px #000000;
 }
-
-input{
-    width: 13em;
-    display:block;
-    height: 25px;
-}
-
-textArea{
-    width: 13em;
-    display:block;
-    height: 25px;
-}
+/*
+textarea:focus, input:focus {
+border: 1px solid #000000;
+}*/
 
 label{
+    position: relative;
+    width: 10em;
+    text-align: right;
     font: 16px Tahoma, Helvetica, Arial, Sans-serif;    
     color: #bcbdbd;
     text-shadow: 0px 2px 3px #000000;
@@ -120,22 +110,26 @@ label{
     float: right;
 }
 
-button{
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -moz-border-radius: 5px;
-    padding-left: 2px;
-    padding-right: 2px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    border-radius: 5px;
-    margin-left: 38%;
-    margin-right: 38%;
-    margin-top: 2em;
-    text-align: center;
+input{
+    position: relative;
+    width: 15em;
+    display:block;
+    height: 25px;
 }
 
-#formButton{   
+textArea{
+    width: 15em;
+    display:block;
+    height: 25px;
+}
+
+form.button {
+    width: 9em;
+    background: transparent;
+    border: transparent;
+    font: 14px Tahoma, Helvetica, Arial, Sans-serif;
+    color: #bcbdbd;
+    text-shadow: 0px 2px 3px #000000;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -moz-border-radius: 5px;
@@ -155,9 +149,26 @@ button{
 }
 
 #formButton input{
+    width: 9em;
     background: transparent;
     border: transparent;
     font: 14px Tahoma, Helvetica, Arial, Sans-serif;
     color: #bcbdbd;
     text-shadow: 0px 2px 3px #000000;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -moz-border-radius: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 5px;
+    margin-left: 38%;
+    margin-right: 38%;
+    margin-top: 2em;
+    text-align: center;
+   // margin-bottom: auto;
+        
+    background-color: #12171c;
+    box-shadow: 2px 3px 3px #000000;
 }

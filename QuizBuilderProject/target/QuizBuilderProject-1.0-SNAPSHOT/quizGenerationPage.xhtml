@@ -4,14 +4,15 @@
     <h:head>
         <title>Quiz Generation</title>
         <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
-    <div id="logout">  
-            <input id="btnLogOut" type="button" value="Log Out" />
-        </div>
+    </h:head>
+    <h:body>
+        <div id="formButton" style="float: right; margin-right: 5em; width: 6em;">  
+                <input id="btnLogOut" type="button" value="Log Out" />
+            </div>
         <div id="titleBar">
             Quiz Builder
         </div>
-    </h:head>
-    <h:body>
+        
         <h1>Generate Quiz</h1>
         
             <h:form>
@@ -24,9 +25,9 @@
                 </h:column>
 
                 <h:column>
-                    
+                    <div id="boxLink">
                         <h:commandLink value="Remove" action="#{quizGenerationController.doButtonRemoveFieldClick(element.type)}"/>
-                    
+                    </div>
                 </h:column>
             </h:dataTable>
             
@@ -34,9 +35,11 @@
                 <h:selectOneMenu id="addField" value="#{quizGenerationController.newSubject}">
                     <f:selectItems value="#{quizGenerationController.subjectTypeValues}" />
                 </h:selectOneMenu>
+                <div id="formButton">
                 <h:commandButton value="Add" action="#{quizGenerationController.doButtonAddFieldClick}">
                     <f:ajax execute="@form" render="subjectFields addField"/>
                 </h:commandButton>
+                </div>
                 <br/>
                 <div id="formButton">
             <h:commandButton value="Generate Quiz" action="#{quizGenerationController.toQuizPage}"/>

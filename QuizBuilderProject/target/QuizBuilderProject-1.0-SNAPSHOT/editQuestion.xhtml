@@ -4,14 +4,16 @@
 <h:head>
     <title>Edit Question</title>
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
-    <div id="logout">  
-            <input id="btnLogOut" type="button" value="Log Out" />
-        </div>
-        <div id="titleBar">
-            Quiz Builder
-        </div>
 </h:head>
 <h:body>
+    <div id="formButton" style="float: right; margin-right: 5em; width: 6em;">  
+        <input id="btnLogOut" type="button" value="Log Out" />
+    </div>
+    
+    <div id="titleBar">
+        Quiz Builder
+    </div>
+    
     <h1>Edit Question</h1>
     
     <h:form>
@@ -43,21 +45,24 @@
             <h:inputHidden value="#{questionController.question.id}"/>  
             
             <h:form>
-            <h:outputLabel style="float:left; margin-left:-2.8em" value="Tags: "/>
+            <h:outputLabel style="float: left; margin-left: -10em" value="Tags:  "/>
             <h:dataTable id="tagFields" value="#{questionController.tagFields}" var="tag">
                 <h:column>
                     <h:inputText value="#{tag.value}"/>
                 </h:column>
 
                 <h:column>
+                    <div id="boxLink">
                     <h:commandLink value="Remove" action="#{questionController.doRemoveTag(tag.value)}"/>
+                    </div>
                 </h:column>
                 
             </h:dataTable>
-            
-                <h:commandButton style="center" value="Add Tag" action="#{questionController.doAddTagField}">
+            <div id="formButton">
+                <h:commandButton style="position: relative; left: -65px; top: -8px;" value="Add Tag" action="#{questionController.doAddTagField}">
                         <f:ajax execute="@form" render="tagFields"/>
                 </h:commandButton>
+            </div>
             
             </h:form>
             

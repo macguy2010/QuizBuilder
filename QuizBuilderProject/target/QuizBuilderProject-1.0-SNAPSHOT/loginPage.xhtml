@@ -4,21 +4,24 @@
 <h:head>
     <title>Login Form</title>
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
-    <div id="logout">  
-        <input id="btnLogOut" type="button" value="Log Out" />
-     </div>
-     <div id="titleBar">
-        Quiz Builder
-     </div>
 </h:head>
-<h:body>    
+    
+<h:body>
+    <div id="formButton" style="float: right; margin-right: 5em; width: 6em;">  
+        <input id="btnLogOut" type="button" value="Log Out" />
+    </div>
+    
+    <div id="titleBar">
+        Quiz Builder
+    </div>
+    
     <h1>Login</h1>
     <h:form>
        <h:panelGrid  columns="2">
-        <h:outputLabel  value="Username"/>
+        <h:outputLabel  value="Username: "/>
         <h:inputText value="#{loginController.user.username}" />
 
-        <h:outputLabel value="Password"/>
+        <h:outputLabel value="Password: "/>
         <h:inputSecret value="#{loginController.user.password}" />
        </h:panelGrid>
         <div id="formButton">
