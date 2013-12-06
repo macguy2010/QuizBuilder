@@ -54,6 +54,14 @@ public class LoginController {
         }
     }
 
+    public String logout(){
+        FacesContext ctx = FacesContext.getCurrentInstance();
+        authenticated = false;
+        id = -1;
+        ctx.addMessage("logout",new FacesMessage(FacesMessage.SEVERITY_INFO,"You have been successfully logged out","You have been successfully logged out"));
+        return "home.xhtml";
+    }
+
     public void setInputUsername(String inputUsername){
         this.inputUsername = inputUsername;
     }
