@@ -9,16 +9,22 @@
 <h:body>
     <div id="navButtons">  
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/home.faces">HOME</a>
-            <input id="btnLogOut" type="button" value="Log Out" />
-            <input id="btnLogOut" type="button" value="Log Out" />
-            <input id="btnLogOut" type="button" value="Log Out" />
-    </div>
-    
-    <div id="titleBar">
-        Quiz Builder
-    </div>
+            <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/questionsList.faces">MY QUESTIONS</a>
+            <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">MY QUIZZES</a>
+            <div id="logoutButton">
+            <h:form>
+                <h:commandButton id="btnLogOut" value="LOGOUT" action="#{loginController.logout}"/>
+            </h:form>
+            </div>
+           
+         </div>
+         
+        <div id="quizBuilder">
+            Quiz Builder
+        </div> 
     
     <h1>Login</h1>
+    <div id="box">
     <h:form>
        <h:panelGrid  columns="2">
 
@@ -33,5 +39,6 @@
 	<h:commandButton value="Login" action="#{loginController.verifyUser}" />
         </div>
     </h:form>
+    </div>
 </h:body>
 </html>
