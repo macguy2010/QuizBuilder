@@ -1,5 +1,7 @@
 package com.nate_tim_dane_company.quizbuilderproject;
 
+import com.sun.xml.internal.ws.developer.Stateful;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.servlet.ServletException;
@@ -20,6 +22,7 @@ import javax.faces.bean.SessionScoped;
  */
 //@WebServlet(name="loginController")
 @ManagedBean(name="loginController")
+@Stateful
 @SessionScoped
 public class LoginController {
 
