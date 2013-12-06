@@ -6,6 +6,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.*;
+import javax.ejb.Stateful;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,6 +24,6 @@ public class LoginEJB {
     public List<User_Obj> verifyUser(String username){
         Query query = em.createQuery("SELECT s FROM User_Obj s WHERE s.username='"+username+"'");
 
-        return query.getSingleResult();
+        return query.getResultList();
     }
 }
