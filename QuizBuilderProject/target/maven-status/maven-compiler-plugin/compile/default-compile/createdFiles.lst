@@ -1,5 +1,6 @@
 com\nate_tim_dane_company\quizbuilderproject\QuizController.class
 com\nate_tim_dane_company\quizbuilderproject\Question.class
+PasswordHash.class
 com\nate_tim_dane_company\quizbuilderproject\FieldElement.class
 com\nate_tim_dane_company\quizbuilderproject\UserEJB.class
 com\nate_tim_dane_company\quizbuilderproject\Tag.class
