@@ -30,6 +30,11 @@ public class QuestionController implements Serializable
     private Part file;
     private String fileContent;
     
+    public String doCreateQuestion(Long id) {
+        
+        return "questionsList.xhtml";
+    }
+    
     public String doCreateQuestion() {
         List<String> tags = new ArrayList<String>();
         for(int i = 0; i < tagFields.size(); i++)

@@ -1,6 +1,5 @@
 package com.nate_tim_dane_company.quizbuilderproject;
 
-import com.sun.xml.internal.ws.developer.Stateful;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -11,6 +10,7 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
+import javax.ejb.Stateful;
 import javax.faces.bean.SessionScoped;
 
 /**
@@ -81,7 +81,7 @@ public class LoginController {
        return inputPassword;
     }
 
-    public long getUserId(){
+    public long getId(){
         return id;
     }
 

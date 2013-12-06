@@ -29,7 +29,7 @@
             </h:selectManyCheckbox>
         </h:panelGrid>
         <div id="formButton">
-        <h:commandButton value="Create Quiz" action="#{quizController.doCreateQuiz}"/>
+        <h:commandButton value="Create Quiz" action="#{quizController.doCreateQuiz(loginController.id)}"/>
         </div>
     </h:form>
     </div>
