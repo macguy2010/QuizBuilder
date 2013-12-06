@@ -1,0 +1,6 @@
+drop table Quiz_Questions;
+drop table Grade;
+drop table Quiz;
+drop table Tag;
+drop table Question;
+drop table User_Obj;

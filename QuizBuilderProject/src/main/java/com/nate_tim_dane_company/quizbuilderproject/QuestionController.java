@@ -25,6 +25,7 @@ public class QuestionController implements Serializable
     private String searchStr = new String();
     private Question question = new Question();
     private List<Question> questionList = null;
+    private Long correspondingId = -100l;
     private List<Tag> tagFields = null;
     private String currentPage;
     private Part file;
@@ -103,8 +104,9 @@ public class QuestionController implements Serializable
     }
     
     public List<Question> getQuestionList(Long id) {
-        if(questionList == null)
+        if(questionList == null || correspondingId != id)
             questionList = ejb.findQuestions(id);
+        correspondingId = id;
         return questionList;
     }
 

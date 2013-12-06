@@ -17,6 +17,7 @@ public class QuizController
     private String searchStr = new String();
     private Quiz quiz = new Quiz();
     private List<Quiz> quizList = null;
+    private Long correspondingId = -100l;
     
     public String doCreateQuiz(Long id) {
         quiz.setUserId(id);
@@ -87,8 +88,9 @@ public class QuizController
     }
     
     public List<Quiz> getQuizList(Long id) {
-        if(quizList == null)
+        if(quizList == null || correspondingId != id)
             quizList = ejb.findQuizzes(id);
+        correspondingId = id;
         return quizList;
     }
 
