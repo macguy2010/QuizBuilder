@@ -16,7 +16,7 @@ import javax.ejb.Stateful;
  * To change this template use File | Settings | File Templates.
  */
 
-@Stateful
+@Stateless
 public class LoginEJB {
     @PersistenceContext(unitName = "QuizBuilderDB")
     private EntityManager em;

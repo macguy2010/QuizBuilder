@@ -36,11 +36,12 @@ public class LoginController {
         FacesContext ctx = FacesContext.getCurrentInstance();
         List<User_Obj> userList = ejb.verifyUser(inputUsername);
         if(!userList.isEmpty()){
+            user = userList.get(0);
             if(user.getPassword().equals(inputPassword)){
                 //user is then verified
                 authenticated = true;
                 id = user.getId();
-                return "Home.xhtml";
+                return "home.xhtml";
             }
             else{
                 ctx.addMessage("incorrect", new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username or Password", "Incorrect Username or Password"));
@@ -51,6 +52,11 @@ public class LoginController {
             ctx.addMessage("incorrect", new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username or Password", "Incorrect Username or Password"));
             return "loginPage.xhtml";
         }
+    }
+
+
+    public long getId(){
+        return id;
     }
 
    public User_Obj getUser(){
