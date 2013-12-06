@@ -55,7 +55,7 @@ public class UserEJB {
             return query.getResultList();
          }
          else
-             return null;
+             return new ArrayList<User_Obj>();
     }
     
     public List<User_Obj> findUsers() {

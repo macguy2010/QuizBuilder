@@ -26,14 +26,6 @@ public class User_Obj implements Serializable {
     private String email;
     
     private boolean admin = false;
-    
-    @OneToMany
-    @JoinTable(name="User_Questions", joinColumns={@JoinColumn(name="User_ID")}, inverseJoinColumns={@JoinColumn(name="Question_ID")})
-    private List<Question> questions = new ArrayList<Question>();
-    
-    @OneToMany
-    @JoinTable(name="User_Quizzes", joinColumns={@JoinColumn(name="User_ID")}, inverseJoinColumns={@JoinColumn(name="Quiz_ID")})
-    private List<Quiz> quizzes = new ArrayList<Quiz>();
 
     public Long getId() {
         return id;
@@ -93,26 +85,6 @@ public class User_Obj implements Serializable {
         return email;
     }
     
-    public void setQuestions(ArrayList<Question> q)
-    {
-        questions = q;
-    }
-    
-    public List<Question> getQuestions()
-    {
-        return questions;
-    }
-    
-    public void setQuizzes(ArrayList<Quiz> q)
-    {
-        quizzes = q;
-    }
-    
-    public List<Quiz> getQuizzes()
-    {
-        return quizzes;
-    }
-    
     public void setAdmin(boolean a)
     {
         admin = a;
@@ -121,15 +93,5 @@ public class User_Obj implements Serializable {
     public boolean getAdmin()
     {
         return admin;
-    }
-    
-    public void addQuestion(Question q)
-    {
-        questions.add(q);
-    }
-    
-    public void addQuiz(Quiz q)
-    {
-        quizzes.add(q);
     }
 }

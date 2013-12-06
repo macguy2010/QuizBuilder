@@ -1,5 +1,6 @@
 package com.nate_tim_dane_company.quizbuilderproject;
 
+import java.util.ArrayList;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -75,6 +76,8 @@ public class UserController
     }
     
     public List<User_Obj> getUsersList(Long id) {
+        if(id < 0)
+            return new ArrayList<User_Obj>();
         if(usersList == null)
             usersList = ejb.findUsers(id);
         return usersList;
