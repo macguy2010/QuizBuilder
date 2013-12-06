@@ -16,6 +16,7 @@ public class UserController
     private UserEJB ejb;
     private String searchStr = new String();
     private List<User_Obj> usersList = null;
+    private Long correspondingId = -100l;
     private User_Obj user = new User_Obj();
     private String passwordVerify;
     
@@ -77,10 +78,11 @@ public class UserController
     }
     
     public List<User_Obj> getUsersList(Long id) {
-        if(id < 0)
-            return new ArrayList<User_Obj>();
-        if(usersList == null)
+        if(!ejb.findUser(id).getAdmin())
+            usersList = new ArrayList<User_Obj>();
+        else
             usersList = ejb.findUsers(id);
+        correspondingId = id;
         return usersList;
     }
 

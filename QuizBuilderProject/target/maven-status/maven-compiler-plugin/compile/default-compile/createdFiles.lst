@@ -4,9 +4,11 @@ PasswordHash.class
 com\nate_tim_dane_company\quizbuilderproject\FieldElement.class
 com\nate_tim_dane_company\quizbuilderproject\UserEJB.class
 com\nate_tim_dane_company\quizbuilderproject\Tag.class
+com\nate_tim_dane_company\quizbuilderproject\LoginController.class
 com\nate_tim_dane_company\quizbuilderproject\UploadController.class
 com\nate_tim_dane_company\quizbuilderproject\QuestionController.class
 com\nate_tim_dane_company\quizbuilderproject\UserController.class
+com\nate_tim_dane_company\quizbuilderproject\LoginEJB.class
 com\nate_tim_dane_company\quizbuilderproject\User_Obj.class
 com\nate_tim_dane_company\quizbuilderproject\SubjectType.class
 com\nate_tim_dane_company\quizbuilderproject\Quiz.class
