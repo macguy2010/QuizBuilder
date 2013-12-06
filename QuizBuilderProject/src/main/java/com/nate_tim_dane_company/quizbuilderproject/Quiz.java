@@ -33,6 +33,8 @@ public class Quiz implements Serializable {
     @Column(name = "Value")
     private List<Double> grades = new ArrayList<Double>();
     
+    private Long userId = -1l;
+    
     // methods
     public List<Question> getQuestions()
     {
@@ -95,5 +97,15 @@ public class Quiz implements Serializable {
     public Boolean getIsTemporary()
     {
         return isTemporary;
+    }
+    
+    public void setUserId(Long l)
+    {
+        userId = l;
+    }
+    
+    public Long getUserId()
+    {
+        return userId;
     }
 }

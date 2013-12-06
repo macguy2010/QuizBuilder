@@ -109,9 +109,9 @@ public class QuizBuilderEJB {
 
      public List<Question> findQuestions(Long id) {
         // TODO not implemented with eclipselink 2.0 TypedQuery query = em.createNamedQuery("findAllBooks", Book.class);
-        User_Obj user = em.find(User_Obj.class, id);
-       
-        return user.getQuestions();
+        
+        TypedQuery<Question> query = em.createNamedQuery("findAllQuestionsById", Question.class).setParameter("ID", id);
+        return query.getResultList();
     }
      
     public List<Question> findQuestions() {
@@ -134,9 +134,8 @@ public class QuizBuilderEJB {
     
     public List<Quiz> findQuizzes(Long id) {
         // TODO not implemented with eclipselink 2.0 TypedQuery query = em.createNamedQuery("findAllBooks", Book.class);
-        User_Obj user = em.find(User_Obj.class, id);
-       
-        return user.getQuizzes();
+        TypedQuery<Quiz> query = em.createNamedQuery("findAllQuizzesById", Quiz.class).setParameter("ID", id);
+        return query.getResultList();
     }
 
     public List<Quiz> findQuizzes() {

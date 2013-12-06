@@ -13,11 +13,7 @@ import javax.persistence.*;
  * @author nathanaston
  */
 @Entity
-@NamedQueries({
-@NamedQuery(name = "findAllUsersById", query = "SELECT u FROM User_Obj u where u.id = :ID"),
 @NamedQuery(name = "findAllUsers", query = "SELECT u FROM User_Obj u")
-})
-
 public class User_Obj implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -125,5 +121,15 @@ public class User_Obj implements Serializable {
     public boolean getAdmin()
     {
         return admin;
+    }
+    
+    public void addQuestion(Question q)
+    {
+        questions.add(q);
+    }
+    
+    public void addQuiz(Quiz q)
+    {
+        quizzes.add(q);
     }
 }

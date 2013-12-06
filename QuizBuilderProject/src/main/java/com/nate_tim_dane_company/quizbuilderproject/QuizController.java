@@ -18,6 +18,11 @@ public class QuizController
     private Quiz quiz = new Quiz();
     private List<Quiz> quizList = null;
     
+    public String doCreateQuiz(Long id) {
+        quiz.setUserId(id);
+        return doCreateQuiz();
+    }
+    
     public String doCreateQuiz() {
         for(int i = 0; i < questionsSelectionList.length; i++)
         {

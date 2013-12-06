@@ -31,8 +31,8 @@ public class QuestionController implements Serializable
     private String fileContent;
     
     public String doCreateQuestion(Long id) {
-        
-        return "questionsList.xhtml";
+        question.setUserId(id);
+        return doCreateQuestion();
     }
     
     public String doCreateQuestion() {

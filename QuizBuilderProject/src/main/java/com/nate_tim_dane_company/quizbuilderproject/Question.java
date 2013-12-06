@@ -34,6 +34,8 @@ public class Question implements Serializable{
     @Column(name = "Value")
     private List<String> tags = new ArrayList<String>();
     
+    private Long userId = -1l;
+    
     // methods
     public Long getId() {
         return id;
@@ -108,5 +110,15 @@ public class Question implements Serializable{
                 s += ", ";
         }
         return s;
+    }
+    
+    public void setUserId(Long l)
+    {
+        userId = l;
+    }
+    
+    public Long getUserId()
+    {
+        return userId;
     }
 }
