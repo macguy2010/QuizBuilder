@@ -33,9 +33,12 @@ body{
 }
 
 #logoutButton{
-    display: inline;
+    display: box;
     float: right;
-    
+    //padding-top: 8px;
+    //padding-bottom: 8px;
+    //padding-left: 5px;
+    //padding-right: 5px;
 }
 
 h1{
