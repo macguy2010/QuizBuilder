@@ -1,3 +1,4 @@
+connect 'jdbc:derby://localhost:1527/QuizBuilderDB';
 delete from Quiz_Questions;
 delete from User_Obj;
 delete from Question;

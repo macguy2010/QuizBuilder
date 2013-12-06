@@ -1,3 +1,4 @@
+connect 'jdbc:derby://localhost:1527/QuizBuilderDB';
 drop table Quiz_Questions;
 drop table Grade;
 drop table Quiz;
