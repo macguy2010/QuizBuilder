@@ -54,8 +54,7 @@ public class LoginController {
         }
     }
 
-
-    public long getId(){
+    public long getUserId(){
         return id;
     }
 
