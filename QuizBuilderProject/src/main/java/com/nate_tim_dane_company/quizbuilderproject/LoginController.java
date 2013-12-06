@@ -32,7 +32,7 @@ public class LoginController {
     boolean authenticated = false;
     long id = -1;
 
-    public String verifyUser(String inputUsername, String inputPassword){
+    public String verifyUser(){
         FacesContext ctx = FacesContext.getCurrentInstance();
         List<User_Obj> userList = ejb.verifyUser(inputUsername);
         if(!userList.isEmpty()){
@@ -60,6 +60,14 @@ public class LoginController {
 
     public void setInputPassword(String inputPassword){
         this.inputPassword = inputPassword;
+    }
+    
+    public String getInputUsername(){
+        return inputUsername;
+    }
+
+    public String getInputPassword(){
+       return inputPassword;
     }
 
     public long getUserId(){
