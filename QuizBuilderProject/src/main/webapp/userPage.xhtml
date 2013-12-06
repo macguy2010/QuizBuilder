@@ -23,7 +23,7 @@
         </h:form>
         
 <!--        <h:dataTable id="usersList" value="#{userController.usersList}" var="u" border="1">  -->
-        <h:dataTable id="usersList" value="#{userController.usersList}" var="u" border="1">
+        <h:dataTable id="usersList" value="#{userController.getUsersList(loginController.id)}" var="u" border="1">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="First Name"/>

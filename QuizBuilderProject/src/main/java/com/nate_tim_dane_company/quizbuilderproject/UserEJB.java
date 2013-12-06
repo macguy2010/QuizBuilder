@@ -51,7 +51,7 @@ public class UserEJB {
         // TODO not implemented with eclipselink 2.0 TypedQuery query = em.createNamedQuery("findAllBooks", Book.class);
          if(findUser(id).getAdmin())
          {
-            TypedQuery<User_Obj> query = em.createNamedQuery("findAllUsers", User_Obj.class);
+            TypedQuery<User_Obj> query = em.createNamedQuery("findAllUsersById", User_Obj.class).setParameter("ID", id);
             return query.getResultList();
          }
          else
