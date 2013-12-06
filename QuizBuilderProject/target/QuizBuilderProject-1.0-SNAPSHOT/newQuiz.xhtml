@@ -34,7 +34,7 @@
         <h:panelGrid columns="1" border="1">
             <h:outputLabel value="Select Questions: "/>
             <h:selectManyCheckbox value="#{quizController.questionsSelectionList}" layout="pageDirection">
-   		<f:selectItems value="#{quizController.questionsCheckList}" var="q"
+   		<f:selectItems value="#{quizController.getQuestionsCheckList(loginController.id)}" var="q"
                                itemLabel="#{q.question}" itemValue="#{q.id}" />
             </h:selectManyCheckbox>
         </h:panelGrid>

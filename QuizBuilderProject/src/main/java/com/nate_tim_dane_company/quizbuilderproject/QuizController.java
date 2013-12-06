@@ -109,9 +109,18 @@ public class QuizController
         questionsCheckList = q;
     }
     
+    public Question[] getQuestionsCheckList(Long id)
+    {
+        if (questionsCheckList == null)
+        {
+            Object[] q = ejb.findQuestions(id).toArray();
+            questionsCheckList = Arrays.copyOf(q, q.length, Question[].class);
+        }
+        return questionsCheckList;
+    }
+    
     public Question[] getQuestionsCheckList()
     {
-        
         if (questionsCheckList == null)
         {
             Object[] q = ejb.findQuestions().toArray();

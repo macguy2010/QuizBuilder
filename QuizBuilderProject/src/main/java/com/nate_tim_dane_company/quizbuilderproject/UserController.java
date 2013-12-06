@@ -78,7 +78,12 @@ public class UserController
     }
     
     public List<User_Obj> getUsersList(Long id) {
-        if(!ejb.findUser(id).getAdmin())
+        User_Obj currentUser = null;
+        try{
+            currentUser = ejb.findUser(id);
+        }
+        catch(Exception e){}
+        if(currentUser == null || !currentUser.getAdmin())
             usersList = new ArrayList<User_Obj>();
         else
             usersList = ejb.findUsers(id);
