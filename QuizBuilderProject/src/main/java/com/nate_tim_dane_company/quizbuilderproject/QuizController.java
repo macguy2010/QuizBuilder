@@ -31,13 +31,13 @@ public class QuizController
             quiz.addQuestion(q);
         }
         quiz = ejb.createQuiz(quiz);
-        quizList = ejb.findQuizzes();
+        quizList = ejb.findQuizzes(correspondingId);
         return "quizList.xhtml";
     }
     
     public String doDeleteQuiz(Long id) {
         ejb.deleteQuiz(id);
-        quizList = ejb.findQuizzes();
+        quizList = ejb.findQuizzes(correspondingId);
         return "quizList.xhtml";
     }
     
@@ -58,14 +58,14 @@ public class QuizController
             quiz.addQuestion(q);
         }
         ejb.editQuiz(quiz);
-        quizList = ejb.findQuizzes();
+        quizList = ejb.findQuizzes(correspondingId);
         quiz = new Quiz();
         return "quizList.xhtml";
     }
     
     public String search()
     {
-        quizList = ejb.searchQuizzes(searchStr);
+        quizList = ejb.searchQuizzes(searchStr, correspondingId);
         return "quizList.xhtml";
     }
     

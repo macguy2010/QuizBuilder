@@ -44,7 +44,7 @@ public class QuestionController implements Serializable
         question.setTags(tags);
         question = ejb.createQuestion(question);
     //    long id = loginCookie.getValue();
-        questionList = ejb.findQuestions();
+        questionList = ejb.findQuestions(correspondingId);
         question = new Question();
         tagFields = null;
         return "questionsList.xhtml";
@@ -52,7 +52,7 @@ public class QuestionController implements Serializable
     
     public String doDeleteQuestion(Long id) {
         ejb.deleteQuestion(id);
-        questionList = ejb.findQuestions();
+        questionList = ejb.findQuestions(correspondingId);
         return "questionsList.xhtml";
     }
     
@@ -73,7 +73,7 @@ public class QuestionController implements Serializable
                 tags.add(tagFields.get(i).getValue());
         question.setTags(tags);
         ejb.editQuestion(question);
-        questionList = ejb.findQuestions();
+        questionList = ejb.findQuestions(correspondingId);
         question = new Question();
         tagFields = null;
         return "questionsList.xhtml";
@@ -81,7 +81,7 @@ public class QuestionController implements Serializable
     
     public String search()
     {
-        questionList = ejb.searchQuestions(searchStr);
+        questionList = ejb.searchQuestions(searchStr, correspondingId);
         return "questionsList.xhtml";
     }
     
@@ -176,7 +176,7 @@ public class QuestionController implements Serializable
         FacesContext cxt = FacesContext.getCurrentInstance();
         cxt.addMessage("Format_Error", new FacesMessage(FacesMessage.SEVERITY_WARN, "File not formatted correctly", "File not formatted correctly"));
     }
-    questionList = ejb.findQuestions();
+    questionList = ejb.findQuestions(correspondingId);
     return null;
   }
     

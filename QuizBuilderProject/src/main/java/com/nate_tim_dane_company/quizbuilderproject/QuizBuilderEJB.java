@@ -120,9 +120,9 @@ public class QuizBuilderEJB {
         return query.getResultList();
     }
     
-    public List<Question> searchQuestions(String str)
+    public List<Question> searchQuestions(String str, Long id)
     {
-        Query q = em.createQuery("SELECT q FROM Question q where q.question like '%"+str+"%' or q.answer like '%"+str+"%'");
+        Query q = em.createQuery("SELECT q FROM Question q where q.question like '%"+str+"%' or q.answer like '%"+str+"%' and q.userid = "+id);
         return q.getResultList();
     }
     
@@ -144,9 +144,9 @@ public class QuizBuilderEJB {
         return query.getResultList();
     }
     
-    public List<Quiz> searchQuizzes(String str)
+    public List<Quiz> searchQuizzes(String str, Long id)
     {
-        Query q = em.createQuery("SELECT u FROM Quiz q where q.title like '%"+str+"%'");
+        Query q = em.createQuery("SELECT q FROM Quiz q where q.title like '%"+str+"%' and q.userid = "+id);
         return q.getResultList();
     }
 }
