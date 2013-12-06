@@ -31,6 +31,12 @@
             <h:commandButton value="Search" action="#{questionController.search}">
                 <f:ajax execute="@form" render="questionList"/>
             </h:commandButton>
+            
+            <h:selectOneRadio onclick="#{questionController.changeFilter()}" value="#{questionController.filter}">
+                <f:selectItem itemValue="1" itemLabel="Mine" />
+                <f:selectItem itemValue="2" itemLabel="Public" />
+                <f:selectItem itemValue="3" itemLabel="All" />
+            </h:selectOneRadio>
 
 <!--         <h:dataTable id="questionList" value="#{questionController.questionList}" var="q" border="1">  -->  
         <h:dataTable id="questionList" value="#{questionController.getQuestionList(loginController.id)}" var="q" border="1">

@@ -30,6 +30,7 @@ public class QuestionController implements Serializable
     private String currentPage;
     private Part file;
     private String fileContent;
+    private Integer filter = 3;
     
     public String doCreateQuestion(Long id) {
         question.setUserId(id);
@@ -81,8 +82,7 @@ public class QuestionController implements Serializable
     
     public String search()
     {
-        questionList = ejb.searchQuestions(searchStr, correspondingId);
-        return "questionsList.xhtml";
+        return null;
     }
     
     public void setSearchStr(String str)
@@ -107,13 +107,47 @@ public class QuestionController implements Serializable
         if(questionList == null || correspondingId != id)
             questionList = ejb.findQuestions(id);
         correspondingId = id;
-        return questionList;
+        return getFilteredQuestions();
+    }
+    
+    public List<Question> getFilteredQuestions()
+    {
+        List<Question> returnList = new ArrayList<Question>();
+        for(int i = 0; i < questionList.size(); i++)
+        {
+            if(filter == 1)
+            {
+                if(questionList.get(i).getUserId() == correspondingId)
+                    returnList.add(questionList.get(i));
+            }
+            else if (filter == 2)
+            {
+                if(questionList.get(i).getUserId() < 0)
+                    returnList.add(questionList.get(i));
+            }
+            else
+                returnList.add(questionList.get(i));
+        }
+        
+        if(searchStr != null && !searchStr.trim().equals(""))
+        {
+            for(int i = 0; i < returnList.size(); i++)
+            {
+                if(!returnList.get(i).getQuestion().trim().contains(searchStr.trim()) && !returnList.get(i).getAnswer().trim().contains(searchStr.trim()))
+                {
+                    returnList.remove(i);
+                    i--;
+                }
+            }
+        }
+        
+        return returnList;
     }
 
     public List<Question> getQuestionList() {
         if(questionList == null)
             questionList = ejb.findQuestions();
-        return questionList;
+        return getFilteredQuestions();
     }
 
     public void setQuestionList(List<Question> qList) {
@@ -186,5 +220,20 @@ public class QuestionController implements Serializable
  
     public void setFile(Part file) {
       this.file = file;
+    }
+    
+    public Integer getFilter()
+    {
+        return filter;
+    }
+    
+    public void setFilter(Integer f)
+    {
+        filter = f;
+    }
+    
+    public String changeFilter()
+    {
+        return null;
     }
 }

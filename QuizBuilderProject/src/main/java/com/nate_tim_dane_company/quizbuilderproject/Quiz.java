@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
 @NamedQuery(name = "findAllQuizzes", query = "SELECT q FROM Quiz q"),
-@NamedQuery(name = "findAllQuizzesById", query = "SELECT q FROM Quiz q where q.userId = :ID"),
+@NamedQuery(name = "findAllQuizzesById", query = "SELECT q FROM Quiz q where q.userId = :ID or q.userId < 0"),
 })
 
 public class Quiz implements Serializable {
