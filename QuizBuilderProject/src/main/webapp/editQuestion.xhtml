@@ -24,7 +24,7 @@
         </div>
     
     <h1>Edit Question</h1>
-    
+    <div id="box">
     <h:form>
         <h:panelGrid columns="2" >
             <h:outputLabel value="Question: "/>
@@ -54,7 +54,7 @@
             <h:inputHidden value="#{questionController.question.id}"/>  
             
             <h:form>
-            <h:outputLabel style="float: left; margin-left: -10em" value="Tags:  "/>
+            <h:outputLabel value="Tags:  "/>
             <h:dataTable id="tagFields" value="#{questionController.tagFields}" var="tag">
                 <h:column>
                     <h:inputText value="#{tag.value}"/>
@@ -68,7 +68,7 @@
                 
             </h:dataTable>
             <div id="formButton">
-                <h:commandButton style="position: relative; left: -65px; top: -8px;" value="Add Tag" action="#{questionController.doAddTagField}">
+                <h:commandButton  value="Add Tag" action="#{questionController.doAddTagField}">
                         <f:ajax execute="@form" render="tagFields"/>
                 </h:commandButton>
             </div>
@@ -84,6 +84,7 @@
         
         
     </h:form>
+    </div>
     
 </h:body>
 </html>
