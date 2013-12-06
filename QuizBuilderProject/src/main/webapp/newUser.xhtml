@@ -4,9 +4,11 @@
 <h:head>
     <title>Creates a new User</title>
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
-    <div id="logout">
+    <div id="logoutButton">
+        <h:form>
             <h:commandButton value="Logout" action="#{loginController.logout}"/>
-            <input id="btnLogOut" type="button" value="Log Out" />
+           <!-- <input id="btnLogOut" type="button" value="Log Out" />  -->
+        </h:form>
         </div>
         <div id="titleBar">
             Quiz Builder
