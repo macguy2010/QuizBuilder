@@ -33,7 +33,7 @@ public class LoginController {
     private LoginEJB ejb = new LoginEJB();
     private User_Obj user = new User_Obj();
     boolean authenticated = false;
-    long id = -1;
+    Long id = -1l;
 
     public String verifyUser(){
         FacesContext ctx = FacesContext.getCurrentInstance();
@@ -60,7 +60,7 @@ public class LoginController {
     public String logout(){
         FacesContext ctx = FacesContext.getCurrentInstance();
         authenticated = false;
-        id = -1;
+        id = -1l;
         ctx.addMessage("logout",new FacesMessage(FacesMessage.SEVERITY_INFO,"You have been successfully logged out","You have been successfully logged out"));
         return "home.xhtml";
     }
@@ -81,7 +81,7 @@ public class LoginController {
        return inputPassword;
     }
 
-    public long getId(){
+    public Long getId(){
         return id;
     }
 
