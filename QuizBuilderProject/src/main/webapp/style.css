@@ -50,26 +50,10 @@ h1{
 
 .preForm{
     position: relative;
-    //box-sizing: border-box;
-    //-moz-box-sizing: border-box;
-    //-moz-border-radius: 25px;
-    //padding-left: 20px;
-    //padding-right: 20px;
-    //padding-top: 30px;
-    //padding-bottom: 20px;
-    //border-radius: 15px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 60px;
     width: 60em;
-    
-    //background-color: #22262a;
-    //box-shadow: 0px 2px 3px #5e5e5e;
-    
-    //text-align: center;
-    //font: 14px Tahoma, Helvetica, Arial, Sans-serif;    
-    //color: #bcbdbd;
-    //text-shadow: 0px 1px 2px #000000;
 }
 
 #grid{
@@ -149,16 +133,10 @@ table{
     margin-right: 38%;
     margin-top: 2em;
     text-align: center;
-   // margin-bottom: auto;
         
     background-color: #12171c;
     box-shadow: 2px 3px 3px #000000;
 }
-
-/*
-textarea:focus, input:focus {
-border: 1px solid #000000;
-}*/
 
 #box label{
     position: relative;
@@ -171,15 +149,6 @@ border: 1px solid #000000;
     margin-left: auto;
     margin-right: auto;
 }
-
-/*input{
-    display: block;
-    position: relative;
-    //text-align: center;
-    width: 15em;
-    
-    height: 25px;
-}*/
 
 textArea{
     width: 15em;
