@@ -6,9 +6,10 @@
         <meta name="viewport" content="width=device-width"/>
         <title>Home Page</title>
         <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
-        <style type="text\css">
+        <!--<style type="text\css">
             a.hidden {display:none;}
-        </style>
+            a.normal {display:block;}
+        </style> -->
     </h:head>        
         
     <h:body>        
@@ -22,12 +23,11 @@
                     var isAdmin= "#{userController.getAdmin(loginController.id)}";
                     var aClass="";
                     if(isAdmin == "true"){
-                        aClass = "hidden";
+                        document.getElementById("adminBoxLink").style.display=none;
                     }
                     else{
-                        aClass = "";
+                        document.getElementById("adminBoxLink").style.display=block;
                     }
-                    document.getElementById("adminBoxLink").className=aClass;
                 }
             </script>
 
