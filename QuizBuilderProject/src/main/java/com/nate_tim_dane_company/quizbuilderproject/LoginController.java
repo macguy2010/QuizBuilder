@@ -26,7 +26,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class LoginController {
 
-    private List<User_Obj> userList = null;
+    //private List<User_Obj> userList = null; This has been set in verifyUser().
     public String inputUsername;
     public String inputPassword;
     @EJB
@@ -98,8 +98,16 @@ public class LoginController {
    }
 
    public void setAuthenticated(boolean authenticated){
-       this.authenticated = authenticated;
+     this.authenticated = authenticated;
    }
+/***********
+ *
+ *   Not needed as authentication this is the only page that ever changes authentication status.
+ *
+ **********/
+   //public void setAuthenticated(boolean authenticated){
+   //  this.authenticated = authenticated;
+   //}
 
 
     //check against the database to make sure username exists, then that inputPassword == password
