@@ -14,28 +14,40 @@
     </h:head>        
         
     <h:body>
+
+        <script>
+
+            var auth = "#{loginController.getAuthenticated()}"
+
+            function getValue(){
+                if(auth == "true"){
+                    document.getElementById("btnLogOut").value="Logout";
+                }
+                else{
+                    document.getElementById("btnLogOut").value="Login";
+                }
+            }
+
+            function getAction(){
+                if(auth == "true"){
+                    document.getElementById("btnLogOut").action="#{loginController.logout}";
+                }
+                else{
+                    document.getElementById("btnLogOut").attachEvent("onclick",redirection);
+                }
+
+                function redirection(){
+                    window.location.href="http://localhost:8080/QuizBuilderProject/loginPage.faces";
+                }
+            }
+
+        </script>
+
          <div id="navButtons">  
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/home.faces">HOME</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/questionsList.faces">MY QUESTIONS</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">MY QUIZZES</a>
             <a id="adminBoxLink" style="#{userController.getAdmin(loginController.id)}" href="http://localhost:8080/QuizBuilderProject/userPage.faces">USERS</a>
-
-             <!-- <script type="text/javascript">
-                function isAdmin(){
-                    var isAdmin= "#{userController.getAdmin(loginController.id)}";
-                    var divClass="";
-                    if(isAdmin == "true"){
-                        divClass = "normal";
-                    }
-                    else{
-                        divClass = "hidden";
-                    }
-
-                    document.getElementById("adminButton").style="display:none;";
-                }
-
-                window.onload = isAdmin();
-            </script>  -->
 
             <div id="logoutButton">
             <h:form>
@@ -55,8 +67,6 @@
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizGenerationPage.faces">Quick Quiz</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/loginPage.faces">Login</a>            
         </div>
-        
     </h:body>
-    
    
 </html>
