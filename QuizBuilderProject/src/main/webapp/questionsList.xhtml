@@ -24,73 +24,78 @@
         </div>
         
         <h1>List of the Questions</h1>
-<div id="box">
+<div class="preForm">
         <h:form>
-            <h:outputLabel value="Search: "/>
-            <h:inputText value="#{questionController.searchStr}"/>
-            <h:commandButton value="Search" action="#{questionController.search}">
-                <f:ajax execute="@form" render="questionList"/>
-            </h:commandButton>
-            
-            <h:selectOneRadio value="#{questionController.filter}">
-                <f:selectItem itemValue="1" itemLabel="Mine" />
-                <f:selectItem itemValue="2" itemLabel="Public" />
-                <f:selectItem itemValue="3" itemLabel="All" />
-                <f:ajax render="questionList" listener="#{questionController.changeFilter}" />
-            </h:selectOneRadio>
-
-<!--         <h:dataTable id="questionList" value="#{questionController.questionList}" var="q" border="1">  -->  
-        <h:dataTable id="questionList" value="#{questionController.getQuestionList(loginController.id)}" var="q" border="1">
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Question"/>
-                </f:facet>
-                <h:outputText value="#{q.question}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Answer"/>
-                </f:facet>
-                <h:outputText value="#{q.answer}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Subject"/>
-                </f:facet>
-                <h:outputText value="#{q.subject}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Difficulty"/>
-                </f:facet>
-                <h:outputText value="#{q.difficulty}"/>
-            </h:column>
-            <h:column>
-                <div id="openerTags"><a href="#1" name="1" onclick="return showhideTags(#{q.id});">Tags</a></div> 
-                <div id="#{q.id}" style="display:none;">
-                    <h:outputText value="#{q.tagsString}"/>
-                </div>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value=""/>
-                </f:facet>
-                <h:commandButton value="Delete" action="#{questionController.doDeleteQuestion(q.id)}">
-                    <f:ajax execute="@form" render="@all"/>
+            <div id="searchParam">
+                <h:outputLabel value="Search: "/>
+                <h:inputText value="#{questionController.searchStr}"/>
+                <h:commandButton value="Search" action="#{questionController.search}">
+                    <f:ajax execute="@form" render="questionList"/>
                 </h:commandButton>
-            </h:column>
-            <h:column>
-                <f:facet name="header">
-                    <h:outputText value=""/>
-                </f:facet>
-                <h:commandButton value="Edit" action="#{questionController.toEditQuestion(q.id)}"/>
-            </h:column>
             
-        </h:dataTable>
-        </h:form>
-        <h:form>
-            <h:link outcome="newQuestion.xhtml" value="Create a new question"/>
-        </h:form>
+                <h:selectOneRadio value="#{questionController.filter}">
+                    <f:selectItem itemValue="1" itemLabel="Mine" />
+                    <f:selectItem itemValue="2" itemLabel="Public" />
+                    <f:selectItem itemValue="3" itemLabel="All" />
+                    <f:ajax render="questionList" listener="#{questionController.changeFilter}" />
+                </h:selectOneRadio>
+            </div>
+
+        <div id="grid">
+<!--         <h:dataTable id="questionList" value="#{questionController.questionList}" var="q" border="1">  -->  
+            <h:dataTable id="questionList" value="#{questionController.getQuestionList(loginController.id)}" var="q" border="1">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Question"/>
+                    </f:facet>
+                    <h:outputText value="#{q.question}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Answer"/>
+                    </f:facet>
+                    <h:outputText value="#{q.answer}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Subject"/>
+                    </f:facet>
+                    <h:outputText value="#{q.subject}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Difficulty"/>
+                    </f:facet>
+                    <h:outputText value="#{q.difficulty}"/>
+                </h:column>
+                <h:column>
+                    <div id="openerTags"><a href="#1" name="1" onclick="return showhideTags(#{q.id});">Tags</a></div> 
+                    <div id="#{q.id}" style="display:none;">
+                        <h:outputText value="#{q.tagsString}"/>
+                    </div>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value=""/>
+                    </f:facet>
+                    <h:commandButton value="Delete" action="#{questionController.doDeleteQuestion(q.id)}">
+                        <f:ajax execute="@form" render="@all"/>
+                    </h:commandButton>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value=""/>
+                    </f:facet>
+                    <h:commandButton value="Edit" action="#{questionController.toEditQuestion(q.id)}"/>
+                </h:column>
+
+            </h:dataTable>
+        </div>
+    </h:form>
+        
+    <h:form>
+        <h:link outcome="newQuestion.xhtml" value="Create a new question"/>
+    </h:form>
         
 <script> 
     function showhideUpload() { 
@@ -124,6 +129,7 @@
             <h:message for="Format_Error" style="color:red;margin:8px;"/>
        </h:form>
     </div>
+
 </div>
     </h:body>
 </html>
