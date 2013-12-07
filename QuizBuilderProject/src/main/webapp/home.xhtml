@@ -15,6 +15,7 @@
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">MY QUIZZES</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">Users</a>
             <p id="test"></p>
+            <p id="isAdmin?"></p>
             <script type="text/javascript">
                 function isAdmin(){
                     var isAdmin= "#{userController.getAdmin()}";
@@ -26,6 +27,7 @@
                         test = "Not logged in as Admin"
                     }
                     document.getElementById("test").innerHTML=test;
+                    document.getElementById("isAdmin?").innerHTML=isAdmin;
                 }
             </script>
 
