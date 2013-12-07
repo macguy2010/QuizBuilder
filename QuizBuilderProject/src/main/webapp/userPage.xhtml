@@ -43,7 +43,7 @@
         </h:form>
         </div>
         
-        <div id="box">
+        <div id="usersBox">
 <!--        <h:dataTable id="usersList" value="#{userController.usersList}" var="u" border="1">  -->
         <h:dataTable id="usersList" value="#{userController.getUsersList(loginController.id)}" var="u" border="1">
             <h:column>
@@ -94,9 +94,13 @@
             </h:column>
             
         </h:dataTable>
-        <h:form>
-            <h:link outcome="newUser.xhtml" value="Create a new User"/>
-        </h:form>
+            <div>
+                <br></br>
+        <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/newUser.faces">New User</a>
+            </div>
+            
+        
+            
         </div>
     </div>
     </h:body>
