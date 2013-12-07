@@ -15,19 +15,19 @@
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">MY QUIZZES</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">Users</a>
             <p id="test"></p>
-            <p id="isAdmin?"></p>
+            <p id="isAdmin"></p>
             <script type="text/javascript">
                 function isAdmin(){
                     var isAdmin= "#{userController.getAdmin()}";
                     var test="";
-                    if(isAdmin = true){
+                    if(isAdmin = "true"){
                         test = "Logged in as Admin"
                     }
                     else{
                         test = "Not logged in as Admin"
                     }
                     document.getElementById("test").innerHTML=test;
-                    document.getElementById("isAdmin?").innerHTML=isAdmin;
+                    document.getElementById("isAdmin").innerHTML=isAdmin;
                 }
             </script>
 
