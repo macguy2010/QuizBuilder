@@ -123,4 +123,8 @@ public class UserController
     {
         passwordVerify = p;
     }
+
+    public boolean getAdmin(){
+        return user.getAdmin();
+    }
 }
