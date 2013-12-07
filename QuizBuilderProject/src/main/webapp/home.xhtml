@@ -15,7 +15,7 @@
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">MY QUIZZES</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">Users</a>
             <script type="text/javascript">
-                var admin = "#{userController.getAdmin}"
+                var admin = "#{userController.getAdmin()}"
                 if(admin = true){
            <!--         <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/userPage.faces">USERS</a>     -->
                 }
