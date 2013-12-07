@@ -10,6 +10,7 @@
         ?>
 
     </h:head>
+    
     <h:body>
        <!--
        <div id="navButtons">
@@ -31,6 +32,8 @@
         
         <h1>List of the Users</h1>
     <div class="preForm">
+        
+        <div id="searchParam">
         <h:form>
             <h:outputLabel value="Search: "/>
             <h:inputText value="#{userController.searchStr}"/>
@@ -38,7 +41,9 @@
                 <f:ajax execute="@form" render=":usersList"/>
             </h:commandButton>
         </h:form>
+        </div>
         
+        <div id="box">
 <!--        <h:dataTable id="usersList" value="#{userController.usersList}" var="u" border="1">  -->
         <h:dataTable id="usersList" value="#{userController.getUsersList(loginController.id)}" var="u" border="1">
             <h:column>
@@ -92,6 +97,7 @@
         <h:form>
             <h:link outcome="newUser.xhtml" value="Create a new User"/>
         </h:form>
+        </div>
     </div>
     </h:body>
 </html>
