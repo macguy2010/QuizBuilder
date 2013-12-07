@@ -79,7 +79,7 @@
                     <f:facet name="header">
                         <h:outputText value=""/>
                     </f:facet>
-                    <h:commandButton style="#{questionController.canDeleteEdit(loginController.id, q.userId)}" value="Delete" action="#{questionController.doDeleteQuestion(q.id)}">
+                    <h:commandButton value="Delete" action="#{questionController.doDeleteQuestion(q.id)}" style="#{questionController.canDeleteEdit(loginController.id, q.userId)}">
                         <f:ajax execute="@form" render="@all"/>
                     </h:commandButton>
                 </h:column>

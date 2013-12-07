@@ -18,6 +18,11 @@ public class QuizBuilderEJB {
         return q;
     }
     
+    public User_Obj findUser(Long id)
+    {
+        return em.find(User_Obj.class, id);
+    }
+    
     public Quiz buildQuiz(Quiz q, TreeMap<SubjectType, Integer> subjects)
     {
         Random random = new Random();
