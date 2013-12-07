@@ -31,7 +31,7 @@ public class QuestionController implements Serializable
     private String currentPage;
     private Part file;
     private String fileContent;
-    private Integer filter = 3;
+    private Integer filter = 1;
     
     public String doCreateQuestion(Long id) {
         question.setUserId(id);
