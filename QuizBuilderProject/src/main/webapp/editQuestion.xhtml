@@ -24,7 +24,8 @@
         </div>
     
     <h1>Edit Question</h1>
-    <div id="box">
+    
+    <div id="questionBox">
     <h:form>
         <h:panelGrid columns="2" >
             <h:outputLabel value="Question: "/>
@@ -53,7 +54,7 @@
             
             <h:inputHidden value="#{questionController.question.id}"/>  
             
-            <div id="nestedForm">
+            
             <h:form>
             <h:outputLabel value="Tags:  "/>
             <h:dataTable id="tagFields" value="#{questionController.tagFields}" var="tag">
@@ -68,14 +69,13 @@
                 </h:column>
                 
             </h:dataTable>
-            <div id="formButton">
+            
                 <h:commandButton  value="Add Tag" action="#{questionController.doAddTagField}">
                         <f:ajax execute="@form" render="tagFields"/>
                 </h:commandButton>
-            </div>
             
             </h:form>
-            </div>
+           
            
             
     

@@ -105,11 +105,6 @@ table{
     text-shadow: 0px 1px 2px #000000;
 }
 
-#nestedForm label{
-    color: yellow;
-    
-}
-
 #searchParam{
     margin-left: 20em;
 }
@@ -132,10 +127,10 @@ table{
     padding-top: 2px;
     padding-bottom: 2px;
     border-radius: 5px;
-    margin-left: 38%;
-    margin-right: 38%;
-    margin-top: 2em;
-    text-align: center;
+    //margin-left: 38%;
+    //margin-right: 38%;
+    //margin-top: 2em;
+    //text-align: center;
         
     background-color: #12171c;
     box-shadow: 2px 3px 3px #000000;
@@ -149,11 +144,11 @@ table{
     font: 16px Tahoma, Helvetica, Arial, Sans-serif;    
     color: #bcbdbd;
     text-shadow: 0px 2px 3px #000000;
-    margin-left: auto;
-    margin-right: auto;
+    //margin-left: auto;
+    //margin-right: auto;
 }
 
-textArea{
+#box textArea{
     width: 15em;
     display:block;
     height: 25px;
@@ -201,4 +196,39 @@ textArea{
         
     background-color: #12171c;
     box-shadow: 2px 3px 3px #000000;
+}
+
+#questionBox{
+    position: relative;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -moz-border-radius: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    width: 45em;
+    
+    background-color: #22262a;
+    box-shadow: 0px 2px 3px #5e5e5e;
+    
+    text-align: center;
+    font: 14px Tahoma, Helvetica, Arial, Sans-serif;    
+    color: #bcbdbd;
+    text-shadow: 0px 1px 2px #000000;
+}
+
+/*#questionBox input{
+    position: absolute;    
+}*/
+
+#questionBox label{
+    position: relative;
+    margin-top: 15px;
+    margin-left: 170px;
+    text-align: right;
 }
