@@ -4,6 +4,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.util.*;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
 
 @ManagedBean(name = "quizController")
@@ -18,6 +19,7 @@ public class QuizController
     private Quiz quiz = new Quiz();
     private List<Quiz> quizList = null;
     private Long correspondingId = -100l;
+    private Integer filter = 1;
     
     public String doCreateQuiz(Long id) {
         quiz.setUserId(id);
@@ -65,8 +67,7 @@ public class QuizController
     
     public String search()
     {
-        quizList = ejb.searchQuizzes(searchStr, correspondingId);
-        return "quizList.xhtml";
+        return null;
     }
     
     public void setSearchStr(String str)
@@ -91,7 +92,41 @@ public class QuizController
         if(quizList == null || correspondingId != id)
             quizList = ejb.findQuizzes(id);
         correspondingId = id;
-        return quizList;
+        return getFilteredQuizzes();
+    }
+    
+     public List<Quiz> getFilteredQuizzes()
+    {
+        List<Quiz> returnList = new ArrayList<Quiz>();
+        for(int i = 0; i < quizList.size(); i++)
+        {
+            if(filter == 1)
+            {
+                if(quizList.get(i).getUserId() == correspondingId)
+                    returnList.add(quizList.get(i));
+            }
+            else if (filter == 2)
+            {
+                if(quizList.get(i).getUserId() < 0)
+                    returnList.add(quizList.get(i));
+            }
+            else
+                returnList.add(quizList.get(i));
+        }
+        
+        if(searchStr != null && !searchStr.trim().equals(""))
+        {
+            for(int i = 0; i < returnList.size(); i++)
+            {
+                if(!returnList.get(i).getTitle().trim().contains(searchStr.trim()))
+                {
+                    returnList.remove(i);
+                    i--;
+                }
+            }
+        }
+        
+        return returnList;
     }
 
     public List<Quiz> getQuizList() {
@@ -137,6 +172,21 @@ public class QuizController
     public Long[] getQuestionsSelectionList()
     {
         return questionsSelectionList;
+    }
+        
+    public Integer getFilter()
+    {
+        return filter;
+    }
+    
+    public void setFilter(Integer f)
+    {
+        filter = f;
+    }
+    
+    public String changeFilter(AjaxBehaviorEvent event)
+    {
+        return null;
     }
     
 }
