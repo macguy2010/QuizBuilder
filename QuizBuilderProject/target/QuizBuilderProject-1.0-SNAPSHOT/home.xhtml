@@ -6,6 +6,9 @@
         <meta name="viewport" content="width=device-width"/>
         <title>Home Page</title>
         <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
+        <style type="text\css">
+            a.hidden {display:none;}
+        </style>
     </h:head>        
         
     <h:body>        
@@ -13,21 +16,18 @@
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/home.faces">HOME</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/questionsList.faces">MY QUESTIONS</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">MY QUIZZES</a>
-            <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/userPage.faces">USERS</a>
-            <p id="test"></p>
-            <p id="isAdmin"></p>
+            <a class="" id="adminBoxLink" href="http://localhost:8080/QuizBuilderProject/userPage.faces">USERS</a>
             <script type="text/javascript">
                 function isAdmin(){
                     var isAdmin= "#{userController.getAdmin(loginController.id)}";
-                    var test="";
+                    var aClass="";
                     if(isAdmin == "true"){
-                        test = "Logged in as Admin";
+                        aClass = "hidden";
                     }
                     else{
-                        test = "Not logged in as Admin";
+                        aClass = "";
                     }
-                    document.getElementById("test").innerHTML=test;
-                    document.getElementById("isAdmin").innerHTML=isAdmin;
+                    document.getElementById("adminBoxLink").className=aClass;
                 }
             </script>
 
