@@ -237,4 +237,12 @@ public class QuestionController implements Serializable
     {
         return null;
     }
+    
+    public String canDeleteEdit(Long id, Long userId)
+    {
+        if(id == userId && userId > 0)
+            return "";
+        else
+            return "display: none;";
+    }
 }

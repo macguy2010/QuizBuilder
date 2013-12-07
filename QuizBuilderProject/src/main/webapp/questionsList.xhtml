@@ -4,8 +4,6 @@
     <h:head>
         <title>Questions</title>
         <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
-    </h:head>
-    <h:body>
         <div id="navButtons">  
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/home.faces">HOME</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/questionsList.faces">MY QUESTIONS</a>
@@ -18,6 +16,9 @@
             </div>
            
          </div>
+    </h:head>
+    <h:body>
+        
          
         <div id="quizBuilder">
             Quiz Builder
@@ -78,7 +79,7 @@
                     <f:facet name="header">
                         <h:outputText value=""/>
                     </f:facet>
-                    <h:commandButton value="Delete" action="#{questionController.doDeleteQuestion(q.id)}">
+                    <h:commandButton style="#{questionController.canDeleteEdit(loginController.id, q.userId)}" value="Delete" action="#{questionController.doDeleteQuestion(q.id)}">
                         <f:ajax execute="@form" render="@all"/>
                     </h:commandButton>
                 </h:column>
@@ -86,7 +87,7 @@
                     <f:facet name="header">
                         <h:outputText value=""/>
                     </f:facet>
-                    <h:commandButton value="Edit" action="#{questionController.toEditQuestion(q.id)}"/>
+                    <h:commandButton style="#{questionController.canDeleteEdit(loginController.id, q.userId)}" value="Edit" action="#{questionController.toEditQuestion(q.id)}"/>
                 </h:column>
 
             </h:dataTable>
