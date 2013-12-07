@@ -25,8 +25,9 @@
         
         <h1>List of the Quizzes</h1>
         
-        <div id="box">
+        <div class="preForm">
         <h:form>
+            <div id="searchParam">
             <h:outputLabel value="Search: "/>
             <h:inputText value="#{quizController.searchStr}"/>
             <h:commandButton value="Search" action="#{quizController.search}">
@@ -39,7 +40,9 @@
                 <f:selectItem itemValue="3" itemLabel="All" />
                 <f:ajax render="quizList" listener="#{quizController.changeFilter}" />
             </h:selectOneRadio>
+            </div>
         
+            <div id="grid">
 <!--        <h:dataTable id="quizList" value="#{quizController.quizList}" var="q" border="1">  -->
         <h:dataTable id="quizList" value="#{quizController.getQuizList(loginController.id)}" var="q" border="1">
             <h:column>
@@ -78,6 +81,7 @@
             </h:column>
 
         </h:dataTable>
+            </div>
         </h:form>
         <h:form>
             <h:link outcome="newQuiz.xhtml" value="Create a new quiz"/>
