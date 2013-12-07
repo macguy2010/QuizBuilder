@@ -12,6 +12,7 @@ import javax.ejb.Stateful;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.Part;
 
@@ -232,7 +233,7 @@ public class QuestionController implements Serializable
         filter = f;
     }
     
-    public String changeFilter()
+    public String changeFilter(AjaxBehaviorEvent event)
     {
         return null;
     }

@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.util.List;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 @ManagedBean(name = "userController")
@@ -84,7 +85,14 @@ public class UserController
         }
         catch(Exception e){}
         if(currentUser == null || !currentUser.getAdmin())
+        {
             usersList = new ArrayList<User_Obj>();
+            try{
+            ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+            ec.redirect(ec.getRequestContextPath() + "/home.faces");
+            }
+            catch(Exception e){}
+        }
         else
             usersList = ejb.findUsers(id);
         correspondingId = id;

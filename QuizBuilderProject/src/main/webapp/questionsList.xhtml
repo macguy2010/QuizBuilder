@@ -32,10 +32,11 @@
                 <f:ajax execute="@form" render="questionList"/>
             </h:commandButton>
             
-            <h:selectOneRadio onclick="#{questionController.changeFilter()}" value="#{questionController.filter}">
+            <h:selectOneRadio value="#{questionController.filter}">
                 <f:selectItem itemValue="1" itemLabel="Mine" />
                 <f:selectItem itemValue="2" itemLabel="Public" />
                 <f:selectItem itemValue="3" itemLabel="All" />
+                <f:ajax render="questionList" listener="#{questionController.changeFilter}" />
             </h:selectOneRadio>
 
 <!--         <h:dataTable id="questionList" value="#{questionController.questionList}" var="q" border="1">  -->  
