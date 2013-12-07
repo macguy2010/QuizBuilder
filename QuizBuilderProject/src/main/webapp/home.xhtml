@@ -18,13 +18,14 @@
             <script type="text/javascript">
                 function isAdmin(){
                     var isAdmin= "#{userController.getAdmin()}";
+                    var test="";
                     if(isAdmin = true){
-                        isAdmin = true;
+                        test = "Logged in as Admin"
                     }
                     else{
-                        isAdmin = false;
+                        test = "Not logged in as Admin"
                     }
-                    document.getElementById("test").innerHTML=isAdmin;
+                    document.getElementById("test").innerHTML=test;
                 }
             </script>
 
