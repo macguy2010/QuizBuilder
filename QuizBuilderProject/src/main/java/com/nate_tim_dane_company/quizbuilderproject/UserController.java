@@ -129,10 +129,10 @@ public class UserController
         String string;
 
         if(admin == true){
-            string = "display:none;";
+            string = "";
         }
         else{
-            string = "display:block;";
+            string = "display:none;";
         }
 
         return string;
