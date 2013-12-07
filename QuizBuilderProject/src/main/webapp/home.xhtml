@@ -38,7 +38,7 @@
                     document.getElementById("btnLogOut").action="#{loginController.logout}";
                 }
                 else{
-                    document.getElementById("btnLogOut").attachEvent("onclick",redirection);
+                    document.getElementById("btnLogOut").redirection="redirection()";
                 }
 
                 function redirection(){
@@ -56,7 +56,8 @@
 
             <div id="logoutButton">
             <h:form>
-                <h:commandButton id="btnLogOut" value="LOGOUT" action="#{loginController.logout}"/>
+                <h:commandButton id="btnLogOut" value="" onclick = "getAction()"/>
+              <!--  <h:commandButton id="btnLogOut" value="" onclick = "getAction()"action="#{loginController.logout}"/> -->
             </h:form>
             </div>
            
