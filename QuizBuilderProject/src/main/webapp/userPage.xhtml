@@ -4,6 +4,10 @@
     <h:head>
         <title>Users</title>
         <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
+        <?php
+                include("navBar.xhtml");
+        ?>
+
     </h:head>
     <h:body>
         <div id="navButtons">  
@@ -16,7 +20,6 @@
                 <h:commandButton id="btnLogOut" value="LOGOUT" action="#{loginController.logout}"/>
             </h:form>
             </div>
-           
          </div>
          
         <div id="quizBuilder">
