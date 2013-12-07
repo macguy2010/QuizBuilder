@@ -124,7 +124,7 @@ public class UserController
         passwordVerify = p;
     }
 
-    public boolean getAdmin(){
-        return user.getAdmin();
+    public boolean getAdmin(Long id){
+        return ejb.findUser(id).getAdmin();
     }
 }
