@@ -25,11 +25,9 @@
         
         <h1>Questions</h1>
         <div id="box">
-        <h:dataTable id="questionList" value="#{quizGenerationController.generatedQuizQuestions}" var="q" border="1">
+        <h:dataTable id="questionList" value="#{quizGenerationController.generatedQuizQuestions}" var="q" border="0">
             <h:column>
-                <f:facet name="header">
-                    <h:outputText value="#{q.question}"/>
-                </f:facet>
+                <h:outputText value="#{q.question}"/><br/>
                 <h:inputText value="#{q.userAnswer}"/>
                 <hr/>
             </h:column>
