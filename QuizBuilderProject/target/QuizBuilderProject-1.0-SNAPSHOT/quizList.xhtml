@@ -67,7 +67,7 @@
                 <f:facet name="header">
                     <h:outputText value="Delete"/>
                 </f:facet>
-                <h:commandButton value="Delete" action="#{quizController.doDeleteQuiz(q.id)}">
+                <h:commandButton style="#{questionController.canDeleteEdit(loginController.id, q.userId)}" value="Delete" action="#{quizController.doDeleteQuiz(q.id)}">
                     <f:ajax execute="@form" render="@form"/>
                 </h:commandButton>
             </h:column>
@@ -76,7 +76,7 @@
                 <f:facet name="header">
                     <h:outputText value="Edit"/>
                 </f:facet>
-                <h:commandButton value="Edit" action="#{quizController.toEditQuiz(q.id)}"/>
+                <h:commandButton style="#{questionController.canDeleteEdit(loginController.id, q.userId)}" value="Edit" action="#{quizController.toEditQuiz(q.id)}"/>
                 </h:form>
             </h:column>
 

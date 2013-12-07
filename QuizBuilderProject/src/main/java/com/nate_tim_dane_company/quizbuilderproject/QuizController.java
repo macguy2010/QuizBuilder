@@ -189,4 +189,13 @@ public class QuizController
         return null;
     }
     
+    public String canDeleteEdit(Long id, Long userId)
+    {
+        User_Obj user = ejb.findUser(id);
+        if(id == userId && id > 0 || user != null && user.getAdmin())
+            return "";
+        else
+            return "display: none;";
+    }
+    
 }
