@@ -7,6 +7,7 @@
         <title>Home Page</title>
         <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
         <style type="text\css">
+            div.hidden {display:none;}
             a.hidden {display:none;}
             a.normal {display:block;}
         </style>
@@ -17,8 +18,8 @@
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/home.faces">HOME</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/questionsList.faces">MY QUESTIONS</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">MY QUIZZES</a>
-            <a class="hidden" id="adminBoxLink" href="http://localhost:8080/QuizBuilderProject/userPage.faces">USERS</a>
-            <script type="text/javascript">
+            <div class="hidden"><a id="adminBoxLink" href="http://localhost:8080/QuizBuilderProject/userPage.faces">USERS</a></div>
+             <script type="text/javascript">
                 function isAdmin(){
                     var isAdmin= "#{userController.getAdmin(loginController.id)}";
                     var divClass="";
