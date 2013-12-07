@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width"/>
         <title>Home Page</title>
         <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
     </h:head>        
         
     <h:body>        
@@ -13,13 +14,14 @@
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/home.faces">HOME</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/questionsList.faces">MY QUESTIONS</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">MY QUIZZES</a>
-          <!--  <script type="text/javascript">
+            <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">Users</a>
+          <  <script type="text/javascript">
                 var admin = "#{userController.getAdmin}"
                 if(admin = true){
-                    <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/userPage.faces">USERS</a>
+           <!--         <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/userPage.faces">USERS</a>     -->
                 }
-            </script> -->
-            <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/userPage.faces">USERS</a>
+            </script>
+
             <div id="logoutButton">
             <h:form>
                 <h:commandButton id="btnLogOut" value="LOGOUT" action="#{loginController.logout}"/>
