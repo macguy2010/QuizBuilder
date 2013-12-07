@@ -35,7 +35,7 @@
 
             function getAction(){
                 if(auth == "true"){
-                    document.getElementById("btnLogOut").action="#{loginController.logout}";
+                    document.getElementById("btnLogOut").action="#{loginController.logout()}";
                 }
                 else{
                     document.getElementById("btnLogOut").redirection="redirection()";
@@ -57,7 +57,7 @@
             <div id="logoutButton">
             <h:form>
                 <h:commandButton id="btnLogOut" value="" onclick = "getAction()"/>
-              <!--  <h:commandButton id="btnLogOut" value="" onclick = "getAction()"action="#{loginController.logout}"/> -->
+              <!--  <h:commandButton id="btnLogOut" value="" onclick = "getAction()"/> -->
             </h:form>
             </div>
            

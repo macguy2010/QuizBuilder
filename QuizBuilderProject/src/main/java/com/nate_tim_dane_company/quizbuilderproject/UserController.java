@@ -63,9 +63,7 @@ public class UserController
     
     public String search()
     {
-        if(usersList != null && !usersList.isEmpty())
-            usersList = ejb.searchUsers(searchStr);
-        return "userPage.xhtml";
+        return null;
     }
     
     public void setSearchStr(String str)
