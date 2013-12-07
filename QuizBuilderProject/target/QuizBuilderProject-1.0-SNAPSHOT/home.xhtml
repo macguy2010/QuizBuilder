@@ -13,11 +13,21 @@
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/home.faces">HOME</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/questionsList.faces">MY QUESTIONS</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">MY QUIZZES</a>
-            <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">Users</a>
+            <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/userPage.faces">USERS</a>
+            <p id="test"></p>
+            <p id="isAdmin"></p>
             <script type="text/javascript">
-                var admin = "#{userController.getAdmin()}"
-                if(admin = true){
-           <!--         <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/userPage.faces">USERS</a>     -->
+                function isAdmin(){
+                    var isAdmin= "#{userController.getAdmin(loginController.id)}";
+                    var test="";
+                    if(isAdmin == "true"){
+                        test = "Logged in as Admin";
+                    }
+                    else{
+                        test = "Not logged in as Admin";
+                    }
+                    document.getElementById("test").innerHTML=test;
+                    document.getElementById("isAdmin").innerHTML=isAdmin;
                 }
             </script>
 
