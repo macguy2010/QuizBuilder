@@ -55,7 +55,6 @@
             <h:inputHidden value="#{questionController.question.id}"/>  
             
             
-            <h:form>
             <h:outputLabel style="margin-left: -45px;" value="Tags:  "/>
             <h:dataTable id="tagFields" value="#{questionController.tagFields}" var="tag">
                 <h:column>
@@ -69,18 +68,13 @@
                 </h:column>
                 
             </h:dataTable>
+            
             <div id="formButton">
-                <h:commandButton  style="text-align: center; margin-left: 8px; margin-bottom: 20px;" value="Add Tag" action="#{questionController.doAddTagField}">
+                <h:commandButton  value="Add Tag" action="#{questionController.doAddTagField}">
                         <f:ajax execute="@form" render="tagFields"/>
                 </h:commandButton>
             </div>
-            
-            </h:form>
-           
-           
-            
-    
-            
+                       
         </h:panelGrid>
         <div id="formButton">
         <h:commandButton value="Submit" action="#{questionController.doEditQuestion}"/>
