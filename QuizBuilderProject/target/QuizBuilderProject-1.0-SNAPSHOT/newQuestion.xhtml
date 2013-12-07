@@ -23,16 +23,16 @@
             Quiz Builder
         </div>
     
-    <h1>Create a new Question</h1>
-    <div id="box">
+    <h1>Create New Question</h1>
+    <div id="questionBox">
     <h:form>
         <h:panelGrid columns="2" >
             <h:outputLabel value="Question: "/>
             <h:inputTextarea value="#{questionController.question.question}"/>
-            <h:outputLabel value="Answer:"/>
+            <h:outputLabel style="margin-left: 165px;" value="Answer:"/>
             <h:inputText value="#{questionController.question.answer}"/>
 
-            <h:outputLabel value="Subject: "/>
+            <h:outputLabel style="margin-left: 165px;" value="Subject: "/>
             <h:selectOneMenu value="#{questionController.question.subject}">
                 <f:selectItems value="#{questionController.subjectTypeValues}" />
             </h:selectOneMenu>
@@ -64,9 +64,11 @@
                 </h:column>
                 
             </h:dataTable>
+            <div id="formButton">
                 <h:commandButton value="Add Tag" action="#{questionController.doAddTagField}">
                         <f:ajax execute="@form" render="tagFields"/>
                 </h:commandButton>
+            </div>
             
         </h:panelGrid>
         <div id="formButton">
