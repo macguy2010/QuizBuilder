@@ -240,7 +240,8 @@ public class QuestionController implements Serializable
     
     public String canDeleteEdit(Long id, Long userId)
     {
-        if(id == userId && id > 0 || ejb.findUser(id).getAdmin())
+        User_Obj user = ejb.findUser(id);
+        if(id == userId && id > 0 || user != null && user.getAdmin())
             return "";
         else
             return "display: none;";
