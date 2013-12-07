@@ -30,7 +30,7 @@
                 <f:facet name="header">
                     <h:outputText value="#{q.question}"/>
                 </f:facet>
-                <h:inputText value="#{quizGenerationController.userAnswers[quizGenerationController.generatedQuiz.questions.indexOf(q)]}"/>
+                <h:inputText value="#{q.userAnswer}"/>
                 <hr/>
             </h:column>
 

@@ -20,7 +20,7 @@ public class QuizGenerationController implements Serializable
     private int maxNumber = 50;
     private Quiz quiz = new Quiz();
     private SubjectType newSubject;
-    private String[] userAnswers = null;
+    private List<QuestionElement> userAnswers = null;
     private List<FieldElement> subjectsList = null;
     private int numberCorrect = 0;
     
@@ -31,9 +31,15 @@ public class QuizGenerationController implements Serializable
         return "quizPage.xhtml";
     }
     
-    public List<Question> getGeneratedQuizQuestions()
+    public List<QuestionElement> getGeneratedQuizQuestions()
     {
-        return getGeneratedQuiz().getQuestions();
+        List<QuestionElement> elements = new ArrayList<QuestionElement>();
+        List<Question> questions = getGeneratedQuiz().getQuestions();
+        for(int i = 0; i < questions.size(); i++)
+        {
+            elements.add(new QuestionElement(questions.get(i).getQuestion(), questions.get(i).getAnswer()));
+        }
+        return elements;
     }
     
     public Quiz getGeneratedQuiz()
@@ -54,7 +60,7 @@ public class QuizGenerationController implements Serializable
     {
         for(int i = 0; i < quiz.getQuestions().size(); i++)
         {
-            String userAnswer = userAnswers[i].trim();
+            String userAnswer = userAnswers.get(i).getAnswer().trim();
             if(userAnswer.equals(quiz.getQuestions().get(i).getAnswer()))
                 numberCorrect++;
         }
@@ -90,11 +96,11 @@ public class QuizGenerationController implements Serializable
         numberRange = r;
     }
     
-    public String[] getUserAnswers()
+    public List<QuestionElement> getUserAnswers()
     {
         int num = getGeneratedQuiz().getNumberOfQuestions();
-        if(userAnswers == null || userAnswers.length != num)
-            userAnswers = new String[num];
+        if(userAnswers == null || userAnswers.size() != num)
+            userAnswers = new ArrayList<QuestionElement>();
         return userAnswers;
     }
     
