@@ -30,10 +30,10 @@
         <h:panelGrid columns="2" >
             <h:outputLabel value="Question: "/>
             <h:inputTextarea value="#{questionController.question.question}"/>
-            <h:outputLabel value="Answer:"/>
+            <h:outputLabel style="margin-left: 165px;" value="Answer:"/>
             <h:inputText value="#{questionController.question.answer}"/>
 
-            <h:outputLabel value="Subject: "/>
+            <h:outputLabel style="margin-left: 165px;" value="Subject: "/>
             <h:selectOneMenu value="#{questionController.question.subject}">
                 <f:selectItems value="#{questionController.subjectTypeValues}" />
             </h:selectOneMenu>
@@ -56,7 +56,7 @@
             
             
             <h:form>
-            <h:outputLabel value="Tags:  "/>
+            <h:outputLabel style="margin-left: -45px;" value="Tags:  "/>
             <h:dataTable id="tagFields" value="#{questionController.tagFields}" var="tag">
                 <h:column>
                     <h:inputText value="#{tag.value}"/>
@@ -69,10 +69,11 @@
                 </h:column>
                 
             </h:dataTable>
-            
-                <h:commandButton  value="Add Tag" action="#{questionController.doAddTagField}">
+            <div id="formButton">
+                <h:commandButton  style="text-align: center; margin-left: 8px; margin-bottom: 20px;" value="Add Tag" action="#{questionController.doAddTagField}">
                         <f:ajax execute="@form" render="tagFields"/>
                 </h:commandButton>
+            </div>
             
             </h:form>
            
