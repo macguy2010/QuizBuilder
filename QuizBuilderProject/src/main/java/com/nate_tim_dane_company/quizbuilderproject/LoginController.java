@@ -34,7 +34,8 @@ public class LoginController {
     private LoginEJB ejb = new LoginEJB();
     private User_Obj user = new User_Obj();
     boolean authenticated = false;
-    Long id = -1l;
+    private Long id = -1l;
+    private String errorMessage = "";
 
     public String verifyUser(){
         FacesContext ctx = FacesContext.getCurrentInstance();
@@ -48,12 +49,13 @@ public class LoginController {
                 return "home.xhtml";
             }
             else{
-                ctx.addMessage("incorrect", new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username or Password", "Incorrect Username or Password"));
+                errorMessage = "Incorrect Username or Password";
                 return null;
             }
         }
         else{
-            ctx.addMessage("incorrect", new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username or Password", "Incorrect Username or Password"));
+            errorMessage = "Incorrect Username or Password";
+            //ctx.addMessage("incorrect", new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username or Password", "Incorrect Username or Password"));
             return null;
         }
     }
@@ -120,6 +122,11 @@ public class LoginController {
         }
         else
             return "Login";
+    }
+    
+    public String getErrorMessage()
+    {
+        return errorMessage;
     }
 /***********
  *
