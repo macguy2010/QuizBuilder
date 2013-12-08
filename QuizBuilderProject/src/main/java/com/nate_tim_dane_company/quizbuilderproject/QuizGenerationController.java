@@ -64,8 +64,8 @@ public class QuizGenerationController implements Serializable
                 numberCorrect++;
         }
         quiz.getGrades().add((double)numberCorrect / userAnswers.size());
-        if(quiz.getIsTemporary())
-            ejb.deleteQuiz(quiz.getId());
+    //    if(quiz.getIsTemporary())
+    //        ejb.deleteQuiz(quiz.getId());
         return "resultsPage.xhtml";
     }
     

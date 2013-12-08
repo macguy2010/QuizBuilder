@@ -13,6 +13,7 @@ public class QuestionElement {
     private String question = "";
     private String answer = "";
     private String userAnswer = "";
+    private Integer correct = 0;
     
     public QuestionElement(String q, String a)
     {
@@ -48,5 +49,10 @@ public class QuestionElement {
     public String getUserAnswer()
     {
         return userAnswer;
+    }
+    
+    public Integer getCorrect()
+    {
+        return correct;
     }
 }
