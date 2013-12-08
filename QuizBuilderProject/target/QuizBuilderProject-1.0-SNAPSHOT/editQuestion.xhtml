@@ -65,9 +65,8 @@
                 </h:column>
                 
             </h:dataTable>
-            
-            <div >
-                <h:commandButton id="formButton" value="Add Tag" action="#{questionController.doAddTagField}">
+            <div id="formButton">
+                <h:commandButton value="Add Tag" action="#{questionController.doAddTagField}">
                         <f:ajax execute="@form" render="tagFields"/>
                 </h:commandButton>
             </div>
@@ -75,11 +74,11 @@
             <h:inputHidden value="#{questionController.question.id}"/>  
        
         </h:panelGrid>
+        
         <div id="formButton">
         <h:commandButton value="Submit" action="#{questionController.doEditQuestion}"/>
         </div>
-        
-        
+       
     </h:form>
     </div>
     
