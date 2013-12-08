@@ -302,14 +302,12 @@ public class QuestionController implements Serializable
         for(int i = 0; i < qList.size(); i++)
         {
             Question q = qList.get(i);
-            output += q.getQuestion()+","+q.getAnswer()+","+q.getSubject().getLabel()+","+q.getDifficulty()+","+q.getTagsString()+"\n";
+            output += q.getQuestion()+","+q.getAnswer()+","+q.getSubject().getLabel()+","+q.getDifficulty();
+            if(!q.getTags().isEmpty())
+                output += ","+q.getTagsString();
+            output += "\n";
         }
-        int n = (int)(Math.random() * 1000);
-        while(new File("./outputFile"+n+".csv").exists())
-        {
-            n = (int)(Math.random() * 1000);
-        }
-        String fileName = "outputFile"+n+".csv";
+        String fileName = "questionExport.csv";
         String filePath;
         filePath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/");
         try
@@ -329,7 +327,7 @@ public class QuestionController implements Serializable
 
         ec.responseReset(); 
         ec.setResponseContentType("text/csv"); 
-        ec.setResponseContentLength((int)new File(fileName).length()); 
+        ec.setResponseContentLength((int)new File(filePath+fileName).length()); 
         ec.setResponseHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\""); 
         
         OutputStream outputStream = ec.getResponseOutputStream();
@@ -342,10 +340,16 @@ public class QuestionController implements Serializable
                 outputStream.write(buffer);  
                 outputStream.flush();  
             } 
+            input.close();
+            outputStream.close();
         }
-        catch(Exception e){}
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
 
         fc.responseComplete();
+        new File(filePath+fileName).delete();
         
         return null;
     }
