@@ -100,6 +100,23 @@ public class LoginController {
    public void setAuthenticated(boolean authenticated){
      this.authenticated = authenticated;
    }
+
+    public String redirect(){
+        if(authenticated == false)
+            return "loginPage.xhtml";
+        else{
+            logout();
+            return null;
+        }
+    }
+
+    public String getLoginValue(){
+        if(authenticated == true){
+            return "Logout";
+        }
+        else
+            return "Login";
+    }
 /***********
  *
  *   Not needed as authentication this is the only page that ever changes authentication status.
