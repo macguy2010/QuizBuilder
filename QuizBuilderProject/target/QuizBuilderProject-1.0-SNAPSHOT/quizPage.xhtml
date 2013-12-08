@@ -19,7 +19,7 @@
             <h:column>
                 <h:outputText value="#{q.question}"/><br/>
                 <h:inputText value="#{q.userAnswer}"/>
-                
+                <br/><br/>
             </h:column>
             <h:commandButton value="Create PDF" action="#{PDFController.writePdf(quizGenerationController.generatedQuiz.getQuestions())}"/>
 
