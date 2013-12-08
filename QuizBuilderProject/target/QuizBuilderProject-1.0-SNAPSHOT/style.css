@@ -20,7 +20,6 @@ body{
 
 #navButtons input{
     display: inline;
-    //width: 9em;
     background: transparent;
     border: transparent;
     font: 14px Tahoma, Helvetica, Arial, Sans-serif;
@@ -136,6 +135,8 @@ table{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    margin-top: -15px;
+    //margin-bottom:  10px;
 }
 #searchParam label{
     color: #bcbdbd;
