@@ -147,11 +147,23 @@ table{
     box-shadow: 0px 2px 3px #2d3034;
 }
 
-/*input{
-    background-color: gray;
+#preForm input{
+    background-color: #5e5e5e; 
     border: none;
-    box-shadow: 0px 2px 3px antiquewhite;
-}*/
+    box-shadow: 0px 2px 3px #2d3034;
+}
+
+#questionBox textarea{
+    background-color: #5e5e5e; 
+    border: none;
+    box-shadow: 0px 2px 3px #2d3034;
+}
+
+#questionBox input{
+    background-color: #5e5e5e; 
+    border: none;
+    box-shadow: 0px 2px 3px #2d3034;
+}
 
 #formButton input{
     background: transparent;
@@ -176,7 +188,7 @@ table{
     box-shadow: 2px 3px 3px #000000;
 }
 
-table input{
+#grid input{
     background: transparent;
     border: transparent;
     font: 14px Tahoma, Helvetica, Arial, Sans-serif;
@@ -190,10 +202,8 @@ table input{
     padding-top: 2px;
     padding-bottom: 2px;
     border-radius: 5px;
-    text-align: center;
     margin-left: auto;
     margin-right: auto;
-    //margin-top: 2em;
             
     background-color: #12171c;
     box-shadow: 2px 3px 3px #000000;
@@ -272,29 +282,6 @@ link{
     background-color: #12171c;
     box-shadow: 2px 3px 3px #000000;
 }
-
-/*#uploadQuestions input{
-    background: transparent;
-    border: transparent;
-    font: 14px Tahoma, Helvetica, Arial, Sans-serif;
-    color: #bcbdbd;
-    text-shadow: 0px 2px 3px #000000;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -moz-border-radius: 5px;
-    padding-left: 6px;
-    padding-right: 6px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    border-radius: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2em;
-    text-align: center;
-        
-    background-color: #12171c;
-    box-shadow: 2px 3px 3px #000000;
-}*/
 
 #boxLink{
     font: 14px Tahoma, Helvetica, Arial, Sans-serif;

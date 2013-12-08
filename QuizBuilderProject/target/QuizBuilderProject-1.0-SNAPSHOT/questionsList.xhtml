@@ -28,20 +28,30 @@
                     <f:selectItem itemValue="3" itemLabel="All" />
                     <f:ajax render="questionList" listener="#{questionController.changeFilter}" />
                 </h:selectOneRadio>
-                
-                <div id="openerUpload">
+                <br/>
+
+<div id="openerUpload">
      <a style="color: #bcbdbd;" href="#1" name="1" onclick="return showhideUpload();">Upload Questions File</a>
- </div> 
-    <div id="uploadQuestions" style="display:none;">
+</div> 
+<div id="uploadQuestions" style="display:none;">
        <h:form id="form" enctype="multipart/form-data">
+           
             <h:inputFile id="file" value="#{questionController.file}"/>
-            <div id="formButton">
+            
             <h:commandButton value="Upload" action="#{questionController.upload}">
                 <f:ajax execute="file" render="@all"/>
             </h:commandButton>
-            </div>
+            
+            <br/><br/>
+            
        </h:form>
     </div>
+                
+    <h:form>
+        <div id="badLink">
+        <h:link style="color: #bcbdbd;" outcome="newQuestion.xhtml" value="Create a new question"/>
+        </div>
+    </h:form>
                 
             </div>
             <h:outputLabel style="color: red;" value="#{questionController.errorMessage}"/>
@@ -99,17 +109,11 @@
 
             </h:dataTable>
         </div>
-            <div id="formButton">
+            <div id="formButton" style="text-align: center; margin-left: auto; margin-right: auto;">
         <h:commandButton value="Export Selected" action="#{questionController.export}"/>
             </div>
     </h:form>
-        
-    <h:form>
-        <div id="badLink">
-        <h:link style="color: #bcbdbd;" outcome="newQuestion.xhtml" value="Create a new question"/>
-        </div>
-    </h:form>
-          
+                  
 <script> 
     function showhideUpload() { 
         if(document.getElementById('uploadQuestions').style.display=='none') { 
