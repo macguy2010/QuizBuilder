@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.ejb.EJB;
@@ -15,6 +16,7 @@ import java.util.Scanner;
 import javax.ejb.Stateful;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
@@ -32,6 +34,7 @@ public class QuestionController implements Serializable
     private String searchStr = new String();
     private Question question = new Question();
     private List<Question> questionList = null;
+    private List<SelectedQuestionElement> selectedList = null;
     private Long correspondingId = -100l;
     private List<Tag> tagFields = null;
     private String currentPage;
@@ -121,12 +124,12 @@ public class QuestionController implements Serializable
     
     private List<SelectedQuestionElement> getSelectedQuestionList(List<Question> q)
     {
-        List<SelectedQuestionElement> qList = new ArrayList<SelectedQuestionElement>();
+        selectedList = new ArrayList<SelectedQuestionElement>();
         for(int i = 0; i < q.size(); i++)
         {
-            qList.add(new SelectedQuestionElement(q.get(i)));
+            selectedList.add(new SelectedQuestionElement(q.get(i)));
         }
-        return qList;
+        return selectedList;
     }
     
     private List<Question> getFilteredQuestions()
@@ -282,10 +285,9 @@ public class QuestionController implements Serializable
         return returnStr;
     }
     
-    public String export(Long id)
+    public String export(Long id) throws IOException
     {
         List<Question> qList = new ArrayList<Question>();
-        List<SelectedQuestionElement> selectedList = getQuestionList(id);
         for(int i = 0; i < selectedList.size(); i++)
         {
             if(selectedList.get(i).getSelected())
@@ -320,33 +322,18 @@ public class QuestionController implements Serializable
             return null;
         }
         
-        File file = new File(fileName);
-        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();  
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ExternalContext ec = fc.getExternalContext();
 
-        response.setHeader("Content-Disposition", "attachment;filename="+fileName);  
-        response.setContentLength((int) file.length());  
-        ServletOutputStream out = null;  
-        try {  
-            FileInputStream input = new FileInputStream(file);  
-            byte[] buffer = new byte[1024];  
-            out = response.getOutputStream();  
-            int i = 0;  
-            while ((i = input.read(buffer)) != -1) {  
-                out.write(buffer);  
-                out.flush();  
-            }  
-            FacesContext.getCurrentInstance().getResponseComplete();  
-        } catch (IOException err) {  
-            err.printStackTrace();  
-        } finally {  
-            try {  
-                if (out != null) {  
-                    out.close();  
-                }  
-            } catch (IOException err) {  
-                err.printStackTrace();  
-            }  
-        }
+        ec.responseReset(); 
+        ec.setResponseContentType("text/csv"); 
+        ec.setResponseContentLength((int)new File(fileName).length()); 
+        ec.setResponseHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\""); 
+        
+        OutputStream outputStream = ec.getResponseOutputStream();
+
+        fc.responseComplete();
+        
         return null;
     }
 }

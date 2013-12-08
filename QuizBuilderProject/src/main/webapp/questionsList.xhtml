@@ -32,7 +32,7 @@
                     <f:ajax render="questionList" listener="#{questionController.changeFilter}" />
                 </h:selectOneRadio>
             </div>
-
+            <h:outputLabel style="color: red;" value="#{questionController.errorMessage}"/>
         <div id="grid">
 <!--         <h:dataTable id="questionList" value="#{questionController.questionList}" var="q" border="1">  -->  
             <h:dataTable id="questionList" value="#{questionController.getQuestionList(loginController.id)}" var="q" border="1">
@@ -95,7 +95,7 @@
     <h:form>
         <h:link outcome="newQuestion.xhtml" value="Create a new question"/>
     </h:form>
-        <h:outputLabel style="color: red;" value="#{questionController.errorMessage}"/>
+        
 <script> 
     function showhideUpload() { 
         if(document.getElementById('uploadQuestions').style.display=='none') { 
