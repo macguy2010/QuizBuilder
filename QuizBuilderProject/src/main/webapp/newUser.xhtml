@@ -33,7 +33,7 @@
             <h:inputText value="#{userController.user.email}"/>
 
         </h:panelGrid>
-        <h:message for="incorrect" style="color:red;margin:8px;"/>
+        <h:outputLabel style="color: red;" value="#{loginController.errorMessage}"/>
         <div id="formButton">
         <h:commandButton value="Create User" action="#{userController.doCreateUser}"/>
         </div>

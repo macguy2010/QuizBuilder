@@ -126,7 +126,9 @@ public class LoginController {
     
     public String getErrorMessage()
     {
-        return errorMessage;
+        String returnStr = new String(errorMessage);
+        errorMessage = "";
+        return returnStr;
     }
 /***********
  *

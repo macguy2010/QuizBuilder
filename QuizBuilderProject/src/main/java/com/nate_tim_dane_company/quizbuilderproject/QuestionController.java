@@ -33,6 +33,7 @@ public class QuestionController implements Serializable
     private String fileContent;
     private Integer filter = 1;
     private Boolean enableSelection = false;
+    private String errorMessage = "";
     
     public String doCreateQuestion(Long id) {
         question.setUserId(id);
@@ -210,8 +211,9 @@ public class QuestionController implements Serializable
         for(int i = 0; i < qs.size(); i++)
             ejb.createQuestion(qs.get(i));
     } catch (Exception e) {
-        FacesContext cxt = FacesContext.getCurrentInstance();
-        cxt.addMessage("Format_Error", new FacesMessage(FacesMessage.SEVERITY_WARN, "File not formatted correctly", "File not formatted correctly"));
+        errorMessage = "File not formatted correctly";
+     //   FacesContext cxt = FacesContext.getCurrentInstance();
+     //  cxt.addMessage("Format_Error", new FacesMessage(FacesMessage.SEVERITY_WARN, "File not formatted correctly", "File not formatted correctly"));
     }
     questionList = ejb.findQuestions(correspondingId);
     return null;
@@ -255,5 +257,12 @@ public class QuestionController implements Serializable
             return "";
         else
             return "display: none;";
+    }
+    
+    public String getErrorMessage()
+    {
+        String returnStr = new String(errorMessage);
+        errorMessage = "";
+        return returnStr;
     }
 }

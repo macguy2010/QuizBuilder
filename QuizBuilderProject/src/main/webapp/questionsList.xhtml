@@ -118,7 +118,7 @@
             <h:commandButton value="Upload" action="#{questionController.upload}">
                 <f:ajax execute="file" render="@all"/>
             </h:commandButton>
-            <h:message for="Format_Error" style="color:red;margin:8px;"/>
+            <h:outputLabel style="color: red;" value="#{loginController.errorMessage}"/>
        </h:form>
     </div>
 

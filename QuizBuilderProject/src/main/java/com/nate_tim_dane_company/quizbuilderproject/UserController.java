@@ -20,19 +20,20 @@ public class UserController
     private Long correspondingId = -100l;
     private User_Obj user = new User_Obj();
     private String passwordVerify;
+    private String errorMessage = "";
     
     public String doCreateUser() {
         if(!passwordVerify.equals(user.getPassword()))
         {
-            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage("incorrect", new FacesMessage(FacesMessage.SEVERITY_WARN, "Passwords don't match", "Passwords don't match"));
+            errorMessage = "Username Already In Use";
             
             return null;
         }
         if(!ejb.exists(user))
         {
-            FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage("incorrect", new FacesMessage(FacesMessage.SEVERITY_WARN, "Username Already In Use", "Username Already In Use"));
+            errorMessage = "Username Already In Use";
+         //   FacesContext context = FacesContext.getCurrentInstance();
+         //   context.addMessage("incorrect", new FacesMessage(FacesMessage.SEVERITY_WARN, "Username Already In Use", "Username Already In Use"));
             
             return null;
         }
@@ -154,5 +155,12 @@ public class UserController
         }
 
         return string;
+    }
+    
+    public String getErrorMessage()
+    {
+        String returnStr = new String(errorMessage);
+        errorMessage = "";
+        return returnStr;
     }
 }
