@@ -5,7 +5,6 @@ import org.apache.pdfbox.pdmodel.*;
 import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-
 import javax.faces.bean.ManagedBean;
 import java.io.*;
 import java.io.Serializable;
@@ -30,6 +29,8 @@ public class PDFController {
 
     public PDDocument writePdf(List<Question> questions){
         PDDocument quiz = null;
+
+
         try{
             quiz = new PDDocument();
             PDPage page = new PDPage();
@@ -51,6 +52,8 @@ public class PDFController {
                 pageContentStream.drawString(sb.toString());
                 pageContentStream.endText();
             }
+
+            quiz.save( "quizTest.pdf" );
         }
         catch(Exception e){
             e.printStackTrace();
