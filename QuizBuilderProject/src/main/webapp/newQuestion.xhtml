@@ -51,16 +51,18 @@
                 <f:selectItem id="d10" itemLabel="10" itemValue="10" />
             </h:selectOneMenu>
             
-            <h:outputLabel value="Tags: "/>
+            <h:outputLabel style="margin-left: 183px;" value="Tags: "/>
             <h:dataTable id="tagFields" value="#{questionController.tagFields}" var="tag">
                 <h:column>
                     <h:inputText value="#{tag.value}"/>
                 </h:column>
 
                 <h:column>
+                    <div id="boxLink">
                     <h:commandLink value="Remove" action="#{questionController.doRemoveTag(tag)}">
                         <f:ajax execute="@form" render="@form"/>
                     </h:commandLink>
+                    </div>
                 </h:column>
                 
             </h:dataTable>
