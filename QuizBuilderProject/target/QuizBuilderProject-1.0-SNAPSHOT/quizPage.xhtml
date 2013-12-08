@@ -21,7 +21,7 @@
                 <h:inputText value="#{q.userAnswer}"/>
                 <br/><br/>
             </h:column>
-            <h:commandButton value="Create PDF" action="#{PDFController.writePdf(quizGenerationController.generatedQuiz.getQuestions())}"/>
+            <h:commandButton value="Create PDF" action="#{pdfController.writePdf(quizGenerationController.generatedQuiz.getQuestions())}"/>
 
         </h:dataTable>
             <div id="formButton">
