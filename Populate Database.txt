@@ -15,6 +15,6 @@ insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Wha
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Solve for x: x/3 - 4 = -1','9','MATHEMATICS',1,-1);
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('3 * 4 + 24 / 8','15','MATHEMATICS',3,-1);
 
-insert into User_Obj (firstname, lastname, username, password, email, admin) values ('Administrator', 'Administrator', 'admin', 'natetimdane', 'admin@gmail.com', 1);
+insert into User_Obj (firstname, lastname, username, password, email, admin) values ('Admin', 'Admin', 'admin', 'natetimdane', 'admin@gmail.com', 1);
 insert into User_Obj (firstname, lastname, username, password, email) values ('Bob', 'Smith', 'bsmith', 'mypass', 'bob@gmail.com');
 insert into User_Obj (firstname, lastname, username, password, email) values ('John', 'Johnson', 'jjson', 'johnsPass', 'jonny@gmail.com');

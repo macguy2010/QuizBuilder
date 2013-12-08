@@ -147,7 +147,7 @@ public class QuizBuilderEJB {
         User_Obj user = findUser(id);
         TypedQuery<Quiz> query;
         if(user != null && user.getAdmin())
-            query = em.createNamedQuery("findAllQuestions", Quiz.class);
+            query = em.createNamedQuery("findAllQuizzes", Quiz.class);
         else
             query = em.createNamedQuery("findAllQuizzesById", Quiz.class).setParameter("ID", id);
         return query.getResultList();

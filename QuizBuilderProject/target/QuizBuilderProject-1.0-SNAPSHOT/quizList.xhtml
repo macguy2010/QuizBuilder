@@ -13,6 +13,11 @@
         
         <h1>List of the Quizzes</h1>
         
+         <div id="link">
+            <h:form>
+                <h:link outcome="newQuiz.xhtml" value="New Quiz"/>
+            </h:form>
+        </div>
         <div class="preForm">
         <h:form>
             <div id="searchParam">
@@ -31,11 +36,7 @@
             </div>
         
             <div id="grid">
-        <div id="link">
-            <h:form>
-                <h:link outcome="newQuiz.xhtml" value="New Quiz"/>
-            </h:form>
-        </div>
+       
 <!--        <h:dataTable id="quizList" value="#{quizController.quizList}" var="q" border="1">  -->
         <h:dataTable id="quizList" value="#{quizController.getQuizList(loginController.id)}" var="q" border="1">
             <h:column>
@@ -60,17 +61,15 @@
                 <f:facet name="header">
                     <h:outputText value="Delete"/>
                 </f:facet>
-                <h:commandButton style="#{questionController.canDeleteEdit(loginController.id, q.userId)}" value="Delete" action="#{quizController.doDeleteQuiz(q.id)}">
+                <h:commandButton style="#{quizController.canDeleteEdit(loginController.id, q.userId)}" value="Delete" action="#{quizController.doDeleteQuiz(q.id)}">
                     <f:ajax execute="@form" render="@form"/>
                 </h:commandButton>
             </h:column>
             <h:column>
-                <h:form>
                 <f:facet name="header">
                     <h:outputText value="Edit"/>
                 </f:facet>
-                <h:commandButton style="#{questionController.canDeleteEdit(loginController.id, q.userId)}" value="Edit" action="#{quizController.toEditQuiz(q.id)}"/>
-                </h:form>
+                <h:commandButton style="#{quizController.canDeleteEdit(loginController.id, q.userId)}" value="Edit" action="#{quizController.toEditQuiz(q.id)}"/>
             </h:column>
 
         </h:dataTable>
