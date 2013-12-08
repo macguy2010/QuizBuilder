@@ -49,6 +49,7 @@ public class PDFController {
             pageContentStream.moveTextPositionByAmount(25, 100);
             pageContentStream.drawString("Quiz\n" + "Name:\n" + "Grade:\n\n\n");
             pageContentStream.endText();
+            pageContentStream.close();
 
             for(int i = 0; i < questions.size(); i++){
                 StringBuilder sb = new StringBuilder();
@@ -58,6 +59,7 @@ public class PDFController {
                 pageContentStream.beginText();
                 pageContentStream.drawString(sb.toString());
                 pageContentStream.endText();
+                pageContentStream.close();
             }
 
             String fileName = "quizTest.pdf";
