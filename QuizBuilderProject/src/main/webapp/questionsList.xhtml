@@ -87,9 +87,7 @@
 
             </h:dataTable>
         </div>
-        <h:commandButton value="Export Selected" action="#{questionController.export(loginController.id)}">
-            <f:ajax execute="@form" render="@all"/>
-        </h:commandButton>
+        <h:commandButton value="Export Selected" action="#{questionController.export}"/>
     </h:form>
         
     <h:form>

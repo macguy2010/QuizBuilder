@@ -285,7 +285,7 @@ public class QuestionController implements Serializable
         return returnStr;
     }
     
-    public String export(Long id) throws IOException
+    public String export() throws IOException
     {
         List<Question> qList = new ArrayList<Question>();
         for(int i = 0; i < selectedList.size(); i++)
