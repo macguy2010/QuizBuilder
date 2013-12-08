@@ -36,9 +36,11 @@
         <h:form>
             <h:outputLabel value="Search: "/>
             <h:inputText value="#{userController.searchStr}"/>
+            <div id="formButton" style="display: inline;">`
             <h:commandButton value="Search" action="#{userController.search}">
                 <f:ajax execute="@form" render=":usersList"/>
             </h:commandButton>
+            </div>
         </h:form>
         </div>
         
