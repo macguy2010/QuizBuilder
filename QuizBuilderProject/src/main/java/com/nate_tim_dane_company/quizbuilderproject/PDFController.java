@@ -1,6 +1,7 @@
 package com.nate_tim_dane_company.quizbuilderproject;
 
 
+import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.*;
 import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
@@ -38,9 +39,9 @@ public class PDFController {
             PDFont font = PDType1Font.HELVETICA;
             PDPageContentStream pageContentStream = new PDPageContentStream( quiz, page );
             pageContentStream.beginText();
-            pageContentStream.setFont( font, 12 );
-            pageContentStream.moveTextPositionByAmount( 25, 100 );
-            pageContentStream.drawString( "Quiz\n" + "Name:\n" + "Grade:\n\n\n" );
+            pageContentStream.setFont(font, 12);
+            pageContentStream.moveTextPositionByAmount(25, 100);
+            pageContentStream.drawString("Quiz\n" + "Name:\n" + "Grade:\n\n\n");
             pageContentStream.endText();
 
             for(int i = 0; i < questions.size(); i++){
@@ -54,8 +55,12 @@ public class PDFController {
             }
 
             quiz.save( "quizTest.pdf" );
+            quiz.close();
         }
-        catch(Exception e){
+        catch(COSVisitorException e){
+            e.printStackTrace();
+        }
+        catch(IOException e){
             e.printStackTrace();
         }
 
