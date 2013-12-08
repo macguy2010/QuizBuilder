@@ -87,13 +87,15 @@
 
             </h:dataTable>
         </div>
-        <h:commandButton value="Export Selected" action="#{questionController.export(loginController.id)}"/>
+        <h:commandButton value="Export Selected" action="#{questionController.export(loginController.id)}">
+            <f:ajax execute="@form" render="@all"/>
+        </h:commandButton>
     </h:form>
         
     <h:form>
         <h:link outcome="newQuestion.xhtml" value="Create a new question"/>
     </h:form>
-        <h:outputLabel style="color: red;" value="#{loginController.errorMessage}"/>
+        <h:outputLabel style="color: red;" value="#{questionController.errorMessage}"/>
 <script> 
     function showhideUpload() { 
         if(document.getElementById('uploadQuestions').style.display=='none') { 

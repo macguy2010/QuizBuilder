@@ -7,10 +7,10 @@ delete from Tag;
 delete from Grade;
 
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Solve for x: 4x + 3 = 23','5','MATHEMATICS',2,-1);
-insert into Question (Question, Answer, Subject, Difficulty, UserId) values('How many bytes are in a kilobyte','1024','COMPUTER_SCIENCE',3,-1);
-insert into Question (Question, Answer, Subject, Difficulty, UserId) values('How many bits are in a nibble','4','COMPUTER_SCIENCE',4,-1);
-insert into Question (Question, Answer, Subject, Difficulty, UserId) values('How many seconds in an hour','3600','OTHER',1,-1);
-insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Who was the second president of the United States','John Adams','HISTORY',5,-1);
+insert into Question (Question, Answer, Subject, Difficulty, UserId) values('How many bytes are in a kilobyte?','1024','COMPUTER_SCIENCE',3,-1);
+insert into Question (Question, Answer, Subject, Difficulty, UserId) values('How many bits are in a nibble?','4','COMPUTER_SCIENCE',4,-1);
+insert into Question (Question, Answer, Subject, Difficulty, UserId) values('How many seconds in an hour?','3600','OTHER',1,-1);
+insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Who was the second president of the United States?','John Adams','HISTORY',5,-1);
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('What year did Columbus sail?','1492','HISTORY',3,-1);
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Solve for x: x/3 - 4 = -1','9','MATHEMATICS',1,-1);
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('3 * 4 + 24 / 8','15','MATHEMATICS',3,-1);
