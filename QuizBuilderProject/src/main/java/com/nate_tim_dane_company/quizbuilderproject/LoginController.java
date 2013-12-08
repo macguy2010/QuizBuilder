@@ -48,12 +48,12 @@ public class LoginController {
             }
             else{
                 ctx.addMessage("incorrect", new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username or Password", "Incorrect Username or Password"));
-                return "loginPage.xhtml";
+                return null;
             }
         }
         else{
             ctx.addMessage("incorrect", new FacesMessage(FacesMessage.SEVERITY_WARN, "Incorrect Username or Password", "Incorrect Username or Password"));
-            return "loginPage.xhtml";
+            return null;
         }
     }
 

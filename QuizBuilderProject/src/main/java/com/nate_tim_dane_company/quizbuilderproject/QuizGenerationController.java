@@ -60,10 +60,10 @@ public class QuizGenerationController implements Serializable
     {
         for(int i = 0; i < userAnswers.size(); i++)
         {
-            if(userAnswers.get(i).getUserAnswer().equals(quiz.getQuestions().get(i).getAnswer()))
+            if(userAnswers.get(i).getUserAnswer().equals(userAnswers.get(i).getAnswer()))
                 numberCorrect++;
         }
-        quiz.getGrades().add((double)numberCorrect / quiz.getQuestions().size());
+        quiz.getGrades().add((double)numberCorrect / userAnswers.size());
         if(quiz.getIsTemporary())
             ejb.deleteQuiz(quiz.getId());
         return "resultsPage.xhtml";
