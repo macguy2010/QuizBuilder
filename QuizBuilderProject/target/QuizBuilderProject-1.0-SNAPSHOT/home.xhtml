@@ -1,6 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" >
     
     <h:head>
         <meta name="viewport" content="width=device-width"/>
@@ -16,9 +17,9 @@
         
     <h:body>
 
-        <?php include("menu.php") ?>
+        <ui:include src="navBar.xhtml"/>
 
-        <!-- <div id="navButtons">
+      <!--   <div id="navButtons">
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/home.faces">HOME</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/questionsList.faces">MY QUESTIONS</a>
             <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">MY QUIZZES</a>
@@ -26,13 +27,11 @@
 
             <div id="logoutButton">
             <h:form>
-
                 <h:commandButton id="btnLogOut" value="#{loginController.getLoginValue()}" action ="#{loginController.redirect}"/>
-                <h:commandButton id="btnLogOut" value="" onclick = "getAction()"/>
             </h:form>
             </div>
            
-         </div>   -->
+         </div>     -->
          
         <div id="quizBuilder">
             Quiz Builder

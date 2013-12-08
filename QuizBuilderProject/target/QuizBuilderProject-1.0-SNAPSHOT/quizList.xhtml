@@ -43,6 +43,11 @@
             </div>
         
             <div id="grid">
+        <div id="boxLink">
+            <h:form>
+                <h:link outcome="newQuiz.xhtml" value="New Quiz"/>
+            </h:form>
+        </div>
 <!--        <h:dataTable id="quizList" value="#{quizController.quizList}" var="q" border="1">  -->
         <h:dataTable id="quizList" value="#{quizController.getQuizList(loginController.id)}" var="q" border="1">
             <h:column>
@@ -82,9 +87,6 @@
 
         </h:dataTable>
             </div>
-        </h:form>
-        <h:form>
-            <h:link outcome="newQuiz.xhtml" value="Create a new quiz"/>
         </h:form>
         </div>
     </h:body>
