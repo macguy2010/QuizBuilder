@@ -311,7 +311,7 @@ public class QuestionController implements Serializable
         }
         String fileName = "outputFile"+n+".csv";
         String filePath;
-        filePath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/");
+        filePath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/")+"Exported Questions/";
         try
         {
             BufferedWriter out = new BufferedWriter(new FileWriter(filePath+fileName));
