@@ -7,7 +7,11 @@ import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import javax.faces.bean.ManagedBean;
+import java.awt.event.ActionListener;
 import java.io.*;
+import java.io.File;
+import javax.faces.context.FacesContext;
+import javax.swing.*;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -28,9 +32,11 @@ import javax.faces.model.SelectItem;
 public class PDFController {
 
 
-    public PDDocument writePdf(List<Question> questions){
+    public void writePdf(List<Question> questions){
         PDDocument quiz = null;
 
+        //MyFileChooser fc = new MyFileChooser();
+        //fc.()
 
         try{
             quiz = new PDDocument();
@@ -54,7 +60,12 @@ public class PDFController {
                 pageContentStream.endText();
             }
 
-            quiz.save( "quizTest.pdf" );
+            String fileName = "quizTest.pdf";
+
+            String filePath;
+            filePath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/");
+
+            quiz.save(filePath+fileName);
             quiz.close();
         }
         catch(COSVisitorException e){
@@ -64,6 +75,6 @@ public class PDFController {
             e.printStackTrace();
         }
 
-        return quiz;
+        //return quiz;
     }
 }
