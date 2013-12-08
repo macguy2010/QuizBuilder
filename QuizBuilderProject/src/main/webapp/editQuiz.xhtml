@@ -28,6 +28,7 @@
                                itemLabel="#{q.question}" itemValue="#{q.id}" />
             </h:selectManyCheckbox>
         </h:panelGrid>
+            <h:inputHidden value="#{quizController.quiz.id}"/> 
         <div id="formButton">
         <h:commandButton value="Submit" action="#{quizController.doEditQuiz}"/>
         </div>
