@@ -16,34 +16,6 @@
             include 'navBar.xhtml';
         ?>
 
-        <script>
-
-            var auth = "#{loginController.getAuthenticated()}"
-
-            function getValue(){
-                if(auth == "true"){
-                    document.getElementById("btnLogOut").value="Logout";
-                }
-                else{
-                    document.getElementById("btnLogOut").value="Login";
-                }
-            }
-
-            function getAction(){
-                if(auth == "true"){
-                    document.getElementById("btnLogOut").action="#{loginController.logout()}";
-                }
-                else{
-                    document.getElementById("btnLogOut").redirection="redirection()";
-                }
-
-                function redirection(){
-                    window.location.href="http://localhost:8080/QuizBuilderProject/loginPage.faces";
-                }
-            }
-
-        </script>
-
     </h:head>        
         
     <h:body>
@@ -57,7 +29,7 @@
             <div id="logoutButton">
             <h:form>
 
-                <h:commandButton id="btnLogOut" value="#{loginController.getLoginValue()}" action ="#{loginController.redirect()}"/>
+                <h:commandButton id="btnLogOut" value="#{loginController.getLoginValue()}" action ="#{loginController.redirect}"/>
               <!--  <h:commandButton id="btnLogOut" value="" onclick = "getAction()"/> -->
             </h:form>
             </div>
