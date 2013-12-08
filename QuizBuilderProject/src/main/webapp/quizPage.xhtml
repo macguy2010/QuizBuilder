@@ -21,11 +21,12 @@
                 <h:inputText value="#{q.userAnswer}"/>
                 <br/><br/>
             </h:column>
-            <h:commandButton value="Create PDF" action="#{pdfController.writePdf(quizGenerationController.generatedQuiz.getQuestions())}"/>
+
 
         </h:dataTable>
             <div id="formButton">
-        <h:commandButton value="Submit" action="#{quizGenerationController.doSubmitAnswers}"/>
+                <h:commandButton value="Submit" action="#{quizGenerationController.doSubmitAnswers}"/>
+                <h:commandButton value="Create PDF" action="#{pdfController.writePdf(quizGenerationController.generatedQuiz.getQuestions())}"/>
             </div>
             </h:form>
         </div>
