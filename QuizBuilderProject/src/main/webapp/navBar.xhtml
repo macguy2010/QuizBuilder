@@ -15,13 +15,9 @@
             <a id="adminBoxLink" style="#{userController.getAdmin(loginController.id)}" href="http://localhost:8080/QuizBuilderProject/userPage.faces">USERS</a>
             <div id="logoutButton">
                 <h:form>
-                    <h:commandButton id="btnLogOut" value="LOGOUT" action="#{loginController.logout}"/>
+                    <h:commandButton id="btnLogOut" value="#{loginController.getLoginValue()}" action ="#{loginController.redirect}"/>
                 </h:form>
             </div>
-        </div>
-
-        <div id="quizBuilder">
-            Quiz Builder
         </div>
     </h:body>
 </html>
