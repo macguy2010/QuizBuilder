@@ -10,7 +10,7 @@
 
     <ui:include src="navBar.xhtml"/>
 
-    
+     <h:message for="incorrect"/>
     <h1>Login</h1>
     <div id="box">
     <h:form>
@@ -26,8 +26,9 @@
         <div id="formButton">
 	<h:commandButton value="Login" action="#{loginController.verifyUser}" />
         </div>
-        <h:message for="incorrect"/>
+       
     </h:form>
+        
     </div>
 </h:body>
 </html>
