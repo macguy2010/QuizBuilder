@@ -58,10 +58,9 @@ public class QuizGenerationController implements Serializable
     
     public String doSubmitAnswers()
     {
-        for(int i = 0; i < quiz.getQuestions().size(); i++)
+        for(int i = 0; i < userAnswers.size(); i++)
         {
-            String userAnswer = userAnswers.get(i).getAnswer().trim();
-            if(userAnswer.equals(quiz.getQuestions().get(i).getAnswer()))
+            if(userAnswers.get(i).getUserAnswer().equals(quiz.getQuestions().get(i).getAnswer()))
                 numberCorrect++;
         }
         quiz.getGrades().add((double)numberCorrect / quiz.getQuestions().size());

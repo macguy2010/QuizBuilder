@@ -22,12 +22,12 @@ public class QuestionElement {
     
     public void setQuestion(String q)
     {
-        answer = q;
+        question = q;
     }
     
     public String getQuestion()
     {
-        return answer;
+        return question;
     }
     
     public void setAnswer(String a)
@@ -42,7 +42,7 @@ public class QuestionElement {
     
     public void setUserAnswer(String ua)
     {
-        answer = ua;
+        userAnswer = ua;
     }
     
     public String getUserAnswer()
