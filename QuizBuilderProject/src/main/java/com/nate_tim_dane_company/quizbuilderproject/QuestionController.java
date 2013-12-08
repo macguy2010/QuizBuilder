@@ -1,6 +1,8 @@
 package com.nate_tim_dane_company.quizbuilderproject;
 
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
@@ -16,6 +18,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 @Stateful
@@ -298,7 +302,12 @@ public class QuestionController implements Serializable
             Question q = qList.get(i);
             output += q.getQuestion()+","+q.getAnswer()+","+q.getSubject().getLabel()+","+q.getDifficulty()+","+q.getTagsString()+"\n";
         }
-        String fileName = "outputFile"+((int)(Math.random() * 1000))+".csv";
+        int n = (int)(Math.random() * 1000);
+        while(new File("outputFile"+n+".csv").exists())
+        {
+            n = (int)(Math.random() * 1000);
+        }
+        String fileName = "outputFile"+n+".csv";
         try
         {
             BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
@@ -309,6 +318,34 @@ public class QuestionController implements Serializable
         {
             errorMessage = "Error Making Your Export, Please Try Again";
             return null;
+        }
+        
+        File file = new File(fileName);
+        HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();  
+
+        response.setHeader("Content-Disposition", "attachment;filename="+fileName);  
+        response.setContentLength((int) file.length());  
+        ServletOutputStream out = null;  
+        try {  
+            FileInputStream input = new FileInputStream(file);  
+            byte[] buffer = new byte[1024];  
+            out = response.getOutputStream();  
+            int i = 0;  
+            while ((i = input.read(buffer)) != -1) {  
+                out.write(buffer);  
+                out.flush();  
+            }  
+            FacesContext.getCurrentInstance().getResponseComplete();  
+        } catch (IOException err) {  
+            err.printStackTrace();  
+        } finally {  
+            try {  
+                if (out != null) {  
+                    out.close();  
+                }  
+            } catch (IOException err) {  
+                err.printStackTrace();  
+            }  
         }
         return null;
     }
