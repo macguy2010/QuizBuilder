@@ -28,6 +28,21 @@
                     <f:selectItem itemValue="3" itemLabel="All" />
                     <f:ajax render="questionList" listener="#{questionController.changeFilter}" />
                 </h:selectOneRadio>
+                
+                <div id="openerUpload">
+     <a style="color: #bcbdbd;" href="#1" name="1" onclick="return showhideUpload();">Upload Questions File</a>
+ </div> 
+    <div id="uploadQuestions" style="display:none;">
+       <h:form id="form" enctype="multipart/form-data">
+            <h:inputFile id="file" value="#{questionController.file}"/>
+            <div id="formButton">
+            <h:commandButton value="Upload" action="#{questionController.upload}">
+                <f:ajax execute="file" render="@all"/>
+            </h:commandButton>
+            </div>
+       </h:form>
+    </div>
+                
             </div>
             <h:outputLabel style="color: red;" value="#{questionController.errorMessage}"/>
         <div id="grid">
@@ -90,8 +105,8 @@
     </h:form>
         
     <h:form>
-        <div id="link">
-        <h:link outcome="newQuestion.xhtml" value="Create a new question"/>
+        <div id="badLink">
+        <h:link style="color: #bcbdbd;" outcome="newQuestion.xhtml" value="Create a new question"/>
         </div>
     </h:form>
           
@@ -117,17 +132,7 @@
 </script> 
 
 
- <div id="openerUpload"><a href="#1" name="1" onclick="return showhideUpload();">Upload Questions File</a></div> 
-    <div id="uploadQuestions" style="display:none;">
-       <h:form id="form" enctype="multipart/form-data">
-            <h:inputFile id="file" value="#{questionController.file}"/>
-            <div id="formButton">
-            <h:commandButton value="Upload" action="#{questionController.upload}">
-                <f:ajax execute="file" render="@all"/>
-            </h:commandButton>
-            </div>
-       </h:form>
-    </div>
+ 
 
 </div>
     </h:body>
