@@ -24,13 +24,16 @@
         </div>
         
          <h1>Create a New Quiz</h1>
-    <div id="box">    
+    <div class="preForm">    
     <h:form>
+        <div id="searchParam">
         <h:panelGrid columns="2">
             <h:outputLabel value="Title: "/>
             <h:inputText value="#{quizController.quiz.title}"/>
         </h:panelGrid>
+        </div>
         <br></br>
+        <div id="grid">
         <h:panelGrid columns="1" border="1">
             <h:outputLabel value="Select Questions: "/>
             <h:selectManyCheckbox value="#{quizController.questionsSelectionList}" layout="pageDirection">
@@ -40,6 +43,7 @@
         </h:panelGrid>
         <div id="formButton">
         <h:commandButton value="Submit" action="#{quizController.doCreateQuiz}"/>
+        </div>
         </div>
     </h:form>
     </div>

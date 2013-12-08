@@ -78,7 +78,9 @@ h1{
 
 table{
     color: #bcbdbd;
-    border-color: #222222;
+    border-color: #222222; 
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #box{
@@ -106,7 +108,9 @@ table{
 }
 
 #searchParam{
-    margin-left: 20em;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 #searchParam label{
     color: #bcbdbd;
@@ -127,8 +131,9 @@ table{
     padding-top: 2px;
     padding-bottom: 2px;
     border-radius: 5px;
-    margin-left: 38%;
-    margin-right: 38%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 2em;
     text-align: center;
         
@@ -136,7 +141,7 @@ table{
     box-shadow: 2px 3px 3px #000000;
 }
 
-#searchParam command{
+/*#searchParam command{
     position: relative;
     width: 8em;
     background: transparent;
@@ -159,7 +164,7 @@ table{
         
     background-color: #12171c;
     box-shadow: 2px 3px 3px #000000;
-}
+}*/
 
 #box label{
     position: relative;
