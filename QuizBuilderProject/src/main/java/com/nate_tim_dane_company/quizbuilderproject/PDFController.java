@@ -6,6 +6,7 @@ import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
+import javax.faces.bean.ManagedBean;
 import java.io.*;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -23,6 +24,7 @@ import javax.faces.model.SelectItem;
  * Time: 1:49 PM
  * To change this template use File | Settings | File Templates.
  */
+@ManagedBean(name = "pdfController")
 public class PDFController {
 
 
