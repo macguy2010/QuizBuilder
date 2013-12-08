@@ -20,7 +20,7 @@ body{
 
 #navButtons input{
     display: inline;
-    width: 9em;
+    //width: 9em;
     background: transparent;
     border: transparent;
     font: 14px Tahoma, Helvetica, Arial, Sans-serif;
@@ -31,12 +31,23 @@ body{
     -moz-border-radius: 5px;
     border-radius: 5px;        
     background-color: #12171c;
-    box-shadow: 2px 3px 3px #000000;    
+    box-shadow: 2px 3px 3px #000000;
+    margin-left: 14px;
 }
 
 #logoutButton{
-    display: box;
     float: right;
+}
+#logoutButton input{
+    padding-left: 9px;
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: 14px;
+    margin-top: -4px;
 }
 
 h1{
@@ -136,7 +147,7 @@ table{
 }
 
 #formButton input{
-    width: 8em;
+    //width: 8em;
     background: transparent;
     border: transparent;
     font: 14px Tahoma, Helvetica, Arial, Sans-serif;
@@ -145,8 +156,8 @@ table{
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -moz-border-radius: 5px;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
     padding-top: 2px;
     padding-bottom: 2px;
     border-radius: 5px;
