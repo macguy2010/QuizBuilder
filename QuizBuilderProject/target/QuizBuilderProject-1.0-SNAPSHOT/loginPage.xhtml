@@ -26,7 +26,10 @@
         <div id="formButton">
 	<h:commandButton value="Login" action="#{loginController.verifyUser}" />
         </div>
-        <h:outputLabel value="#{loginController.errorMessage}"/>
+        
+        <h:outputLabel style="color: red;" value="#{loginController.errorMessage}"/>
+        
+        
     </h:form>
         
     </div>
