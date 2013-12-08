@@ -309,10 +309,12 @@ public class QuestionController implements Serializable
         {
             n = (int)(Math.random() * 1000);
         }
-        String fileName = "./outputFile"+n+".csv";
+        String fileName = "outputFile"+n+".csv";
+        String filePath;
+        filePath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/");
         try
         {
-            BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
+            BufferedWriter out = new BufferedWriter(new FileWriter(filePath+fileName));
             out.write(output);
             out.close();
         }
@@ -331,6 +333,17 @@ public class QuestionController implements Serializable
         ec.setResponseHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\""); 
         
         OutputStream outputStream = ec.getResponseOutputStream();
+        
+        try{
+            FileInputStream input = new FileInputStream(filePath+fileName);  
+            byte[] buffer = new byte[1024];   
+            int i = 0;  
+            while ((i = input.read(buffer)) != -1) {  
+                outputStream.write(buffer);  
+                outputStream.flush();  
+            } 
+        }
+        catch(Exception e){}
 
         fc.responseComplete();
         
