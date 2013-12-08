@@ -28,11 +28,16 @@
 <div class="preForm">
         <h:form>
             <div id="searchParam">
-                <h:outputLabel value="Search: "/>
+                
+                <h:outputLabel  value="Search: "/>
                 <h:inputText value="#{questionController.searchStr}"/>
+                
                 <h:commandButton value="Search" action="#{questionController.search}">
                     <f:ajax execute="@form" render="questionList"/>
                 </h:commandButton>
+                
+                
+                
             
                 <h:selectOneRadio value="#{questionController.filter}">
                     <f:selectItem itemValue="1" itemLabel="Mine" />

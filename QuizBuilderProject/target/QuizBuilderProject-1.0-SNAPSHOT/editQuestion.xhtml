@@ -59,9 +59,9 @@
                 </h:column>
 
                 <h:column>
-                    <div id="boxLink">
+                    
                     <h:commandLink value="Remove" action="#{questionController.doRemoveTag(tag.value)}"/>
-                    </div>
+                    
                 </h:column>
                 
             </h:dataTable>
@@ -70,6 +70,7 @@
                         <f:ajax execute="@form" render="tagFields"/>
                 </h:commandButton>
             </div>
+            
         
             <h:inputHidden value="#{questionController.question.id}"/>  
        

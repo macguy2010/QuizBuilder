@@ -136,6 +136,31 @@ table{
     box-shadow: 2px 3px 3px #000000;
 }
 
+#searchParam command{
+    position: relative;
+    width: 8em;
+    background: transparent;
+    border: transparent;
+    font: 14px Tahoma, Helvetica, Arial, Sans-serif;
+    color: #bcbdbd;
+    text-shadow: 0px 2px 3px #000000;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -moz-border-radius: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 5px;
+    //margin-left: 38%;
+    //margin-right: 38%;
+    //margin-top: 2em;
+    //text-align: center;
+        
+    background-color: #12171c;
+    box-shadow: 2px 3px 3px #000000;
+}
+
 #box label{
     position: relative;
     width: 15em;
