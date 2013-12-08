@@ -32,6 +32,7 @@ public class QuestionController implements Serializable
     private Part file;
     private String fileContent;
     private Integer filter = 1;
+    private Boolean enableSelection = false;
     
     public String doCreateQuestion(Long id) {
         question.setUserId(id);
@@ -243,6 +244,14 @@ public class QuestionController implements Serializable
     {
         User_Obj user = ejb.findUser(id);
         if(id == userId && id > 0 || user != null && user.getAdmin())
+            return "";
+        else
+            return "display: none;";
+    }
+    
+    public String canShowCheckBoxForSelection()
+    {
+        if(enableSelection)
             return "";
         else
             return "display: none;";
