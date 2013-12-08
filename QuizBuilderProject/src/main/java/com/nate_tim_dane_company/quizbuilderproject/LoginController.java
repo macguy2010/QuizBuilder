@@ -103,7 +103,7 @@ public class LoginController {
 
     public String redirect(){
         if(authenticated == true){
-            return "#{loginController.logout}";
+            return logout();
         }
         else{
             return "loginPage.xhtml";
