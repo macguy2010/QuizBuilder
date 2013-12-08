@@ -43,7 +43,7 @@ public class PDFController {
             pageContentStream.drawString( "Quiz\n" + "Name:\n" + "Grade:\n\n\n" );
             pageContentStream.endText();
 
-            for(int i = 0; i <= questions.size(); i++){
+            for(int i = 0; i < questions.size(); i++){
                 StringBuilder sb = new StringBuilder();
                 //get question only
                 sb.append(i+ ".: " +questions.get(i).getQuestion());
