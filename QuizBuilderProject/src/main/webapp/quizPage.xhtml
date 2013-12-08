@@ -1,28 +1,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Quiz</title>
         <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
     </h:head>
     <h:body>
-        <div id="navButtons">  
-            <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/home.faces">HOME</a>
-            <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/questionsList.faces">MY QUESTIONS</a>
-            <a id="boxLink" href="http://localhost:8080/QuizBuilderProject/quizList.faces">MY QUIZZES</a>
-            <a id="adminBoxLink" style="#{userController.getAdmin(loginController.id)}" href="http://localhost:8080/QuizBuilderProject/userPage.faces">USERS</a>
 
-            <div id="logoutButton">
-            <h:form>
-                <h:commandButton id="btnLogOut" value="LOGOUT" action="#{loginController.logout}"/>
-            </h:form>
-            </div>
-           
-         </div>
+        <ui:include src="navBar.xhtml"/>
          
-        <div id="quizBuilder">
-            Quiz Builder
-        </div>
+
         
         <h1>Questions</h1>
         <div id="box">
