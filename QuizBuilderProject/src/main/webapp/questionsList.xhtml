@@ -36,41 +36,45 @@
         <div id="grid">
 <!--         <h:dataTable id="questionList" value="#{questionController.questionList}" var="q" border="1">  -->  
             <h:dataTable id="questionList" value="#{questionController.getQuestionList(loginController.id)}" var="q" border="1">
+                
+                <h:column>
+                    <h:selectBooleanCheckbox value="#{q.selected}" />
+                </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Question"/>
                     </f:facet>
-                    <h:outputText value="#{q.question}"/>
+                    <h:outputText value="#{q.question.question}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Answer"/>
                     </f:facet>
-                    <h:outputText value="#{q.answer}"/>
+                    <h:outputText value="#{q.question.answer}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Subject"/>
                     </f:facet>
-                    <h:outputText value="#{q.subject}"/>
+                    <h:outputText value="#{q.question.subject}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Difficulty"/>
                     </f:facet>
-                    <h:outputText value="#{q.difficulty}"/>
+                    <h:outputText value="#{q.question.difficulty}"/>
                 </h:column>
                 <h:column>
-                    <div id="openerTags"><a href="#1" name="1" onclick="return showhideTags(#{q.id});">Tags</a></div> 
-                    <div id="#{q.id}" style="display:none;">
-                        <h:outputText value="#{q.tagsString}"/>
+                    <div id="openerTags"><a href="#1" name="1" onclick="return showhideTags(#{q.question.id});">Tags</a></div> 
+                    <div id="#{q.question.id}" style="display:none;">
+                        <h:outputText value="#{q.question.tagsString}"/>
                     </div>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value=""/>
                     </f:facet>
-                    <h:commandButton style="#{questionController.canDeleteEdit(loginController.id, q.userId)}" value="Delete" action="#{questionController.doDeleteQuestion(q.id)}">
+                    <h:commandButton style="#{questionController.canDeleteEdit(loginController.id, q.question.userId)}" value="Delete" action="#{questionController.doDeleteQuestion(q.question.id)}">
                         <f:ajax execute="@form" render="@all"/>
                     </h:commandButton>
                 </h:column>
@@ -78,17 +82,18 @@
                     <f:facet name="header">
                         <h:outputText value=""/>
                     </f:facet>
-                    <h:commandButton style="#{questionController.canDeleteEdit(loginController.id, q.userId)}" value="Edit" action="#{questionController.toEditQuestion(q.id)}"/>
+                    <h:commandButton style="#{questionController.canDeleteEdit(loginController.id, q.question.userId)}" value="Edit" action="#{questionController.toEditQuestion(q.question.id)}"/>
                 </h:column>
 
             </h:dataTable>
         </div>
+        <h:commandButton value="Export Selected" action="#{questionController.export(loginController.id)}"/>
     </h:form>
         
     <h:form>
         <h:link outcome="newQuestion.xhtml" value="Create a new question"/>
     </h:form>
-        
+        <h:outputLabel style="color: red;" value="#{loginController.errorMessage}"/>
 <script> 
     function showhideUpload() { 
         if(document.getElementById('uploadQuestions').style.display=='none') { 
@@ -118,7 +123,6 @@
             <h:commandButton value="Upload" action="#{questionController.upload}">
                 <f:ajax execute="file" render="@all"/>
             </h:commandButton>
-            <h:outputLabel style="color: red;" value="#{loginController.errorMessage}"/>
        </h:form>
     </div>
 

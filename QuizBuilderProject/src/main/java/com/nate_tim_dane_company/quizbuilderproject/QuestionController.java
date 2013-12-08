@@ -1,5 +1,7 @@
 package com.nate_tim_dane_company.quizbuilderproject;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -106,14 +108,24 @@ public class QuestionController implements Serializable
         question = u;
     }
     
-    public List<Question> getQuestionList(Long id) {
+    public List<SelectedQuestionElement> getQuestionList(Long id) {
         if(questionList == null || correspondingId != id)
             questionList = ejb.findQuestions(id);
         correspondingId = id;
-        return getFilteredQuestions();
+        return getSelectedQuestionList(getFilteredQuestions());
     }
     
-    public List<Question> getFilteredQuestions()
+    private List<SelectedQuestionElement> getSelectedQuestionList(List<Question> q)
+    {
+        List<SelectedQuestionElement> qList = new ArrayList<SelectedQuestionElement>();
+        for(int i = 0; i < q.size(); i++)
+        {
+            qList.add(new SelectedQuestionElement(q.get(i)));
+        }
+        return qList;
+    }
+    
+    private List<Question> getFilteredQuestions()
     {
         List<Question> returnList = new ArrayList<Question>();
         for(int i = 0; i < questionList.size(); i++)
@@ -264,5 +276,40 @@ public class QuestionController implements Serializable
         String returnStr = new String(errorMessage);
         errorMessage = "";
         return returnStr;
+    }
+    
+    public String export(Long id)
+    {
+        List<Question> qList = new ArrayList<Question>();
+        List<SelectedQuestionElement> selectedList = getQuestionList(id);
+        for(int i = 0; i < selectedList.size(); i++)
+        {
+            if(selectedList.get(i).getSelected())
+                qList.add(selectedList.get(i).getQuestion());
+        }
+        if(qList.isEmpty())
+        {
+            errorMessage = "No Questions Selected";
+            return null;
+        }
+        String output = "Question,Answer,Subject,Difficulty,Tags\n";
+        for(int i = 0; i < qList.size(); i++)
+        {
+            Question q = qList.get(i);
+            output += q.getQuestion()+","+q.getAnswer()+","+q.getSubject().getLabel()+","+q.getDifficulty()+","+q.getTagsString()+"\n";
+        }
+        String fileName = "outputFile"+((int)(Math.random() * 1000))+".csv";
+        try
+        {
+            BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
+            out.write(output);
+            out.close();
+        }
+        catch(Exception e)
+        {
+            errorMessage = "Error Making Your Export, Please Try Again";
+            return null;
+        }
+        return null;
     }
 }
