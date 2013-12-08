@@ -102,11 +102,11 @@ public class LoginController {
    }
 
     public String redirect(){
-        if(authenticated == false)
-            return "loginPage.xhtml";
+        if(authenticated == true){
+            return "nothing";
+        }
         else{
-            logout();
-            return null;
+            return "loginPage.xhtml";
         }
     }
 
