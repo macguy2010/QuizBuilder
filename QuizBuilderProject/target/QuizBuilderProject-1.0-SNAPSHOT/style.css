@@ -109,7 +109,7 @@ table{
 #box label{
     position: relative;
     //width: 15em;
-    text-align: center;
+    //text-align: center;
     float: right;
     font: 16px Tahoma, Helvetica, Arial, Sans-serif;    
     color: #bcbdbd;
@@ -123,7 +123,7 @@ table{
     height: 25px;
 }
 #box input{
-    text-align: center;
+    //text-align: center;
 }
 
 #searchParam{
