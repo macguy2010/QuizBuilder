@@ -12,6 +12,7 @@ import javax.faces.context.FacesContext;
 import java.io.IOException;
 import javax.ejb.Stateful;
 import javax.faces.bean.SessionScoped;
+import java.lang.StringBuilder;
 
 /**
  * Created with IntelliJ IDEA.
@@ -111,8 +112,11 @@ public class LoginController {
     }
 
     public String getLoginValue(){
+        StringBuilder sb = new StringBuilder();
         if(authenticated == true){
-            return "Logout";
+            sb.append("Logout");
+            sb.append(" "+ user.getFirstName());
+            return sb.toString();
         }
         else
             return "Login";
