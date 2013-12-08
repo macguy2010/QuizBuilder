@@ -305,11 +305,11 @@ public class QuestionController implements Serializable
             output += q.getQuestion()+","+q.getAnswer()+","+q.getSubject().getLabel()+","+q.getDifficulty()+","+q.getTagsString()+"\n";
         }
         int n = (int)(Math.random() * 1000);
-        while(new File("outputFile"+n+".csv").exists())
+        while(new File("./outputFile"+n+".csv").exists())
         {
             n = (int)(Math.random() * 1000);
         }
-        String fileName = "outputFile"+n+".csv";
+        String fileName = "./outputFile"+n+".csv";
         try
         {
             BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
