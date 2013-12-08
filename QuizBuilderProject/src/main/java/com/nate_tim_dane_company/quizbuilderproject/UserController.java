@@ -94,7 +94,27 @@ public class UserController
         else
             usersList = ejb.findUsers(id);
         correspondingId = id;
-        return usersList;
+        return getFilteredUsers();
+    }
+    
+    public List<User_Obj> getFilteredUsers()
+    {
+        List<User_Obj> returnList = new ArrayList<User_Obj>();
+        
+        if(searchStr == null)
+            searchStr = "";
+        for(int i = 0; i < usersList.size(); i++)
+        {
+            if(usersList.get(i).getFirstName().trim().toLowerCase().contains(searchStr.trim().toLowerCase())
+                   || usersList.get(i).getLastName().trim().toLowerCase().contains(searchStr.trim().toLowerCase())
+                   || usersList.get(i).getPassword().trim().toLowerCase().contains(searchStr.trim().toLowerCase()) 
+                   || usersList.get(i).getEmail().trim().toLowerCase().contains(searchStr.trim().toLowerCase()) )
+            {
+                returnList.add(usersList.get(i));
+            }
+        }
+        
+        return returnList;
     }
 
     public List<User_Obj> getUsersList() {

@@ -118,7 +118,7 @@ public class QuizController
         {
             for(int i = 0; i < returnList.size(); i++)
             {
-                if(!returnList.get(i).getTitle().trim().contains(searchStr.trim()))
+                if(!returnList.get(i).getTitle().trim().toLowerCase().contains(searchStr.trim().toLowerCase()))
                 {
                     returnList.remove(i);
                     i--;
