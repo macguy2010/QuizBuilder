@@ -56,4 +56,9 @@ public class QuestionElement {
         return correct;
     }
     
+    public void setCorrect(Integer c)
+    {
+        correct = c;
+    }
+    
 }

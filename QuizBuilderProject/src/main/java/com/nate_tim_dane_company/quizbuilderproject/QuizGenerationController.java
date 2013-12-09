@@ -33,13 +33,13 @@ public class QuizGenerationController implements Serializable
     
     public List<QuestionElement> getGeneratedQuizQuestions()
     {
-        List<QuestionElement> elements = new ArrayList<QuestionElement>();
+        userAnswers = new ArrayList<QuestionElement>();
         List<Question> questions = getGeneratedQuiz().getQuestions();
         for(int i = 0; i < questions.size(); i++)
         {
-            elements.add(new QuestionElement(questions.get(i).getQuestion(), questions.get(i).getAnswer()));
+            userAnswers.add(new QuestionElement(questions.get(i).getQuestion(), questions.get(i).getAnswer()));
         }
-        return elements;
+        return userAnswers;
     }
     
     public Quiz getGeneratedQuiz()
@@ -58,15 +58,27 @@ public class QuizGenerationController implements Serializable
     
     public String doSubmitAnswers()
     {
+        numberCorrect = 0;
         for(int i = 0; i < userAnswers.size(); i++)
         {
-            if(userAnswers.get(i).getUserAnswer().equals(userAnswers.get(i).getAnswer()))
+            if(userAnswers.get(i).getUserAnswer().trim().toLowerCase().equals(userAnswers.get(i).getAnswer().trim().toLowerCase()))
+            {
                 numberCorrect++;
+                userAnswers.get(i).setCorrect(1);
+            }
         }
         quiz.getGrades().add((double)numberCorrect / userAnswers.size());
     //    if(quiz.getIsTemporary())
     //        ejb.deleteQuiz(quiz.getId());
         return "resultsPage.xhtml";
+    }
+    
+    public String isCorrect(Integer c)
+    {
+        if(c == 1)
+            return "check.png";
+        else
+            return "x.png";
     }
     
     public Quiz getQuiz()
@@ -97,9 +109,6 @@ public class QuizGenerationController implements Serializable
     
     public List<QuestionElement> getUserAnswers()
     {
-        int num = getGeneratedQuiz().getNumberOfQuestions();
-        if(userAnswers == null || userAnswers.size() != num)
-            userAnswers = new ArrayList<QuestionElement>();
         return userAnswers;
     }
     
