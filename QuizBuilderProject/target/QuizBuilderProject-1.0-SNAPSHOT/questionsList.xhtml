@@ -22,7 +22,10 @@
     
            <div id="uploadQuestions" style="display:none;">
        
-           
+           <h:selectOneRadio value="#{questionController.importType}">
+                    <f:selectItem itemValue="1" itemLabel="CSV" />
+                    <f:selectItem itemValue="2" itemLabel="JSON" />
+            </h:selectOneRadio>
             <h:inputFile id="file" value="#{questionController.file}"/>
             
             <h:commandButton value="Upload" action="#{questionController.upload}">
@@ -115,7 +118,11 @@
             </h:dataTable>
         </div>
             <div id="formButton" style="text-align: center; margin-left: auto; margin-right: auto;">
-        <h:commandButton value="Export Selected" action="#{questionController.export}"/>
+            <h:commandButton value="Export Selected" action="#{questionController.export}"/>
+            <h:selectOneRadio value="#{questionController.exportType}">
+                    <f:selectItem itemValue="1" itemLabel="CSV" />
+                    <f:selectItem itemValue="2" itemLabel="JSON" />
+            </h:selectOneRadio>
             </div>
     </h:form>
                   
