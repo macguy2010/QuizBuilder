@@ -160,7 +160,8 @@ public class QuestionController implements Serializable
             for(int i = 0; i < returnList.size(); i++)
             {
                 if(!returnList.get(i).getQuestion().trim().toLowerCase().contains(searchStr.trim().toLowerCase()) 
-                       && !returnList.get(i).getAnswer().trim().toLowerCase().contains(searchStr.trim().toLowerCase()))
+                       && !returnList.get(i).getAnswer().trim().toLowerCase().contains(searchStr.trim().toLowerCase())
+                        && !returnList.get(i).getSubject().getLabel().trim().toLowerCase().contains(searchStr.trim().toLowerCase()))
                 {
                     returnList.remove(i);
                     i--;
