@@ -35,6 +35,10 @@ public class PDFController {
     public void writePdf(List<Question> questions){
         PDDocument quiz = null;
 
+        int xPos = 0;
+        int yPos = 750;
+        int leftBuffer = 25;
+
         //MyFileChooser fc = new MyFileChooser();
         //fc.()
 
@@ -46,18 +50,29 @@ public class PDFController {
             PDPageContentStream pageContentStream = new PDPageContentStream( quiz, page );
             pageContentStream.beginText();
             pageContentStream.setFont(font, 12);
-            pageContentStream.moveTextPositionByAmount(25, 100);
-            pageContentStream.drawString("Quiz\n" + "Name:\n" + "Grade:\n\n\n");
+            pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
+            yPos -= 14;
+            pageContentStream.drawString("Quiz\n" + "Name:\n" + "Grade:");
+
+            pageContentStream.moveTextPositionByAmount(leftBuffer,yPos);
+            pageContentStream.drawString("Name:");
+            yPos -= 14;
+
+            pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
+            yPos -= 25;
+
             pageContentStream.endText();
             pageContentStream.close();
 
             for(int i = 0; i < questions.size(); i++){
                 StringBuilder sb = new StringBuilder();
                 //get question only
-                sb.append(i+ ".: " +questions.get(i).getQuestion());
-                sb.append("\n\n\n");
+                sb.append((i+1) + ". " +questions.get(i).getQuestion());
+                //sb.append("\n\n\n");
                 pageContentStream.beginText();
+                pageContentStream.moveTextPositionByAmount(leftBuffer,yPos);
                 pageContentStream.drawString(sb.toString());
+                yPos -= 14;
                 pageContentStream.endText();
                 pageContentStream.close();
             }
