@@ -48,20 +48,25 @@ public class PDFController {
             quiz.addPage( page );
             PDFont font = PDType1Font.HELVETICA;
             PDPageContentStream pageContentStream = new PDPageContentStream( quiz, page );
+
             pageContentStream.beginText();
             pageContentStream.setFont(font, 12);
             pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
             pageContentStream.drawString("Quiz");
-            //pageContentStream.endText();
+            pageContentStream.endText();
             //pageContentStream.close();
             yPos -= 14;
 
+            pageContentStream.beginText();
+            pageContentStream.setFont(font,12);
             pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
             pageContentStream.drawString("Name:");
-            //pageContentStream.endText();
+            pageContentStream.endText();
             //pageContentStream.close();
             yPos -= 14;
 
+            pageContentStream.beginText();
+            pageContentStream(font,12);
             pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
             pageContentStream.drawString("Grade:");
             yPos -= 25;
