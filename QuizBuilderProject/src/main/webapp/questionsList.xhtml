@@ -25,6 +25,7 @@
            <h:selectOneRadio value="#{questionController.importType}">
                     <f:selectItem itemValue="1" itemLabel="CSV" />
                     <f:selectItem itemValue="2" itemLabel="JSON" />
+                    <f:ajax render="questionList" listener="#{questionController.changeImportType}" />
             </h:selectOneRadio>
             <h:inputFile id="file" value="#{questionController.file}"/>
             

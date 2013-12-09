@@ -85,7 +85,8 @@ public class QuizBuilderEJB {
      public void deleteQuestion(Long id)
      {
         Question question = em.find(Question.class, id);
-        em.remove(question);
+        if(question != null)
+            em.remove(question);
      }
      
      public void editQuestion(Question q)
