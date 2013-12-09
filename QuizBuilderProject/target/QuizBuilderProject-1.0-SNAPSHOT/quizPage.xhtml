@@ -24,10 +24,13 @@
 
 
         </h:dataTable>
-            <div id="formButton">
+            <div id="formButton" style="display: inline;">
                 <h:commandButton value="Submit" action="#{quizGenerationController.doSubmitAnswers}"/>
+                </div>
+                <div id="formButton" style="display: inline; margin-left: 5px;">
                 <h:commandButton value="Create PDF" action="#{pdfController.writePdf(quizGenerationController.generatedQuiz.getQuestions())}"/>
-            </div>
+                </div>
+            
             </h:form>
         </div>
     </h:body>
