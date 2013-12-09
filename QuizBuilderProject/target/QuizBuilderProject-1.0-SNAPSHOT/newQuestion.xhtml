@@ -6,6 +6,7 @@
     <title>Creates a new Question</title>
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
 </h:head>
+
 <h:body>
 
     <ui:include src="navBar.xhtml"/>
@@ -48,9 +49,11 @@
 
                 <h:column>
                     
-                    <h:commandLink value="Remove" action="#{questionController.doRemoveTag(tag)}">
+                    <div id="boxLink" style="display: inline;">
+                    <h:commandLink style=" color: #bcbdbd;" value="Remove" action="#{questionController.doRemoveTag(tag)}">
                         <f:ajax execute="@form" render="@form"/>
                     </h:commandLink>
+                    </div>
                     
                 </h:column>
                 

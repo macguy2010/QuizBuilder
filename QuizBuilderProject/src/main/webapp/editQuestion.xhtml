@@ -46,9 +46,9 @@
                 </h:column>
 
                 <h:column>
-                    
-                    <h:commandLink value="Remove" action="#{questionController.doRemoveTag(tag.value)}"/>
-                    
+                    <div id="boxLink" style="display: inline;">
+                    <h:commandLink style="color: #bcbdbd;" value="Remove" action="#{questionController.doRemoveTag(tag.value)}"/>
+                    </div>
                 </h:column>
                 
             </h:dataTable>
