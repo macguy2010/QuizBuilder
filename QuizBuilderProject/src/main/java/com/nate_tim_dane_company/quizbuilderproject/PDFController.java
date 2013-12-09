@@ -66,7 +66,7 @@ public class PDFController {
             yPos -= 14;
 
             pageContentStream.beginText();
-            pageContentStream(font,12);
+            pageContentStream.setFont(font,12);
             pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
             pageContentStream.drawString("Grade:");
             yPos -= 25;
