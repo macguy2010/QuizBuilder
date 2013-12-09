@@ -20,6 +20,7 @@
             <div id="searchParam">
             <h:outputLabel value="Search: "/>
             <h:inputText value="#{quizController.searchStr}"/>
+            
             <div id="formButton" style="display: inline;">
             <h:commandButton value="Search" action="#{quizController.search}">
                 <f:ajax execute="@form" render="quizList"/>

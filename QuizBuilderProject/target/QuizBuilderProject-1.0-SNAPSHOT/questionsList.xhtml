@@ -43,9 +43,11 @@
                 <h:outputLabel  value="Search: "/>
                 <h:inputText value="#{questionController.searchStr}"/>
                 
+                <div id="formButton" style="display: inline;">
                 <h:commandButton value="Search" action="#{questionController.search}">
                     <f:ajax execute="@form" render="questionList"/>
                 </h:commandButton>
+                </div>
             
                 <h:selectOneRadio value="#{questionController.filter}">
                     <f:selectItem itemValue="1" itemLabel="Mine" />
