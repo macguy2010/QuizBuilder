@@ -33,7 +33,7 @@ import javax.faces.model.SelectItem;
 public class PDFController {
 
 
-    public void writePdf(List<Question> questions) throws IOException{
+    public void writePdf(List<Question> questions, String quizName) throws IOException{
         PDDocument quiz = null;
 
         int xPos = 0;
@@ -55,7 +55,7 @@ public class PDFController {
             pageContentStream.beginText();
             pageContentStream.setFont(font, 12);
             pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
-            pageContentStream.drawString("Quiz");
+            pageContentStream.drawString("Quiz");//"Quiz name"
             pageContentStream.endText();
             //pageContentStream.close();
             yPos -= 20;
