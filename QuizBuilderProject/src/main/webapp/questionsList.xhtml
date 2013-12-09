@@ -25,7 +25,6 @@
            <h:selectOneRadio value="#{questionController.importType}">
                     <f:selectItem itemValue="1" itemLabel="CSV" />
                     <f:selectItem itemValue="2" itemLabel="JSON" />
-                    <f:ajax render="questionList" listener="#{questionController.changeImportType}" />
             </h:selectOneRadio>
             <h:inputFile id="file" value="#{questionController.file}"/>
             
@@ -36,8 +35,7 @@
            
        
     </div>
-                
-   
+    
         <div id="badLink" style="margin-top: 10px;">
         <h:link style="color: #bcbdbd;" outcome="newQuestion.xhtml" value="Create a new question"/>
         </div>
@@ -49,7 +47,7 @@
                 
                 <div id="formButton" style="display: inline;">
                 <h:commandButton value="Search" action="#{questionController.search}">
-                    <f:ajax execute="@form" render="questionList"/>
+                    <f:ajax execute="@form" render="@all"/>
                 </h:commandButton>
                 </div>
             
@@ -57,12 +55,14 @@
                     <f:selectItem itemValue="1" itemLabel="Mine" />
                     <f:selectItem itemValue="2" itemLabel="Public" />
                     <f:selectItem itemValue="3" itemLabel="All" />
-                    <f:ajax render="questionList" listener="#{questionController.changeFilter}" />
+                    <f:ajax render="@all" listener="#{questionController.changeFilter}" />
                 </h:selectOneRadio>
                
 
 
             </div>
+        </h:form>   
+    <h:form>
             <h:outputLabel style="color: red;" value="#{questionController.errorMessage}"/>
         <div id="grid">
 <!--         <h:dataTable id="questionList" value="#{questionController.questionList}" var="q" border="1">  -->  
