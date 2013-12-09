@@ -342,7 +342,7 @@ public class QuestionController implements Serializable
             JSONObject obj = new JSONObject();
             obj.put("Question", q.getQuestion());
             obj.put("Answer", q.getAnswer());
-            obj.put("Difficulty", new Integer(q.getDifficulty()));
+            obj.put("Difficulty", ""+q.getDifficulty());
             obj.put("Subject", q.getSubject().getLabel());
 
             JSONArray list = new JSONArray();

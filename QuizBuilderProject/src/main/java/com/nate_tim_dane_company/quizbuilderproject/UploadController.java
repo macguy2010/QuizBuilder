@@ -30,7 +30,7 @@ public class UploadController {
             
             q.setQuestion((String)jsonObject.get("Question"));
             q.setAnswer((String)jsonObject.get("Answer"));
-            q.setDifficulty((Integer)jsonObject.get("Difficulty"));
+            q.setDifficulty(Integer.parseInt((String)jsonObject.get("Difficulty")));
             
             String sub = (String)jsonObject.get("Subject");
             if(sub.toUpperCase().contains("MATH"))
@@ -51,16 +51,16 @@ public class UploadController {
                 q.setSubject(SubjectType.OTHER);
             
             JSONArray msg = (JSONArray) jsonObject.get("Tags");
-            Iterator<String> iterator = msg.iterator();
-            while (iterator.hasNext()) {
-                q.addTag(iterator.next());
-     
+            Iterator iterator = msg.iterator();
+            while (iterator.hasNext())
+            {
+                q.addTag((String)iterator.next());
+            }
             qs.add(q);
             
         }
-    }
     return qs;
-}
+    }
  
   public static ArrayList<Question> parseFile(String str) throws Exception
   {

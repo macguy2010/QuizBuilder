@@ -29,7 +29,7 @@
             <h:inputFile id="file" value="#{questionController.file}"/>
             
             <h:commandButton value="Upload" action="#{questionController.upload}">
-                <f:ajax execute="file" render="@all"/>
+                <f:ajax execute="@form" render="@all"/>
             </h:commandButton>
             
            
