@@ -14,6 +14,13 @@ insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Who
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('What year did Columbus sail?','1492','HISTORY',3,-1);
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Solve for x: x/3 - 4 = -1','9','MATHEMATICS',1,-1);
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('3 * 4 + 24 / 8','15','MATHEMATICS',3,-1);
+insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Find the subject of the following sentance: Nate is a pretty sweet programmer.','Nate','ENGLISH',5,-1);
+insert into Question (Question, Answer, Subject, Difficulty, UserId) values('How many bits are in a byte?','8','COMPUTER_SCIENCE',3,-1);
+insert into Question (Question, Answer, Subject, Difficulty, UserId) values('How many states make up the United States?','50','GEOGRAPHY',3,-1);
+insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Is the United States in the North or South hemisphere?','North','GEOGRAPHY',4,-1);
+insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Who is the author of "The Mysterious Island?"','Jules Verne','LITERATURE',7,-1);
+insert into Question (Question, Answer, Subject, Difficulty, UserId) values('"Quoth the Raven Nevermore" is an excerpt of "The Raven" written by whom?','Edgar Allan Poe','Literature',6,-1);
+
 
 insert into User_Obj (firstname, lastname, username, password, email, admin) values ('Admin', 'Admin', 'admin', 'natetimdane', 'admin@gmail.com', 1);
 insert into User_Obj (firstname, lastname, username, password, email) values ('Bob', 'Smith', 'bsmith', 'mypass', 'bob@gmail.com');
