@@ -19,7 +19,7 @@ insert into Question (Question, Answer, Subject, Difficulty, UserId) values('How
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('How many states make up the United States?','50','GEOGRAPHY',3,-1);
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Is the United States in the North or South Hemisphere?','North','GEOGRAPHY',4,-1);
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Who is the author of "The Mysterious Island?"','Jules Verne','LITERATURE',7,-1);
-insert into Question (Question, Answer, Subject, Difficulty, UserId) values('"Quoth the Raven Nevermore" is an excerpt of "The Raven" written by whom?','Edgar Allan Poe','Literature',6,-1);
+insert into Question (Question, Answer, Subject, Difficulty, UserId) values('"Quoth the Raven Nevermore" is an excerpt of "The Raven" written by whom?','Edgar Allan Poe','LITERATURE',6,-1);
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Is the United States in the East or West Hemisphere?','West','GEOGRAPHY',5,-1);
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('What is the chemical symbol of water?','h20','SCIENCE',6,-1);
 
