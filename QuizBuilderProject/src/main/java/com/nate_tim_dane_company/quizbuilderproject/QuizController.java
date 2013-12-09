@@ -4,11 +4,14 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.util.*;
+import javax.ejb.Stateful;
+import javax.faces.bean.SessionScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
 
+@Stateful
 @ManagedBean(name = "quizController")
-@RequestScoped
+@SessionScoped
 public class QuizController 
 {
     @EJB
@@ -131,7 +134,12 @@ public class QuizController
      
     public String viewQuiz(Long id)
     {
-        quiz = ejb.findQuiz(id);
+        for(int i = 0; i < quizList.size(); i++)
+            if(quizList.get(i).getId() == id)
+            {
+                quiz = ejb.findQuiz(id);
+                break;
+            }
         return "quizViewPage.xhtml";
     }
 

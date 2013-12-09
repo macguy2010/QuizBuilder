@@ -13,7 +13,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-@ManagedBean(name = "uploadController")
 public class UploadController {
     
     public static ArrayList<Question> parseJson(String str) throws Exception

@@ -32,6 +32,9 @@ import javax.faces.model.SelectItem;
 @ManagedBean(name = "pdfController")
 public class PDFController {
 
+    public void writePdf(Quiz quiz) throws IOException{
+        writePdf(quiz.getQuestions(), quiz.getTitle());
+    }
 
     public void writePdf(List<Question> questions, String quizName) throws IOException{
         PDDocument quiz = null;

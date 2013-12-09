@@ -5,12 +5,15 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.util.List;
+import javax.ejb.Stateful;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
+@Stateful
 @ManagedBean(name = "userController")
-@RequestScoped
+@SessionScoped
 public class UserController 
 {
     @EJB
