@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.io.File;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.swing.*;
 import java.io.Serializable;
@@ -32,12 +33,14 @@ import javax.faces.model.SelectItem;
 public class PDFController {
 
 
-    public void writePdf(List<Question> questions){
+    public void writePdf(List<Question> questions) throws IOException{
         PDDocument quiz = null;
 
         int xPos = 0;
         int yPos = 750;
         int leftBuffer = 25;
+        String filePath = null;
+        String fileName = "quizExport.pdf";
 
         //MyFileChooser fc = new MyFileChooser();
         //fc.()
@@ -87,9 +90,7 @@ public class PDFController {
                 pageContentStream.close();
             }
 
-            String fileName = "quizTest.pdf";
-
-            String filePath;
+            //String filePath;
             filePath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/");
 
             quiz.save(filePath+fileName);
@@ -101,6 +102,37 @@ public class PDFController {
         catch(IOException e){
             e.printStackTrace();
         }
+
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ExternalContext ec = fc.getExternalContext();
+
+        ec.responseReset();
+        ec.setResponseContentType("pdf");
+        ec.setResponseContentLength((int)new File(filePath+fileName).length());
+        ec.setResponseHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+
+        OutputStream outputStream = ec.getResponseOutputStream();
+
+        try{
+            FileInputStream input = new FileInputStream(filePath+fileName);
+            byte[] buffer = new byte[1024];
+            int i = 0;
+            while ((i = input.read(buffer)) != -1) {
+                outputStream.write(buffer);
+                outputStream.flush();
+            }
+            input.close();
+            outputStream.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        fc.responseComplete();
+        new File(filePath+fileName).delete();
+
+        //return null;
 
         //return quiz;
     }
