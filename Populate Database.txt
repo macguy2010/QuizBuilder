@@ -21,7 +21,7 @@ insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Is 
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Who is the author of "The Mysterious Island?"','Jules Verne','LITERATURE',7,-1);
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('"Quoth the Raven Nevermore" is an excerpt of "The Raven" written by whom?','Edgar Allan Poe','Literature',6,-1);
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Is the United States in the East or West Hemisphere?','West','GEOGRAPHY',5,-1);
-insert into Question (Question, Answer, Subject, Difficulty, UserId) values('What is Avogradro's constant?','6.02214129x10^23','SCIENCE',7,-1);
+insert into Question (Question, Answer, Subject, Difficulty, UserId) values('What is the chemical symbol of water?','h20','SCIENCE',6,-1);
 
 insert into User_Obj (firstname, lastname, username, password, email, admin) values ('Admin', 'Admin', 'admin', 'natetimdane', 'admin@gmail.com', 1);
 insert into User_Obj (firstname, lastname, username, password, email) values ('Bob', 'Smith', 'bsmith', 'mypass', 'bob@gmail.com');
