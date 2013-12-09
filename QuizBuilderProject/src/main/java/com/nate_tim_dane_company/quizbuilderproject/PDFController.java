@@ -58,7 +58,7 @@ public class PDFController {
             pageContentStream.beginText();
             pageContentStream.setFont(font, 12);
             pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
-            pageContentStream.drawString("Quiz");//"Quiz name"
+            pageContentStream.drawString(quizName);//"Quiz name"
             pageContentStream.endText();
             //pageContentStream.close();
             yPos -= 20;
