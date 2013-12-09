@@ -102,6 +102,11 @@ public class QuizGenerationController implements Serializable
         return numberCorrect;
     }
     
+    public String getGradeString()
+    {
+        return ""+numberCorrect+"/"+userAnswers.size();
+    }
+    
     public void setNumberRange(int[] r)
     {
         numberRange = r;

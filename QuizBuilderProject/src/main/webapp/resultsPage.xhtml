@@ -13,7 +13,7 @@
         <h1>Answers</h1>
  
         <h2>Grade: </h2>
-        <h:outputLabel value="#{quizGenerationController.numberCorrect}"/>
+        <h:outputLabel value="#{quizGenerationController.gradeString}"/>
         <h:dataTable id="questionList" value="#{quizGenerationController.userAnswers}" var="q" border="0">
             <h:column>
                 <h:outputText value="#{q.question}"/><br/>
