@@ -22,7 +22,8 @@ insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Who
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('"Quoth the Raven Nevermore" is an excerpt of "The Raven" written by whom?','Edgar Allan Poe','LITERATURE',6,-1);
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('Is the United States in the East or West Hemisphere?','West','GEOGRAPHY',5,-1);
 insert into Question (Question, Answer, Subject, Difficulty, UserId) values('What is the chemical symbol of water?','H20','SCIENCE',6,-1);
-insert into Question (Question, Answer, Subject, Difficulty, UserId) values('True or False: The Earth is the 4th planet from the sun.','False','SCIENCE',4,-1);
+insert into Question (Question, Answer, Subject, Difficulty, UserId) values('True or False: The Earth is the 4th planet from the sun.','False','SCIENCE',3,-1);
+insert into Question (Question, Answer, Subject, Difficulty, UserId) values('True or False: The Earth is approximately 92,955,807 miles from the sun.','True','SCIENCE',6,-1);
 
 insert into User_Obj (firstname, lastname, username, password, email, admin) values ('Admin', 'Admin', 'admin', 'natetimdane', 'admin@gmail.com', 1);
 insert into User_Obj (firstname, lastname, username, password, email) values ('Bob', 'Smith', 'bsmith', 'mypass', 'bob@gmail.com');
