@@ -23,6 +23,8 @@ import javax.faces.model.SelectItem;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 @Stateful
 @ManagedBean(name = "questionController")
@@ -43,6 +45,8 @@ public class QuestionController implements Serializable
     private Integer filter = 1;
     private Boolean enableSelection = false;
     private String errorMessage = "";
+    private Integer importType = 1;
+    private Integer exportType = 1;
     
     public String doCreateQuestion(Long id) {
         question.setUserId(id);
@@ -285,7 +289,115 @@ public class QuestionController implements Serializable
         return returnStr;
     }
     
+    public Integer getImportType()
+    {
+        return importType;
+    }
+    
+    public void setImportType(Integer i)
+    {
+        importType = i;
+    }
+    
+    public Integer getExportType()
+    {
+        return exportType;
+    }
+    
+    public void setExportType(Integer i)
+    {
+        exportType = i;
+    }
+    
     public String export() throws IOException
+    {
+        if(exportType == 1)
+            return exportCSV();
+        else
+            return exportJSON();
+    }
+    
+    public String exportJSON() throws IOException
+    {
+        List<Question> qList = new ArrayList<Question>();
+        for(int i = 0; i < selectedList.size(); i++)
+        {
+            if(selectedList.get(i).getSelected())
+                qList.add(selectedList.get(i).getQuestion());
+        }
+        if(qList.isEmpty())
+        {
+            errorMessage = "No Questions Selected";
+            return null;
+        }
+        
+        String output = "";
+        for(int i = 0; i < qList.size(); i++)
+        {
+            Question q = qList.get(i);
+            JSONObject obj = new JSONObject();
+            obj.put("Question", q.getQuestion());
+            obj.put("Answer", q.getAnswer());
+            obj.put("Difficulty", new Integer(q.getDifficulty()));
+            obj.put("Subject", q.getSubject().getLabel());
+
+            JSONArray list = new JSONArray();
+            for(int t = 0; t < q.getTags().size(); t++)
+                list.add(q.getTags().get(t));
+
+            obj.put("Tags", list);
+            
+            output += obj.toString()+"\n";
+        }
+        
+        String fileName = "questionExport.json";
+        String filePath;
+        filePath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/");
+        try
+        {
+            BufferedWriter out = new BufferedWriter(new FileWriter(filePath+fileName));
+            out.write(output);
+            out.close();
+        }
+        catch(Exception e)
+        {
+            errorMessage = "Error Making Your Export, Please Try Again";
+            return null;
+        }
+        
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ExternalContext ec = fc.getExternalContext();
+
+        ec.responseReset(); 
+        ec.setResponseContentType("text/json"); 
+        ec.setResponseContentLength((int)new File(filePath+fileName).length()); 
+        ec.setResponseHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\""); 
+        
+        OutputStream outputStream = ec.getResponseOutputStream();
+        
+        try{
+            FileInputStream input = new FileInputStream(filePath+fileName);  
+            byte[] buffer = new byte[1024];   
+            int i = 0;  
+            while ((i = input.read(buffer)) != -1) {  
+                outputStream.write(buffer);  
+                outputStream.flush();  
+            } 
+            input.close();
+            outputStream.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        fc.responseComplete();
+        new File(filePath+fileName).delete();
+        
+        return null;
+    }
+    
+    public String exportCSV() throws IOException
     {
         List<Question> qList = new ArrayList<Question>();
         for(int i = 0; i < selectedList.size(); i++)

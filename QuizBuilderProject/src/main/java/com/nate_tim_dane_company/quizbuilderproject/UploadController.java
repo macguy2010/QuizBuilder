@@ -54,9 +54,7 @@ public class UploadController {
             Iterator<String> iterator = msg.iterator();
             while (iterator.hasNext()) {
                 q.addTag(iterator.next());
-
- 
-                    
+     
             qs.add(q);
             
         }
