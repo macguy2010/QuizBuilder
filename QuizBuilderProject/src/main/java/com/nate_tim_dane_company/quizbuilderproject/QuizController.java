@@ -129,9 +129,10 @@ public class QuizController
         return returnList;
     }
      
-    public String viewQuiz()
+    public String viewQuiz(Long id)
     {
-        return null;
+        quiz = ejb.findQuiz(id);
+        return "quizViewPage.xhtml";
     }
 
     public List<Quiz> getQuizList() {
