@@ -52,18 +52,18 @@ public class PDFController {
             pageContentStream.setFont(font, 12);
             pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
             pageContentStream.drawString("Quiz");
-            pageContentStream.endText();
+            //pageContentStream.endText();
             //pageContentStream.close();
-            yPos -= 14;
+           /* yPos -= 14;
 
             pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
             pageContentStream.drawString("Name:");
-            pageContentStream.endText();
+            //pageContentStream.endText();
             //pageContentStream.close();
             yPos -= 14;
 
             pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
-            pageContentStream.drawString("Grade:");
+            pageContentStream.drawString("Grade:"); */
             yPos -= 25;
 
             pageContentStream.endText();
