@@ -5,10 +5,64 @@
 package com.nate_tim_dane_company.quizbuilderproject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 @ManagedBean(name = "uploadController")
 public class UploadController {
+    
+    public static ArrayList<Question> parseJson(String str) throws Exception
+    {
+        ArrayList<Question> qs = new ArrayList<Question>();
+        JSONParser parser = new JSONParser();
+        
+        String[] lines = str.split("\n|\r");
+        for(String line : lines)
+        {
+            Question q = new Question();
+            Object obj = parser.parse(line);
+            JSONObject jsonObject = (JSONObject) obj;
+            
+            q.setQuestion((String)jsonObject.get("Question"));
+            q.setAnswer((String)jsonObject.get("Answer"));
+            q.setDifficulty((Integer)jsonObject.get("Difficulty"));
+            
+            String sub = (String)jsonObject.get("Subject");
+            if(sub.toUpperCase().contains("MATH"))
+                q.setSubject(SubjectType.MATHEMATICS);
+            else if(sub.toUpperCase().contains("ENGLISH"))
+                q.setSubject(SubjectType.ENGLISH);
+            else if(sub.toUpperCase().contains("LITER"))
+                q.setSubject(SubjectType.LITERATURE);
+            else if(sub.toUpperCase().contains("GEO"))
+                q.setSubject(SubjectType.GEOGRAPHY);
+            else if(sub.toUpperCase().contains("HISTORY"))
+                q.setSubject(SubjectType.HISTORY);
+            else if(sub.toUpperCase().contains("COMPUTER"))
+                q.setSubject(SubjectType.COMPUTER_SCIENCE);
+            else if(sub.toUpperCase().contains("SCIENCE"))
+                q.setSubject(SubjectType.SCIENCE);
+            else
+                q.setSubject(SubjectType.OTHER);
+            
+            JSONArray msg = (JSONArray) jsonObject.get("Tags");
+            Iterator<String> iterator = msg.iterator();
+            while (iterator.hasNext()) {
+                q.addTag(iterator.next());
+
+ 
+                    
+            qs.add(q);
+            
+        }
+    }
+    return qs;
+}
  
   public static ArrayList<Question> parseFile(String str) throws Exception
   {
