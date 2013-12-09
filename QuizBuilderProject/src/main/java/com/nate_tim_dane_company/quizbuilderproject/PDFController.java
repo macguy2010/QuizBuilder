@@ -82,7 +82,7 @@ public class PDFController {
                 pageContentStream.beginText();
                 pageContentStream.moveTextPositionByAmount(leftBuffer,yPos);
                 pageContentStream.drawString(sb.toString());
-                yPos -= 14;
+                yPos -= 30;
                 pageContentStream.endText();
                 pageContentStream.close();
             }
