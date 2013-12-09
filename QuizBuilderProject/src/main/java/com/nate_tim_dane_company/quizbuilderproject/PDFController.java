@@ -54,7 +54,7 @@ public class PDFController {
             pageContentStream.drawString("Quiz");
             //pageContentStream.endText();
             //pageContentStream.close();
-           /* yPos -= 14;
+            yPos -= 14;
 
             pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
             pageContentStream.drawString("Name:");
@@ -63,7 +63,7 @@ public class PDFController {
             yPos -= 14;
 
             pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
-            pageContentStream.drawString("Grade:"); */
+            pageContentStream.drawString("Grade:");
             yPos -= 25;
 
             pageContentStream.endText();
