@@ -53,13 +53,13 @@ public class PDFController {
             pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
             pageContentStream.drawString("Quiz");
             pageContentStream.endText();
-            pageContentStream.close();
+            //pageContentStream.close();
             yPos -= 14;
 
             pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
             pageContentStream.drawString("Name:");
             pageContentStream.endText();
-            pageContentStream.close();
+            //pageContentStream.close();
             yPos -= 14;
 
             pageContentStream.moveTextPositionByAmount( leftBuffer,yPos );
