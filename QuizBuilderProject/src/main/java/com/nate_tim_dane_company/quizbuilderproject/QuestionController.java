@@ -230,7 +230,11 @@ public class QuestionController implements Serializable
 
     }
     try{
-        ArrayList<Question> qs = UploadController.parseFile(fileContent);
+        ArrayList<Question> qs;
+        if(importType == 1)
+            qs = UploadController.parseFile(fileContent);
+        else
+             qs = UploadController.parseJson(fileContent);
         for(int i = 0; i < qs.size(); i++)
             ejb.createQuestion(qs.get(i));
     } catch (Exception e) {
