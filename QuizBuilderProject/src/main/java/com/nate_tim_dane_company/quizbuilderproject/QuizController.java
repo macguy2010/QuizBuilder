@@ -128,6 +128,11 @@ public class QuizController
         
         return returnList;
     }
+     
+    public String viewQuiz()
+    {
+        return null;
+    }
 
     public List<Quiz> getQuizList() {
         if(quizList == null)

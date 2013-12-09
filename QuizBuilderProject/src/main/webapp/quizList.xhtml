@@ -43,7 +43,7 @@
                 <f:facet name="header">
                     <h:outputText value="Title"/>
                 </f:facet>
-                <h:outputText value="#{q.title}"/>
+                <h:commandLink value="#{q.title}" action="#{quizController.viewQuiz}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">

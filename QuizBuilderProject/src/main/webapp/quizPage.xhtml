@@ -28,7 +28,7 @@
                 <h:commandButton value="Submit" action="#{quizGenerationController.doSubmitAnswers}"/>
                 </div>
                 <div id="formButton" style="display: inline; margin-left: 5px;">
-                <h:commandButton value="Create PDF" action="#{pdfController.writePdf(quizGenerationController.generatedQuiz.getQuestions(),quizController.getName())}"/>
+                <h:commandButton value="Create PDF" action="#{pdfController.writePdf(quizGenerationController.quiz.questions,quizGenerationController.quiz.title)}"/>
                 </div>
             
             </h:form>
