@@ -3,6 +3,7 @@ com\nate_tim_dane_company\quizbuilderproject\UserEJB.class
 com\nate_tim_dane_company\quizbuilderproject\LoginController.class
 com\nate_tim_dane_company\quizbuilderproject\PDFController.class
 com\nate_tim_dane_company\quizbuilderproject\UploadController.class
+com\nate_tim_dane_company\quizbuilderproject\QuizGenerationController.class
 com\nate_tim_dane_company\quizbuilderproject\MyFileChooser$3.class
 com\nate_tim_dane_company\quizbuilderproject\QuizController.class
 PasswordHash.class

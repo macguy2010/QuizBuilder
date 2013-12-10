@@ -47,6 +47,7 @@ public class QuestionController implements Serializable
     private String errorMessage = "";
     private Integer importType = 1;
     private Integer exportType = 1;
+    private Boolean valid = true;
     
     public String doCreateQuestion(Long id) {
         question.setUserId(id);
@@ -119,6 +120,16 @@ public class QuestionController implements Serializable
         question = u;
     }
     
+    public void setValid(Boolean s)
+    {
+        valid = s;
+    }
+    
+    public Boolean getValid()
+    {
+        return valid;
+    }
+    
     public List<SelectedQuestionElement> getQuestionList(Long id) {
         if(questionList == null || correspondingId != id)
             questionList = ejb.findQuestions(id);
@@ -141,6 +152,9 @@ public class QuestionController implements Serializable
         List<Question> returnList = new ArrayList<Question>();
         for(int i = 0; i < questionList.size(); i++)
         {
+            if(valid)
+                if(!questionList.get(i).getValid())
+                    continue;
             if(filter == 1)
             {
                 if(questionList.get(i).getUserId() == correspondingId)
@@ -268,6 +282,20 @@ public class QuestionController implements Serializable
     public String changeFilter(AjaxBehaviorEvent event)
     {
         return null;
+    }
+    
+    public String changeValid(AjaxBehaviorEvent event)
+    {
+        return null;
+    }
+    
+    public void changeValid(Long id)
+    {
+        Question q = ejb.getQuestion(id);
+        if(q.getValid())
+            q.setValid(false);
+        else
+            q.setValid(true);
     }
     
     public String canDeleteEdit(Long id, Long userId)

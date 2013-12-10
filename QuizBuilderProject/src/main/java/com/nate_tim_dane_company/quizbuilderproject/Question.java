@@ -36,6 +36,8 @@ public class Question implements Serializable{
     
     private Long userId = -1l;
     
+    private Boolean valid = false;
+    
     // methods
     public Long getId() {
         return id;
@@ -120,5 +122,15 @@ public class Question implements Serializable{
     public Long getUserId()
     {
         return userId;
+    }
+    
+    public void setValid(Boolean v)
+    {
+        valid = v;
+    }
+    
+    public Boolean getValid()
+    {
+        return valid;
     }
 }

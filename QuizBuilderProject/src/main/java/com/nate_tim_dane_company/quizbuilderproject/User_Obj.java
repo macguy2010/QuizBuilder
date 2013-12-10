@@ -25,7 +25,7 @@ public class User_Obj implements Serializable {
     private String password;
     private String email;
     
-    private boolean admin = false;
+    private boolean auth = false;
 
     public Long getId() {
         return id;
@@ -87,11 +87,11 @@ public class User_Obj implements Serializable {
     
     public void setAdmin(boolean a)
     {
-        admin = a;
+        auth = a;
     }
     
     public boolean getAdmin()
     {
-        return admin;
+        return auth;
     }
 }

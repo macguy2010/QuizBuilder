@@ -130,6 +130,16 @@ public class LoginController {
         errorMessage = "";
         return returnStr;
     }
+    
+    public String getDisplayIfAdmin()
+    {
+        User_Obj u = ejb.findUser(id);
+        if(u != null && u.getAdmin())
+        {
+            return "";
+        }
+        return "display: none;";
+    }
 /***********
  *
  *   Not needed as authentication this is the only page that ever changes authentication status.

@@ -33,12 +33,27 @@
                 <f:selectItem itemValue="3" itemLabel="All" />
                 <f:ajax render="quizList" listener="#{quizController.changeFilter}" />
             </h:selectOneRadio>
+            <h:outputLabel value="Sensored Questions"/>
+                <h:selectBooleanCheckbox value="#{questionController.valid}">
+                    <f:ajax render="@all" listener="#{questionController.changeValid}" />
+                </h:selectBooleanCheckbox>
             </div>
         
             <div id="grid">
        
 <!--        <h:dataTable id="quizList" value="#{quizController.quizList}" var="q" border="1">  -->
-        <h:dataTable id="quizList" value="#{quizController.getQuizList(loginController.id)}" var="q" border="1">
+        <h:dataTable style="text-align:center;" id="quizList" value="#{quizController.getQuizList(loginController.id)}" var="q" border="1">
+            
+            <div style="#{loginController.displayIfAdmin()}">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText style="#{loginController.displayIfAdmin}" value="Sensored"/>
+                    </f:facet>
+                    <h:selectBooleanCheckbox style="#{loginController.displayIfAdmin}" value="#{q.valid}">
+                    <f:ajax render="@all" listener="#{quizController.changeValid(q.id)}" />
+                </h:selectBooleanCheckbox>
+                </h:column>
+                </div>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Title"/>
@@ -58,17 +73,11 @@
                 <h:outputText value="#{q.averageGrade}"/>
             </h:column>
             <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Delete"/>
-                </f:facet>
                 <h:commandButton style="#{quizController.canDeleteEdit(loginController.id, q.userId)}" value="Delete" action="#{quizController.doDeleteQuiz(q.id)}">
                     <f:ajax execute="@form" render="@form"/>
                 </h:commandButton>
             </h:column>
             <h:column>
-                <f:facet name="header">
-                    <h:outputText value="Edit"/>
-                </f:facet>
                 <h:commandButton style="#{quizController.canDeleteEdit(loginController.id, q.userId)}" value="Edit" action="#{quizController.toEditQuiz(q.id)}"/>
             </h:column>
 

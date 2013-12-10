@@ -23,6 +23,7 @@ public class QuizController
     private List<Quiz> quizList = null;
     private Long correspondingId = -100l;
     private Integer filter = 1;
+    private Boolean valid = false;
     
     public String doCreateQuiz(Long id) {
         quiz.setUserId(id);
@@ -89,6 +90,25 @@ public class QuizController
 
     public void setQuiz(Quiz u) {
         quiz = u;
+    }
+    
+    public void setValid(Boolean b)
+    {
+        valid = b;
+    }
+    
+    public Boolean getValid()
+    {
+        return valid;
+    }
+    
+    public void changeValid(Long id)
+    {
+        Quiz q = ejb.getQuiz(id);
+        if(q.getValid())
+            q.setValid(false);
+        else
+            q.setValid(true);
     }
     
     public List<Quiz> getQuizList(Long id) {

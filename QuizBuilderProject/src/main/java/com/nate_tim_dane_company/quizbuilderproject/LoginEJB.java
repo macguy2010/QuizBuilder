@@ -26,4 +26,12 @@ public class LoginEJB {
         List<User_Obj> list = query.getResultList();
         return list;
     }
+    
+    public User_Obj findUser(Long id)
+     {
+        User_Obj user = em.find(User_Obj.class, id);
+        if(user == null)
+            user = new User_Obj();
+         return user;
+     }
 }

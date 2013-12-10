@@ -35,6 +35,8 @@ public class Quiz implements Serializable {
     
     private Long userId = -1l;
     
+    private Boolean valid = false;
+    
     // methods
     public List<Question> getQuestions()
     {
@@ -107,5 +109,15 @@ public class Quiz implements Serializable {
     public Long getUserId()
     {
         return userId;
+    }
+    
+    public void setValid(Boolean b)
+    {
+        valid = b;
+    }
+    
+    public Boolean getValid()
+    {
+        return valid;
     }
 }

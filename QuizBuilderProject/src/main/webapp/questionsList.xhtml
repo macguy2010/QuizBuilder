@@ -57,8 +57,10 @@
                     <f:selectItem itemValue="3" itemLabel="All" />
                     <f:ajax render="@all" listener="#{questionController.changeFilter}" />
                 </h:selectOneRadio>
-               
-
+                <h:outputLabel value="Sensored Questions"/>
+                <h:selectBooleanCheckbox value="#{questionController.valid}">
+                    <f:ajax render="@all" listener="#{questionController.changeValid}" />
+                </h:selectBooleanCheckbox>
 
             </div>
    
@@ -67,6 +69,14 @@
 <!--         <h:dataTable id="questionList" value="#{questionController.questionList}" var="q" border="1">  -->  
             <h:dataTable id="questionList" value="#{questionController.getQuestionList(loginController.id)}" var="q" border="1">
                 
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText style="#{loginController.displayIfAdmin}" value="Sensored"/>
+                    </f:facet>
+                    <h:selectBooleanCheckbox style="#{loginController.displayIfAdmin}" value="#{q.question.valid}">
+                    <f:ajax render="@all" listener="#{questionController.changeValid(q.question.id)}" />
+                </h:selectBooleanCheckbox>
+                </h:column>
                 <h:column>
                     <h:selectBooleanCheckbox value="#{q.selected}" />
                 </h:column>
