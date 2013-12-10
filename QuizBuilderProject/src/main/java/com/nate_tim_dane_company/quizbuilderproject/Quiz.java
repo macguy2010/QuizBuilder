@@ -11,7 +11,9 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
 @NamedQuery(name = "findAllQuizzes", query = "SELECT q FROM Quiz q where q.isTemporary = 0"),
-@NamedQuery(name = "findAllQuizzesById", query = "SELECT q FROM Quiz q where (q.userId = :ID or q.userId < 0) and q.isTemporary = 0"),
+@NamedQuery(name = "findAllQuizzesById", query = "SELECT q FROM Quiz q where ((q.userId = :ID or q.userId < 0) or q.isPublic = 1) and q.isTemporary = 0"),
+@NamedQuery(name = "findAllQuizzesCount", query = "SELECT count(q) FROM Quiz q where q.isTemporary = 0"),
+@NamedQuery(name = "findAllQuizzesByIdCount", query = "SELECT count(q) FROM Quiz q where ((q.userId = :ID or q.userId < 0) or q.isPublic = 1) and q.isTemporary = 0"),
 })
 
 public class Quiz implements Serializable {
@@ -23,6 +25,8 @@ public class Quiz implements Serializable {
     private Boolean isTemporary = false;
     
     private String title;
+    
+    private Boolean isPublic = false;
     
     @OneToMany
     @JoinTable(name="Quiz_Questions", joinColumns={@JoinColumn(name="Quiz_ID")}, inverseJoinColumns={@JoinColumn(name="Question_ID")})
@@ -119,5 +123,15 @@ public class Quiz implements Serializable {
     public Boolean getValid()
     {
         return valid;
+    }
+    
+    public void setIsPublic(Boolean b)
+    {
+        isPublic = b;
+    }
+    
+    public Boolean getIsPublic()
+    {
+        return isPublic;
     }
 }

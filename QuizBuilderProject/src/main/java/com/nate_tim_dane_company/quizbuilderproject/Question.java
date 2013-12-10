@@ -12,6 +12,8 @@ import javax.persistence.*;
 @NamedQueries({
 @NamedQuery(name = "findAllQuestions", query = "SELECT q FROM Question q"),
 @NamedQuery(name = "findAllQuestionsById", query = "SELECT q FROM Question q where q.userId = :ID or q.userId < 0"),
+@NamedQuery(name = "findAllQuestionsCount", query = "SELECT count(q) FROM Question q"),
+@NamedQuery(name = "findAllQuestionsByIdCount", query = "SELECT count(q) FROM Question q where q.userId = :ID or q.userId < 0"),
 })
 
 public class Question implements Serializable{

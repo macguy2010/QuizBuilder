@@ -56,19 +56,25 @@
                 </div>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Title"/>
+                    <h:commandLink value="Title">
+                            <f:ajax render="@all" listener="#{quizController.sortByTitle()}"/>
+                    </h:commandLink>
                 </f:facet>
-                <h:commandLink value="#{q.title}" action="#{quizController.viewQuiz(q.id)}"/>
+                <h:commandLink value="#{q.title}" action="#{quizController.viewQuiz(q.id, loginController.id)}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Number of Questions"/>
+                    <h:commandLink value="Number of Questions">
+                            <f:ajax render="@all" listener="#{quizController.sortByNumQuestions()}"/>
+                    </h:commandLink>
                 </f:facet>
                 <h:outputText value="#{q.questions.size()}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Average Grade"/>
+                    <h:commandLink value="Average Grade">
+                            <f:ajax render="@all" listener="#{quizController.sortByAverage()}"/>
+                    </h:commandLink>
                 </f:facet>
                 <h:outputText value="#{q.averageGrade}"/>
             </h:column>

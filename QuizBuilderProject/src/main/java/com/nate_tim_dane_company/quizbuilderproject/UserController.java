@@ -24,15 +24,16 @@ public class UserController
     private User_Obj user = new User_Obj();
     private String passwordVerify;
     private String errorMessage = "";
+    private String sortedBy = "";
     
     public String doCreateUser() {
         if(!passwordVerify.equals(user.getPassword()))
         {
-            errorMessage = "Username Already In Use";
+            errorMessage = "Password Do Not Match";
             
             return null;
         }
-        if(!ejb.exists(user))
+        if(ejb.exists(user))
         {
             errorMessage = "Username Already In Use";
          //   FacesContext context = FacesContext.getCurrentInstance();
@@ -78,6 +79,146 @@ public class UserController
     public String getSearchStr()
     {
         return searchStr;
+    }
+    
+    public String sortByFirstName()
+    {
+        List<User_Obj> newList = new ArrayList<User_Obj>();
+        boolean order = true;
+        if(sortedBy.equals("F_A"))
+        {
+            order = false;
+            sortedBy = "F_D";
+        }
+        else
+            sortedBy = "F_A";
+        while(!usersList.isEmpty())
+        {
+            User_Obj first = usersList.get(0);
+            for(int j = 1; j < usersList.size(); j++)
+            {
+                if(usersList.get(j).getFirstName().compareTo(first.getFirstName()) < 0 == order)
+                {
+                    first = usersList.get(j);
+                }
+            }
+            newList.add(first);
+            usersList.remove(first);
+        }
+        usersList = newList;
+        return null;
+    }
+    
+    public String sortByLastName()
+    {
+        List<User_Obj> newList = new ArrayList<User_Obj>();
+        boolean order = true;
+        if(sortedBy.equals("L_A"))
+        {
+            order = false;
+            sortedBy = "L_D";
+        }
+        else
+            sortedBy = "L_A";
+        while(!usersList.isEmpty())
+        {
+            User_Obj first = usersList.get(0);
+            for(int j = 1; j < usersList.size(); j++)
+            {
+                if(usersList.get(j).getLastName().compareTo(first.getLastName()) < 0 == order)
+                {
+                    first = usersList.get(j);
+                }
+            }
+            newList.add(first);
+            usersList.remove(first);
+        }
+        usersList = newList;
+        return null;
+    }
+    
+    public String sortByUsername()
+    {
+        List<User_Obj> newList = new ArrayList<User_Obj>();
+        boolean order = true;
+        if(sortedBy.equals("U_A"))
+        {
+            order = false;
+            sortedBy = "U_D";
+        }
+        else
+            sortedBy = "U_A";
+        while(!usersList.isEmpty())
+        {
+            User_Obj first = usersList.get(0);
+            for(int j = 1; j < usersList.size(); j++)
+            {
+                if(usersList.get(j).getUsername().compareTo(first.getUsername()) < 0 == order)
+                {
+                    first = usersList.get(j);
+                }
+            }
+            newList.add(first);
+            usersList.remove(first);
+        }
+        usersList = newList;
+        return null;
+    }
+    
+    public String sortByPassword()
+    {
+        List<User_Obj> newList = new ArrayList<User_Obj>();
+        boolean order = true;
+        if(sortedBy.equals("P_A"))
+        {
+            order = false;
+            sortedBy = "P_D";
+        }
+        else
+            sortedBy = "P_A";
+        while(!usersList.isEmpty())
+        {
+            User_Obj first = usersList.get(0);
+            for(int j = 1; j < usersList.size(); j++)
+            {
+                if(usersList.get(j).getPassword().compareTo(first.getPassword()) < 0 == order)
+                {
+                    first = usersList.get(j);
+                }
+            }
+            newList.add(first);
+            usersList.remove(first);
+        }
+        usersList = newList;
+        return null;
+    }
+    
+    public String sortByEmail()
+    {
+        List<User_Obj> newList = new ArrayList<User_Obj>();
+        boolean order = true;
+        if(sortedBy.equals("E_A"))
+        {
+            order = false;
+            sortedBy = "E_D";
+        }
+        else
+            sortedBy = "E_A";
+        while(!usersList.isEmpty())
+        {
+            User_Obj first = usersList.get(0);
+            for(int j = 1; j < usersList.size(); j++)
+            {
+                if(usersList.get(j).getEmail().compareTo(first.getEmail()) < 0 == order)
+                {
+                    first = usersList.get(j);
+                }
+            }
+            newList.add(first);
+            usersList.remove(first);
+        }
+        usersList = newList;
+        return null;
     }
     
     public List<User_Obj> getUsersList(Long id) {

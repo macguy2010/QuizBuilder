@@ -18,6 +18,28 @@ public class QuizBuilderEJB {
         return q;
     }
     
+    public Long questionCount(Long id)
+    {
+        User_Obj user = findUser(id);
+        TypedQuery<Long> query;
+        if(user != null && user.getAdmin())
+            query = em.createNamedQuery("findAllQuestionsCount", Long.class);
+        else
+            query = em.createNamedQuery("findAllQuestionsByIdCount", Long.class).setParameter("ID", id);
+        return query.getSingleResult();
+    }
+    
+    public Long quizCount(Long id)
+    {
+        User_Obj user = findUser(id);
+        TypedQuery<Long> query;
+        if(user != null && user.getAdmin())
+            query = em.createNamedQuery("findAllQuizzesCount", Long.class);
+        else
+            query = em.createNamedQuery("findAllQuizzesByIdCount", Long.class).setParameter("ID", id);
+        return query.getSingleResult();
+    }
+    
     public User_Obj findUser(Long id)
     {
         return em.find(User_Obj.class, id);

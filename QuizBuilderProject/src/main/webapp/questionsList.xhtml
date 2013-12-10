@@ -82,25 +82,33 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Question"/>
+                        <h:commandLink value="Question">
+                            <f:ajax render="@all" listener="#{questionController.sortByQuestion()}"/>
+                        </h:commandLink>
                     </f:facet>
                     <h:outputText value="#{q.question.question}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Answer"/>
+                        <h:commandLink value="Answer">
+                            <f:ajax render="@all" listener="#{questionController.sortByAnswer()}"/>
+                        </h:commandLink>
                     </f:facet>
                     <h:outputText value="#{q.question.answer}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Subject"/>
+                        <h:commandLink value="Subject">
+                            <f:ajax render="@all" listener="#{questionController.sortBySubject()}"/>
+                        </h:commandLink>
                     </f:facet>
                     <h:outputText value="#{q.question.subject}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Difficulty"/>
+                        <h:commandLink value="Diffuculty">
+                            <f:ajax render="@all" listener="#{questionController.sortByDifficulty()}"/>
+                        </h:commandLink>
                     </f:facet>
                     <h:outputText value="#{q.question.difficulty}"/>
                 </h:column>

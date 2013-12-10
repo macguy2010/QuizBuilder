@@ -48,6 +48,8 @@ public class QuestionController implements Serializable
     private Integer importType = 1;
     private Integer exportType = 1;
     private Boolean valid = true;
+    private String sortedBy = "";
+    private boolean justSorted = false;
     
     public String doCreateQuestion(Long id) {
         question.setUserId(id);
@@ -63,6 +65,7 @@ public class QuestionController implements Serializable
         question = ejb.createQuestion(question);
     //    long id = loginCookie.getValue();
         questionList = ejb.findQuestions(correspondingId);
+        selectedList = getSelectedQuestionList(getFilteredQuestions());
         question = new Question();
         tagFields = null;
         return "questionsList.xhtml";
@@ -71,6 +74,7 @@ public class QuestionController implements Serializable
     public String doDeleteQuestion(Long id) {
         ejb.deleteQuestion(id);
         questionList = ejb.findQuestions(correspondingId);
+        selectedList = getSelectedQuestionList(getFilteredQuestions());
         return "questionsList.xhtml";
     }
     
@@ -92,6 +96,7 @@ public class QuestionController implements Serializable
         question.setTags(tags);
         ejb.editQuestion(question);
         questionList = ejb.findQuestions(correspondingId);
+        selectedList = getSelectedQuestionList(getFilteredQuestions());
         question = new Question();
         tagFields = null;
         return "questionsList.xhtml";
@@ -130,11 +135,132 @@ public class QuestionController implements Serializable
         return valid;
     }
     
+    public String sortByQuestion()
+    {
+        List<Question> newList = new ArrayList<Question>();
+        boolean order = true;
+        if(sortedBy.equals("Q_A"))
+        {
+            order = false;
+            sortedBy = "Q_D";
+        }
+        else
+            sortedBy = "Q_A";
+        while(!questionList.isEmpty())
+        {
+            Question first = questionList.get(0);
+            for(int j = 1; j < questionList.size(); j++)
+            {
+                if(questionList.get(j).getQuestion().compareTo(first.getQuestion()) < 0 == order)
+                {
+                    first = questionList.get(j);
+                }
+            }
+            newList.add(first);
+            questionList.remove(first);
+        }
+        questionList = newList;
+        justSorted = true;
+        return null;
+    }
+    
+   public String sortByAnswer()
+    {
+        List<Question> newList = new ArrayList<Question>();
+        boolean order = true;
+        if(sortedBy.equals("A_A"))
+        {
+            order = false;
+            sortedBy = "A_D";
+        }
+        else
+            sortedBy = "A_A";
+        while(!questionList.isEmpty())
+        {
+            Question first = questionList.get(0);
+            for(int j = 1; j < questionList.size(); j++)
+            {
+                if(questionList.get(j).getAnswer().compareTo(first.getAnswer()) < 0 == order)
+                {
+                    first = questionList.get(j);
+                }
+            }
+            newList.add(first);
+            questionList.remove(first);
+        }
+        questionList = newList;
+        justSorted = true;
+        return null;
+    }
+    
+    public String sortBySubject()
+    {
+        List<Question> newList = new ArrayList<Question>();
+        boolean order = true;
+        if(sortedBy.equals("S_A"))
+        {
+            order = false;
+            sortedBy = "S_D";
+        }
+        else
+            sortedBy = "S_A";
+        while(!questionList.isEmpty())
+        {
+            Question first = questionList.get(0);
+            for(int j = 1; j < questionList.size(); j++)
+            {
+                if(questionList.get(j).getSubject().getLabel().compareTo(first.getSubject().getLabel()) < 0 == order)
+                {
+                    first = questionList.get(j);
+                }
+            }
+            newList.add(first);
+            questionList.remove(first);
+        }
+        questionList = newList;
+        justSorted = true;
+        return null;
+    }
+    
+    public String sortByDifficulty()
+    {
+        List<Question> newList = new ArrayList<Question>();
+        boolean order = true;
+        if(sortedBy.equals("D_A"))
+        {
+            order = false;
+            sortedBy = "D_D";
+        }
+        else
+            sortedBy = "D_A";
+        while(!questionList.isEmpty())
+        {
+            Question first = questionList.get(0);
+            for(int j = 1; j < questionList.size(); j++)
+            {
+                if(questionList.get(j).getDifficulty() < first.getDifficulty() == order)
+                {
+                    first = questionList.get(j);
+                }
+            }
+            newList.add(first);
+            questionList.remove(first);
+        }
+        questionList = newList;
+        justSorted = true;
+        return null;
+    }
+    
     public List<SelectedQuestionElement> getQuestionList(Long id) {
-        if(questionList == null || correspondingId != id)
+        if(questionList == null || selectedList == null || correspondingId != id || ejb.questionCount(id) != (long)questionList.size())
+        {
             questionList = ejb.findQuestions(id);
+            
+        }
+        selectedList = getSelectedQuestionList(getFilteredQuestions());
+        
         correspondingId = id;
-        return getSelectedQuestionList(getFilteredQuestions());
+        return selectedList;
     }
     
     private List<SelectedQuestionElement> getSelectedQuestionList(List<Question> q)
@@ -194,6 +320,7 @@ public class QuestionController implements Serializable
 
     public void setQuestionList(List<Question> qList) {
         questionList = qList;
+        selectedList = getSelectedQuestionList(getFilteredQuestions());
     }
     
     public SelectItem[] getSubjectTypeValues() 
@@ -258,6 +385,7 @@ public class QuestionController implements Serializable
      //  cxt.addMessage("Format_Error", new FacesMessage(FacesMessage.SEVERITY_WARN, "File not formatted correctly", "File not formatted correctly"));
     }
     questionList = ejb.findQuestions(correspondingId);
+    selectedList = getSelectedQuestionList(getFilteredQuestions());
     return null;
   }
     

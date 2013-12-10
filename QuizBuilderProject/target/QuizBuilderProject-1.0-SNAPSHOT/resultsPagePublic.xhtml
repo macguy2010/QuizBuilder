@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Quiz</title>
+        <link rel="stylesheet" type="text/css" href="http://localhost:8080/QuizBuilderProject/style.css"></link>
+    </h:head>
+    <h:body>
+
+        <ui:include src="navBar.xhtml"/>
+        
+        <h1>Answers</h1>
+        <div id="box">
+        <h2 style="display: inline; margin-left: -35px;">Grade: </h2>
+        <h:outputLabel style="position: absolute; margin-left: 10px; margin-top: 4px;" value="#{quizController.gradeString}"/>
+        <h:dataTable id="questionList" style="margin-top: 20px;" value="#{quizController.userAnswers}" var="q" border="0">
+            <h:column>
+                <h:outputText value="#{q.question}"/><br/>
+                <img src="#{quizController.isCorrect(q.correct)}" height="20" width="20"/>
+                <h:outputText value="#{q.userAnswer}"/>
+                <br/><br/>
+            </h:column>
+
+        </h:dataTable>
+        </div>
+
+    </h:body>
+</html>

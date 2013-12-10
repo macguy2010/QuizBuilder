@@ -26,7 +26,9 @@
             <h:selectManyCheckbox value="#{quizController.questionsSelectionList}" layout="pageDirection">
    		<f:selectItems value="#{quizController.questionsCheckList}" var="q"
                                itemLabel="#{q.question}" itemValue="#{q.id}" />
-            </h:selectManyCheckbox>
+            </h:selectManyCheckbox><br/>
+            <h:outputLabel value="Public"/>
+            <h:selectBooleanCheckbox value="#{quizController.quiz.isPublic}"/>
         </h:panelGrid>
             <h:inputHidden value="#{quizController.quiz.id}"/> 
         <div id="formButton" style="text-align: center; margin-left: auto; margin-right: auto;">

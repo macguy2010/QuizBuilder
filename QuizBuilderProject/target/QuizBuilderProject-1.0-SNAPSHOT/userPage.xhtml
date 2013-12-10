@@ -49,31 +49,41 @@
         <h:dataTable id="usersList" value="#{userController.getUsersList(loginController.id)}" var="u" border="1">
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="First Name"/>
+                    <h:commandLink value="First Name">
+                            <f:ajax render="@all" listener="#{userController.sortByFirstName()}"/>
+                        </h:commandLink>
                 </f:facet>
                 <h:outputText value="#{u.firstName}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Last Name"/>
+                    <h:commandLink value="Last Name">
+                            <f:ajax render="@all" listener="#{userController.sortByLastName()}"/>
+                        </h:commandLink>
                 </f:facet>
                 <h:outputText value="#{u.lastName}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="UserName"/>
+                    <h:commandLink value="Username">
+                            <f:ajax render="@all" listener="#{userController.sortByUsername()}"/>
+                        </h:commandLink>
                 </f:facet>
                 <h:outputText value="#{u.username}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Password"/>
+                    <h:commandLink value="Password">
+                            <f:ajax render="@all" listener="#{userController.sortByPassword()}"/>
+                        </h:commandLink>
                 </f:facet>
                 <h:outputText value="#{u.password}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Email"/>
+                    <h:commandLink value="Email">
+                            <f:ajax render="@all" listener="#{userController.sortByEmail()}"/>
+                        </h:commandLink>
                 </f:facet>
                 <h:outputText value="#{u.email}"/>
             </h:column>

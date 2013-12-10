@@ -21,9 +21,13 @@ public class QuizController
     private String searchStr = new String();
     private Quiz quiz = new Quiz();
     private List<Quiz> quizList = null;
+    private List<Quiz> filteredQuizzes = null;
     private Long correspondingId = -100l;
     private Integer filter = 1;
     private Boolean valid = false;
+    private List<QuestionElement> userAnswers = null;
+    private String sortedBy = "";
+    private int numberCorrect = 0;
     
     public String doCreateQuiz(Long id) {
         quiz.setUserId(id);
@@ -38,12 +42,14 @@ public class QuizController
         }
         quiz = ejb.createQuiz(quiz);
         quizList = ejb.findQuizzes(correspondingId);
+        filteredQuizzes = getFilteredQuizzes();
         return "quizList.xhtml";
     }
     
     public String doDeleteQuiz(Long id) {
         ejb.deleteQuiz(id);
         quizList = ejb.findQuizzes(correspondingId);
+        filteredQuizzes = getFilteredQuizzes();
         return "quizList.xhtml";
     }
     
@@ -65,8 +71,39 @@ public class QuizController
         }
         ejb.editQuiz(quiz);
         quizList = ejb.findQuizzes(correspondingId);
+        filteredQuizzes = getFilteredQuizzes();
         quiz = new Quiz();
         return "quizList.xhtml";
+    }
+    
+    public List<QuestionElement> getGeneratedQuizQuestions()
+    {
+        userAnswers = new ArrayList<QuestionElement>();
+        List<Question> questions = quiz.getQuestions();
+        for(int i = 0; i < questions.size(); i++)
+        {
+            userAnswers.add(new QuestionElement(questions.get(i).getQuestion(), questions.get(i).getAnswer()));
+        }
+        return userAnswers;
+    }
+    
+    public String doSubmitAnswers()
+    {
+        numberCorrect = 0;
+        for(int i = 0; i < userAnswers.size(); i++)
+        {
+            if(userAnswers.get(i).getUserAnswer().trim().toLowerCase().equals(userAnswers.get(i).getAnswer().trim().toLowerCase()))
+            {
+                numberCorrect++;
+                userAnswers.get(i).setCorrect(1);
+            }
+        }
+        quiz.getGrades().add((double)numberCorrect / userAnswers.size());
+        quizList = ejb.findQuizzes(correspondingId);
+        filteredQuizzes = getFilteredQuizzes();
+    //    if(quiz.getIsTemporary())
+    //        ejb.deleteQuiz(quiz.getId());
+        return "resultsPagePublic.xhtml";
     }
     
     public String search()
@@ -111,11 +148,99 @@ public class QuizController
             q.setValid(true);
     }
     
+    public String sortByTitle()
+    {
+        List<Quiz> newList = new ArrayList<Quiz>();
+        boolean order = true;
+        if(sortedBy.equals("T_A"))
+        {
+            order = false;
+            sortedBy = "T_D";
+        }
+        else
+            sortedBy = "T_A";
+        while(!quizList.isEmpty())
+        {
+            Quiz first = quizList.get(0);
+            for(int j = 1; j < quizList.size(); j++)
+            {
+                if(quizList.get(j).getTitle().compareTo(first.getTitle()) < 0 == order)
+                {
+                    first = quizList.get(j);
+                }
+            }
+            newList.add(first);
+            quizList.remove(first);
+        }
+        quizList = newList;
+        return null;
+    }
+    
+    public String sortByNumQuestions()
+    {
+        List<Quiz> newList = new ArrayList<Quiz>();
+        boolean order = true;
+        if(sortedBy.equals("N_A"))
+        {
+            order = false;
+            sortedBy = "N_D";
+        }
+        else
+            sortedBy = "N_A";
+        while(!quizList.isEmpty())
+        {
+            Quiz first = quizList.get(0);
+            for(int j = 1; j < quizList.size(); j++)
+            {
+                if(quizList.get(j).getNumberOfQuestions() < first.getNumberOfQuestions() == order)
+                {
+                    first = quizList.get(j);
+                }
+            }
+            newList.add(first);
+            quizList.remove(first);
+        }
+        quizList = newList;
+        return null;
+    }
+    
+    public String sortByAverage()
+    {
+        List<Quiz> newList = new ArrayList<Quiz>();
+        boolean order = true;
+        if(sortedBy.equals("A_A"))
+        {
+            order = false;
+            sortedBy = "A_D";
+        }
+        else
+            sortedBy = "A_A";
+        while(!quizList.isEmpty())
+        {
+            Quiz first = quizList.get(0);
+            for(int j = 1; j < quizList.size(); j++)
+            {
+                if(quizList.get(j).getAverageGrade() < first.getAverageGrade() == order)
+                {
+                    first = quizList.get(j);
+                }
+            }
+            newList.add(first);
+            quizList.remove(first);
+        }
+        quizList = newList;
+        return null;
+    }
+    
     public List<Quiz> getQuizList(Long id) {
-        if(quizList == null || correspondingId != id)
-            quizList = ejb.findQuizzes(id);
+        if(quizList == null || filteredQuizzes == null || correspondingId != id || ejb.quizCount(id) != (long)quizList.size())
+        {
+            quizList = ejb.findQuizzes(id);   
+           
+        }
+        filteredQuizzes = getFilteredQuizzes();
         correspondingId = id;
-        return getFilteredQuizzes();
+        return filteredQuizzes;
     }
     
      public List<Quiz> getFilteredQuizzes()
@@ -152,7 +277,7 @@ public class QuizController
         return returnList;
     }
      
-    public String viewQuiz(Long id)
+    public String viewQuiz(Long id, Long uId)
     {
         for(int i = 0; i < quizList.size(); i++)
             if(quizList.get(i).getId() == id)
@@ -160,7 +285,10 @@ public class QuizController
                 quiz = ejb.findQuiz(id);
                 break;
             }
-        return "quizViewPage.xhtml";
+        if(quiz.getUserId() == uId && uId > 0)
+            return "quizViewPage.xhtml";
+        else
+            return "quizPagePublic.xhtml";
     }
 
     public List<Quiz> getQuizList() {
@@ -168,9 +296,28 @@ public class QuizController
             quizList = ejb.findQuizzes();
         return quizList;
     }
+    
+    public List<QuestionElement> getUserAnswers()
+    {
+        return userAnswers;
+    }
+    
+    public String isCorrect(Integer c)
+    {
+        if(c == 1)
+            return "check.png";
+        else
+            return "x.png";
+    }
+    
+    public String getGradeString()
+    {
+        return ""+numberCorrect+"/"+userAnswers.size();
+    }
 
     public void setQuizList(List<Quiz> qList) {
         quizList = qList;
+        filteredQuizzes = getFilteredQuizzes();
     }
     
     public void setQuestionsCheckList(Question[] q)
